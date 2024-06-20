@@ -85,7 +85,7 @@ struct MaterialViewGLB: View {
             
             VStack {
                 VStack {
-                    if currentCase > 0 { // Show buttons only for cases 1-5
+                    if currentCase > 0 && currentCase < 5{ // Show buttons only for cases 1-5
                         HStack {
                             // s button
                             RoundedRectangle(cornerRadius: 24)
@@ -97,11 +97,11 @@ struct MaterialViewGLB: View {
                                         currentCase = 1
                                     }) {
                                         if currentCase == 1{
-                                            Text("S")
+                                            Text("s")
                                                 .font(.system(size: 64).bold())
-                                                .foregroundColor(.red)
+                                                .foregroundColor(Color(hex:"BA1A1A"))
                                         }else{
-                                            Text("S")
+                                            Text("s")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
@@ -121,11 +121,11 @@ struct MaterialViewGLB: View {
                                         currentCase = 4
                                     }) {
                                         if currentCase == 4 {
-                                            Text("V")
+                                            Text("v")
                                                 .font(.system(size: 64).bold())
-                                                .foregroundColor(.red)
+                                                .foregroundColor(Color(hex:"BA1A1A"))
                                         }else{
-                                            Text("V")
+                                            Text("v")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
@@ -147,14 +147,72 @@ struct MaterialViewGLB: View {
                                         currentCase = 2
                                     }) {
                                         if currentCase == 2 {
-                                            Text("T")
+                                            Text("t")
                                                 .font(.system(size: 64).bold())
-                                                .foregroundColor(.red)
+                                                .foregroundColor(Color(hex:"BA1A1A"))
                                         }else{
-                                            Text("T")
+                                            Text("t")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
+                                    }
+                                }
+                        }
+                    }else if currentCase == 5{
+                        Text("Let’s summarize!")
+                            .font(.system(size: 64).bold())
+                            .foregroundColor(Color(hex: "444D69"))
+                            .padding(.bottom, 64)
+                        HStack {
+                            // s button
+                            RoundedRectangle(cornerRadius: 24)
+                                .frame(width: 115, height: 115)
+                                .foregroundColor(Color(hex: "EFEFEF"))
+                                .overlay{
+                                    Button(action: {
+                                        // Jump to case 1 (s)
+                                        currentCase = 1
+                                    }) {
+                                        Text("s")
+                                            .font(.system(size: 64).bold())
+                                            .foregroundColor(Color(hex:"2A9245"))
+                                    }
+                                }
+                            Text("=")
+                                .font(.system(size: 48).bold())
+                                .foregroundColor(Color(hex: "444D69"))
+                            // v button
+                            RoundedRectangle(cornerRadius: 24)
+                                .frame(width: 115, height: 115)
+                                .foregroundColor(Color(hex: "EFEFEF"))
+                                .overlay{
+                                    Button(action: {
+                                        // Jump to case 4 (v)
+                                        currentCase = 4
+                                    }) {
+                                        Text("v")
+                                            .font(.system(size: 64).bold())
+                                            .foregroundColor(Color(hex:"FABD20"))
+                                    }
+                                }
+                            HStack {
+                                Text("*")
+                                    .font(.system(size: 64).bold())
+                                    .foregroundColor(Color(hex: "444D69"))
+                            }
+                            .padding(.top, 32)
+                            // t button
+                            RoundedRectangle(cornerRadius: 24)
+                                .frame(width: 115, height: 115)
+                                .foregroundColor(Color(hex: "EFEFEF"))
+                                .overlay{
+                                    Button(action: {
+                                        // Jump to case 2 (t)
+                                        currentCase = 2
+                                    }) {
+                                        Text("t")
+                                            .font(.system(size: 64).bold())
+                                            .foregroundColor(Color(hex:"36B7D6"))
                                     }
                                 }
                         }
@@ -247,21 +305,6 @@ struct MaterialViewGLB: View {
     func progress(for currentCase: Int) -> CGFloat {
         // 6 cases (0 to 5)
         return CGFloat(currentCase) / 5.0
-    }
-}
-
-extension Color {
-    init(hex: String) {
-        var cleanHexCode = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        cleanHexCode = cleanHexCode.replacingOccurrences(of: "#", with: "")
-        var rgb: UInt64 = 0
-
-        Scanner(string: cleanHexCode).scanHexInt64(&rgb)
-
-        let redValue = Double((rgb >> 16) & 0xFF) / 255.0
-        let greenValue = Double((rgb >> 8) & 0xFF) / 255.0
-        let blueValue = Double(rgb & 0xFF) / 255.0
-        self.init(red: redValue, green: greenValue, blue: blueValue)
     }
 }
 
