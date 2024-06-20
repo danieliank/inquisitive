@@ -15,7 +15,7 @@ struct MaterialViewGLBB_H: View {
         ZStack {
             // Playground view
             VStack {
-                LottieView(name: "test", loopMode: .loop)
+                LottieView(name: ".", loopMode: .loop)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
             
