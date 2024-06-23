@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3D8283362C2407920097626F /* MaterialViewGLBB_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */; };
+		3D82833F2C24776D0097626F /* KERETA.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D82833E2C24776D0097626F /* KERETA.json */; };
+		3D8283412C247B250097626F /* MOBIL.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D8283402C247B250097626F /* MOBIL.json */; };
+		3D8283452C252B3E0097626F /* KERETABERPINDAH.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D8283442C252B3E0097626F /* KERETABERPINDAH.json */; };
 		6A2069B82C22A2930081FBCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2069B72C22A2930081FBCF /* AppDelegate.swift */; };
 		6A2069BA2C22A2930081FBCF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069B92C22A2930081FBCF /* GameScene.sks */; };
 		6A2069BC2C22A2930081FBCF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069BB2C22A2930081FBCF /* Actions.sks */; };
@@ -26,6 +29,10 @@
 
 /* Begin PBXFileReference section */
 		3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLBB_V.swift; sourceTree = "<group>"; };
+		3D8283392C245A860097626F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3D82833E2C24776D0097626F /* KERETA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KERETA.json; sourceTree = "<group>"; };
+		3D8283402C247B250097626F /* MOBIL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MOBIL.json; sourceTree = "<group>"; };
+		3D8283442C252B3E0097626F /* KERETABERPINDAH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KERETABERPINDAH.json; sourceTree = "<group>"; };
 		6A2069B42C22A2930081FBCF /* Inquisitive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inquisitive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2069B72C22A2930081FBCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A2069B92C22A2930081FBCF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -73,7 +80,11 @@
 		6A2069B62C22A2930081FBCF /* Inquisitive */ = {
 			isa = PBXGroup;
 			children = (
+				3D8283392C245A860097626F /* Info.plist */,
 				BFFCEA882C22F0BB00C1F888 /* test.json */,
+				3D82833E2C24776D0097626F /* KERETA.json */,
+				3D8283442C252B3E0097626F /* KERETABERPINDAH.json */,
+				3D8283402C247B250097626F /* MOBIL.json */,
 				BFFCEA842C22F06700C1F888 /* LottieView.swift */,
 				BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */,
 				BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */,
@@ -160,7 +171,10 @@
 				6A2069C52C22A2940081FBCF /* Assets.xcassets in Resources */,
 				6A2069BC2C22A2930081FBCF /* Actions.sks in Resources */,
 				6A2069C82C22A2940081FBCF /* Base in Resources */,
+				3D8283452C252B3E0097626F /* KERETABERPINDAH.json in Resources */,
+				3D8283412C247B250097626F /* MOBIL.json in Resources */,
 				BFFCEA892C22F0BB00C1F888 /* test.json in Resources */,
+				3D82833F2C24776D0097626F /* KERETA.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +346,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 84CY6V3X8V;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Inquisitive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -361,6 +376,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 84CY6V3X8V;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Inquisitive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

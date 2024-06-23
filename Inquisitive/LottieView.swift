@@ -20,7 +20,33 @@ struct LottieView: UIViewRepresentable {
 
         let view = UIView(frame: .zero)
 
-        animationView.animation = LottieAnimation.named(name)
+       // animationView.animation = LottieAnimation.named(name)
+        
+//        if let animation = LottieAnimation.named(name) {
+//                   animationView.animation = animation
+//                   print("Animation \(name) loaded successfully.")
+//               } else {
+//                   print("Failed to load animation \(name).")
+//               }
+        
+        if let path = Bundle.main.path(forResource: name, ofType: "json") {
+                    print("Found animation file at path: \(path)")
+                    do {
+                        let jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
+                        let jsonString = String(data: jsonData, encoding: .utf8)
+                        print("JSON content: \(jsonString ?? "Invalid UTF-8 encoding")")
+                        if let animation = LottieAnimation.filepath(path) {
+                            animationView.animation = animation
+                            print("Animation \(name) loaded successfully.")
+                        } else {
+                            print("Failed to initialize animation \(name) from bundle.")
+                        }
+                    } catch {
+                        print("Error reading JSON file: \(error)")
+                    }
+                } else {
+                    print("Animation file \(name).json not found in bundle.")
+                }
 
         animationView.contentMode = .scaleAspectFit
 

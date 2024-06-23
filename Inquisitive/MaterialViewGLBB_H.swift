@@ -10,45 +10,97 @@ import Lottie
 
 struct MaterialViewGLBB_H: View {
     @State private var currentCase: Int = 0
+    @State private var isClosePressed = false
+    @State private var isBackPressed = false
+    @State private var isNextPressed = false
+    @State private var isFinishPressed = false
     
     var body: some View {
         ZStack {
-            // Playground view
-            VStack {
-                LottieView(name: ".", loopMode: .loop)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            //===Animasi & images view===
+            if currentCase == 0 {
+                Image("MateriGLBB_H/jalanLampuMateri")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+                
+                LottieView(name: "MOBIL", loopMode: .loop)
+                    .frame(width: UIScreen.main.bounds.width - 800)
+                    .padding(.top, UIScreen.main.bounds.height*3/7)
+            }
+            else if currentCase == 1{
+                Image("MateriGLBB_H/mobilMateri")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+            }
+            else if currentCase == 2{
+                Image("MateriGLBB_H/mobilWaktuMateri1")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+            }
+            else if currentCase == 3{
+                Image("MateriGLBB_H/mobilWaktuMateri2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+            }
+            else if currentCase == 4{
+                Image("MateriGLBB_H/mobilMateri2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+            }
+            else if currentCase == 5{
+                Image("MateriGLBB_H/mobilJarakMateri")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+            }
+            else if currentCase == 7{
+                Image("MateriGLBB_H/mobilKiriMateri")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
+            }
+            else if currentCase == 8{
+                Image("MateriGLBB_H/mobilKananMateri")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.top, UIScreen.main.bounds.height*3/7.25)
             }
             
-            // Progress bar
-            VStack {
+            //===Progress bar===
+            HStack{
                 RoundedRectangle(cornerRadius: 10)
-                    .frame(width: UIScreen.main.bounds.width/2, height: 24)
-                    .foregroundColor(.white)
-                    .shadow(radius: 5, x: 1, y: 2)
-                    .overlay{
-                        ZStack(alignment: .leading) {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(Color(hex: "E2E2E2"))
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 4)
-                            // Indicator progress
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(Color(hex: "FFC52F"))
-                                .frame(width: (UIScreen.main.bounds.width/2 - 12) * progress(for: currentCase))
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 4)
-                        }
-                    }
+                    .foregroundColor(Color(hex: "FFC52F"))
+                    .frame(width: (UIScreen.main.bounds.width+12) * progress(for: currentCase), height: 8)
+                    .padding(.bottom, UIScreen.main.bounds.height)
                 Spacer()
             }
-            .padding(.top, 60)
             
+            //===Buttons===
             VStack {
                 HStack {
                     Button(action:{
+                        isClosePressed = true
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            isClosePressed = false
+                        }
+                        
                         // back to menu (keluar)
                     }){
-                        Image("close")
+                        Image(isClosePressed ? "Buttons/closePressed" : "Buttons/close")
                             .resizable()
                             .frame(width: 64, height: 64)
                             .padding([.top, .leading], 50)
@@ -61,32 +113,61 @@ struct MaterialViewGLBB_H: View {
                         // awal ga ada back :)
                     }else{
                         Button(action: {
+                            isBackPressed = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                isBackPressed = false
+                            }
+                            
                             // Navigate to previous case
                             if currentCase > 0 {
                                 currentCase -= 1
                             }
+                            
                         }) {
-                            Image("back")
+                            Image(isBackPressed ? "Buttons/backPressed" : "Buttons/back")
                         }
+                        
                         .padding([.bottom, .leading], 40)
                     }
                     Spacer()
-                    Button(action: {
-                        // Navigate to next case
-                        if currentCase < 9 {
+                    if currentCase < 9 {
+                        Button(action: {
+                            isNextPressed = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                isNextPressed = false
+                            }
+                            
+                            // Navigate to next case
                             currentCase += 1
+                        }) {
+                            Image(isNextPressed ? "Buttons/nextPressed" : "Buttons/next")
                         }
-                    }) {
-                        Image("next")
+                        .padding([.bottom, .trailing], 40)
                     }
-                    .padding([.bottom, .trailing], 40)
+                    else{
+                        Button(action: {
+                            isFinishPressed = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                isFinishPressed = false
+                            }
+                            
+                            // Navigate to map
+                            
+                        }) {
+                            Image(isFinishPressed ? "Buttons/finishPressed" : "Buttons/finish")
+                        }
+                        .padding([.bottom, .trailing], 40)
+                    }
                 }
             }
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             
+            //===Show content based on currentCase===
             VStack {
                 VStack {
-                    // Show content based on currentCase
                     switch currentCase {
                     case 0:
                         Text("Constant Acceleration")
@@ -96,7 +177,7 @@ struct MaterialViewGLBB_H: View {
                         Text("Part 1: Horizontal Motion")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "444D69"))
-                            .padding(.bottom, 128)
+                            .padding(.bottom, 90)
                         Text("Have you ever notice how a car **slowly speeds up constantly** as the red light becomes green? How can we describe this change?")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
@@ -105,7 +186,7 @@ struct MaterialViewGLBB_H: View {
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
                             .padding(.bottom, 32)
-                        Text("Observe the changes in the speedometer below. The acceleration is **5 m/s²**, meaning the velocity increases by **5 meters per second each second**. This is why the unit is expressed as **m/s²**, which is derived from **dividing meters per second ( m/s )** by seconds **( s )**.")
+                        Text("Observe the car below! The acceleration of the car is **5 m/s²**, meaning the velocity increases by **5 meters per second each second**. This is why the unit is expressed as **m/s²**, which is derived from **dividing meters per second ( m/s )** by seconds **( s )**.")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
                     case 2:
@@ -113,7 +194,7 @@ struct MaterialViewGLBB_H: View {
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
                             .padding(.bottom, 32)
-                        Text("See the car below! If we want to find the car's velocity at the 4th second **( t=4 )**, we calculate the **increase in velocity** and add it to the **initial velocity**.")
+                        Text("If we want to find the car's velocity at the 4th second **( t=4 )**, we calculate the **increase in velocity** and add it to the **initial velocity**.")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
                     case 3:
@@ -130,38 +211,25 @@ struct MaterialViewGLBB_H: View {
                             .foregroundColor(Color(hex: "444D69"))
                         
                         HStack {
-                            RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
-                                .foregroundColor(Color(hex: "EFEFEF"))
-                                .overlay{
-                                    Text("v(t)")
-                                        .font(.system(size: 44).bold())
-                                        .foregroundColor(Color(hex:"36B7D6"))
-                                }
+                            Text("v(t)")
+                                .font(.system(size: 64).bold())
+                                .foregroundColor(Color(hex:"36B7D6"))
+                                .padding(.horizontal, 5)
                             Text("=")
-                                .font(.system(size: 48).bold())
+                                .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
-                            RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
-                                .foregroundColor(Color(hex: "EFEFEF"))
-                                .overlay{
-                                    Text("v(0)")
-                                        .font(.system(size: 44).bold())
-                                        .foregroundColor(Color(hex:"36B7D6"))
-                                }
-                            HStack {
-                                Text("+")
-                                    .font(.system(size: 48).bold())
-                                    .foregroundColor(Color(hex: "444D69"))
-                            }
-                            RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
-                                .foregroundColor(Color(hex: "EFEFEF"))
-                                .overlay{
-                                    Text("a*t")
-                                        .font(.system(size: 48).bold())
-                                        .foregroundColor(Color(hex:"36B7D6"))
-                                }
+                                .padding(.horizontal, 5)
+                            Text("v(0)")
+                                .font(.system(size: 64).bold())
+                                .foregroundColor(Color(hex:"36B7D6"))
+                                .padding(.horizontal, 5)
+                            Text("+")
+                                .font(.system(size: 64).bold())
+                                .foregroundColor(Color(hex: "444D69"))
+                                .padding(.horizontal, 5)
+                            Text("a*t")
+                                .font(.system(size: 64).bold())
+                                .foregroundColor(Color(hex:"36B7D6"))
                         }
                         .padding(.vertical, 32)
                         
@@ -242,116 +310,122 @@ struct MaterialViewGLBB_H: View {
                         HStack {
                             // v(t)
                             RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
+                                .frame(width: 150, height: 150)
                                 .foregroundColor(Color(hex: "EFEFEF"))
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                                 .overlay{
                                     Button(action: {
                                         // Jump to case 4 (v(t))
                                         currentCase = 4
                                     }) {
                                         Text("v(t)")
-                                            .font(.system(size: 48).bold())
+                                            .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"2A9245"))
                                     }
                                 }
                             Text("=")
-                                .font(.system(size: 48).bold())
+                                .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                             // v(0)
                             RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
+                                .frame(width: 150, height: 150)
                                 .foregroundColor(Color(hex: "EFEFEF"))
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                                 .overlay{
                                     Button(action: {
                                         // Jump to case 4 (v(t))
                                         currentCase = 4
                                     }) {
                                         Text("v(0)")
-                                            .font(.system(size: 48).bold())
+                                            .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"FABD20"))
                                     }
                                 }
                             HStack {
                                 Text("+")
-                                    .font(.system(size: 48).bold())
+                                    .font(.system(size: 64).bold())
                                     .foregroundColor(Color(hex: "444D69"))
                             }
                             // a*t
                             RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
+                                .frame(width: 150, height: 150)
                                 .foregroundColor(Color(hex: "EFEFEF"))
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                                 .overlay{
                                     Button(action: {
                                         // Jump to case 4 (v(t))
                                         currentCase = 4
                                     }) {
                                         Text("a*t")
-                                            .font(.system(size: 48).bold())
+                                            .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"36B7D6"))
                                     }
                                 }
                         }
                         .frame(width: UIScreen.main.bounds.width-366)
-
+                        
                         Text("**To determine the distance it travels**, we use:")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
-                            // func s(t)
+                        // func s(t)
                         HStack {
                             // s(t) button
                             RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
+                                .frame(width: 150, height: 150)
                                 .foregroundColor(Color(hex: "EFEFEF"))
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                                 .overlay{
                                     Button(action: {
                                         // Jump to case 6 (s(t))
                                         currentCase = 6
                                     }) {
                                         Text("s(t)")
-                                            .font(.system(size: 48).bold())
+                                            .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"2A9245"))
                                     }
                                 }
                             Text("=")
-                                .font(.system(size: 48).bold())
+                                .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                             // v(0)*t button
                             RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 180, height: 115)
+                                .frame(width: 230, height: 150)
                                 .foregroundColor(Color(hex: "EFEFEF"))
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                                 .overlay{
                                     Button(action: {
                                         // Jump to case 7 (V(0)*t)
                                         currentCase = 7
                                     }) {
                                         Text("V(0)*t")
-                                            .font(.system(size: 48).bold())
+                                            .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"FABD20"))
                                     }
                                 }
                             HStack {
                                 Text("+")
-                                    .font(.system(size: 48).bold())
+                                    .font(.system(size: 64).bold())
                                     .foregroundColor(Color(hex: "444D69"))
                             }
                             // 1/2 a*t^2 button
                             RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 230, height: 115)
+                                .frame(width: 330, height: 150)
                                 .foregroundColor(Color(hex: "EFEFEF"))
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                                 .overlay{
                                     Button(action: {
                                         // Jump to case 8 (1/2 a*t^2)
                                         currentCase = 8
                                     }) {
                                         Text("1/2 a*t^2")
-                                            .font(.system(size: 48).bold())
+                                            .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"36B7D6"))
                                     }
                                     
                                 }
                         }
                         .frame(width: UIScreen.main.bounds.width-366)
-
+                        
                     default:
                         Text("Invalid case.")
                             .font(.system(size: 32))
@@ -359,85 +433,98 @@ struct MaterialViewGLBB_H: View {
                     }
                 }
                 .multilineTextAlignment(.center)
-                .padding(.top, 80)
+                .padding(.top, 40)
                 Spacer()
+                //=== Kotak Rumus===
                 VStack {
                     if currentCase > 5 && currentCase < 9{ // Show buttons only for cases 6,7,8
                         Spacer()
                         HStack {
                             if currentCase == 6{
-                                Image("Graph_GLBB_H")
+                                Image("MateriGLBB_H/Graph_GLBB_H")
                                 Spacer()
                             }
                             // s(t) button
-                            RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 115, height: 115)
-                                .foregroundColor(Color(hex: "EFEFEF"))
-                                .overlay{
-                                    Button(action: {
-                                        // Jump to case 1 (s)
-                                        currentCase = 6
-                                    }) {
-                                        if currentCase == 6{
-                                            Text("s(t)")
-                                                .font(.system(size: 48).bold())
-                                                .foregroundColor(Color(hex:"BA1A1A"))
-                                        }else{
+                            if currentCase == 6{
+                                Text("s(t)")
+                                    .font(.system(size: 48).bold())
+                                    .foregroundColor(Color(hex: "BA1A1A"))
+                                    .padding(.horizontal, 5)
+                            }
+                            else{
+                                RoundedRectangle(cornerRadius: 24)
+                                    .frame(width: 115, height: 115)
+                                    .foregroundColor(Color(hex: "EFEFEF"))
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                                    .overlay{
+                                        Button(action: {
+                                            // Jump to case 6
+                                            currentCase = 6
+                                        }) {
                                             Text("s(t)")
                                                 .font(.system(size: 48).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
                                     }
-                                }
+                            }
+                            
                             Text("=")
                                 .font(.system(size: 48).bold())
                                 .foregroundColor(Color(hex: "444D69"))
+                            
                             // v(0)*t button
-                            RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 180, height: 115)
-                                .foregroundColor(Color(hex: "EFEFEF"))
-                                .overlay{
-                                    Button(action: {
-                                        // Jump to case 7 (V(0)*t)
-                                        currentCase = 7
-                                    }) {
-                                        if currentCase == 7 {
-                                            Text("V(0)*t")
-                                                .font(.system(size: 48).bold())
-                                                .foregroundColor(Color(hex:"BA1A1A"))
-                                        }else{
+                            if currentCase == 7{
+                                Text("V(0)*t")
+                                    .font(.system(size: 48).bold())
+                                    .foregroundColor(Color(hex: "BA1A1A"))
+                                    .padding(.horizontal, 10)
+                            }
+                            else{
+                                RoundedRectangle(cornerRadius: 24)
+                                    .frame(width: 180, height: 115)
+                                    .foregroundColor(Color(hex: "EFEFEF"))
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                                    .overlay{
+                                        Button(action: {
+                                            // Jump to case 7
+                                            currentCase = 7
+                                        }) {
                                             Text("V(0)*t")
                                                 .font(.system(size: 48).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
                                     }
-                                }
+                            }
+                            
                             HStack {
                                 Text("+")
                                     .font(.system(size: 48).bold())
                                     .foregroundColor(Color(hex: "444D69"))
                             }
+                            
                             // 1/2 a*t^2 button
-                            RoundedRectangle(cornerRadius: 24)
-                                .frame(width: 230, height: 115)
-                                .foregroundColor(Color(hex: "EFEFEF"))
-                                .overlay{
-                                    Button(action: {
-                                        // Jump to case 8 (1/2 a*t^2)
-                                        currentCase = 8
-                                    }) {
-                                        if currentCase == 8 {
-                                            Text("1/2 a*t^2")
-                                                .font(.system(size: 48).bold())
-                                                .foregroundColor(Color(hex:"BA1A1A"))
-                                        }else{
+                            if currentCase == 8{
+                                Text("1/2 a*t^2")
+                                    .font(.system(size: 48).bold())
+                                    .foregroundColor(Color(hex: "BA1A1A"))
+                                    .padding(.horizontal, 10)
+                            }
+                            else{
+                                RoundedRectangle(cornerRadius: 24)
+                                    .frame(width: 230, height: 115)
+                                    .foregroundColor(Color(hex: "EFEFEF"))
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                                    .overlay{
+                                        Button(action: {
+                                            // Jump to case 8
+                                            currentCase = 8
+                                        }) {
                                             Text("1/2 a*t^2")
                                                 .font(.system(size: 48).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
                                     }
-                                    
-                                }
+                            }
                         }
                         .frame(width: UIScreen.main.bounds.width-366)
                         Spacer()
