@@ -12,102 +12,104 @@ struct ProfileDetailView: View {
     @State private var isEditingName: Bool = false
 
     var body: some View {
-        HStack {
-            VStack(alignment: .center) {
-                ZStack {
-                    Circle()
-                        .fill(Color(hex: profileConfig.selectedProfileBackground?.color ?? "#FFFFFF"))
-                        .frame(width: 360, height: 360)
-                        .shadow(radius: 10, x: 2, y: 4)
-
+        ZStack {
+            HStack {
+                VStack(alignment: .center) {
                     ZStack {
-                        if let faceShape = profileConfig.selectedFaceShape {
-                            Image(faceShape.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 240, height: 240) // Fixed size to prevent layout shift
-                        }
-
-                        if let expression = profileConfig.selectedExpression {
-                            Image(expression.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 160, height: 160) // Fixed size to prevent layout shift
-                        }
-
-                        if let hairstyle = profileConfig.selectedHairstyle {
-                            Image(hairstyle.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 240, height: 240) // Fixed size to prevent layout shift
+                        Circle()
+                            .fill(Color(hex: profileConfig.selectedProfileBackground?.color ?? "#FFFFFF"))
+                            .frame(width: 360, height: 360)
+                            .shadow(radius: 10, x: 2, y: 4)
+                        
+                        ZStack {
+                            if let faceShape = profileConfig.selectedFaceShape {
+                                Image(faceShape.imageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 240) // Fixed size to prevent layout shift
+                            }
+                            
+                            if let expression = profileConfig.selectedExpression {
+                                Image(expression.imageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 160, height: 160) // Fixed size to prevent layout shift
+                            }
+                            
+                            if let hairstyle = profileConfig.selectedHairstyle {
+                                Image(hairstyle.imageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 240) // Fixed size to prevent layout shift
+                            }
                         }
                     }
+                    
+                    HStack {
+                        Text(profileConfig.profile.name)
+                            .font(.system(size: 64))
+                            .foregroundColor(Color(hex: "374362"))
+                        
+                        Button(action: {
+                            isEditingName.toggle()
+                        }) {
+                            Image(systemName: "pencil.line")
+                                .font(.system(size: 24))
+                                .foregroundColor(Color(hex: "A2A6C0"))
+                                .padding(.top, 16)
+                        }
+                    }
+                    
+                    Text("Supadupa Genius")
+                        .font(.system(size: 24).bold())
+                        .foregroundColor(Color(hex: "36B7D6"))
                 }
-
-                HStack {
-                    Text(profileConfig.profile.name)
-                        .font(.system(size: 64))
-                        .foregroundColor(Color(hex: "374362"))
-
-                    Button(action: {
-                        isEditingName.toggle()
-                    }) {
-                        Image(systemName: "pencil.line")
-                            .font(.system(size: 24))
-                            .foregroundColor(Color(hex: "A2A6C0"))
-                            .padding(.top, 16)
-                    }
-                    .sheet(isPresented: $isEditingName) {
-                        NameEditView(name: $profileConfig.profile.name)
-                    }
+                
+                VStack(alignment: .leading) {
+                    ProfileDetailItem(
+                        title: "Profile Background",
+                        selectedOption: Binding(
+                            get: { profileConfig.selectedProfileBackground?.name ?? "" },
+                            set: { name in profileConfig.selectedProfileBackground = availableProfileBackground.first { $0.name == name } }
+                        ),
+                        options: availableProfileBackground.map { OptionItem(from: $0) }
+                    )
+                    ProfileDetailItem(
+                        title: "Face Shape",
+                        selectedOption: Binding(
+                            get: { profileConfig.selectedFaceShape?.name ?? "" },
+                            set: { name in profileConfig.selectedFaceShape = availableFaceShapes.first { $0.name == name } }
+                        ),
+                        options: availableFaceShapes.map { OptionItem(from: $0) }
+                    )
+                    ProfileDetailItem(
+                        title: "Expression",
+                        selectedOption: Binding(
+                            get: { profileConfig.selectedExpression?.name ?? "" },
+                            set: { name in profileConfig.selectedExpression = availableExpressions.first { $0.name == name } }
+                        ),
+                        options: availableExpressions.map { OptionItem(from: $0) }
+                    )
+                    ProfileDetailItem(
+                        title: "Hairstyle",
+                        selectedOption: Binding(
+                            get: { profileConfig.selectedHairstyle?.name ?? "" },
+                            set: { name in profileConfig.selectedHairstyle = availableHairstyles.first { $0.name == name } }
+                        ),
+                        options: availableHairstyles.map { OptionItem(from: $0) }
+                    )
                 }
-
-                Text("Supadupa Genius")
-                    .font(.system(size: 24).bold())
-                    .foregroundColor(Color(hex: "36B7D6"))
+                .padding(.horizontal, 16)
             }
-
-            VStack(alignment: .leading) {
-                ProfileDetailItem(
-                    title: "Profile Background",
-                    selectedOption: Binding(
-                        get: { profileConfig.selectedProfileBackground?.name ?? "" },
-                        set: { name in profileConfig.selectedProfileBackground = availableProfileBackground.first { $0.name == name } }
-                    ),
-                    options: availableProfileBackground.map { OptionItem(from: $0) }
-                )
-                ProfileDetailItem(
-                    title: "Face Shape",
-                    selectedOption: Binding(
-                        get: { profileConfig.selectedFaceShape?.name ?? "" },
-                        set: { name in profileConfig.selectedFaceShape = availableFaceShapes.first { $0.name == name } }
-                    ),
-                    options: availableFaceShapes.map { OptionItem(from: $0) }
-                )
-                ProfileDetailItem(
-                    title: "Expression",
-                    selectedOption: Binding(
-                        get: { profileConfig.selectedExpression?.name ?? "" },
-                        set: { name in profileConfig.selectedExpression = availableExpressions.first { $0.name == name } }
-                    ),
-                    options: availableExpressions.map { OptionItem(from: $0) }
-                )
-                ProfileDetailItem(
-                    title: "Hairstyle",
-                    selectedOption: Binding(
-                        get: { profileConfig.selectedHairstyle?.name ?? "" },
-                        set: { name in profileConfig.selectedHairstyle = availableHairstyles.first { $0.name == name } }
-                    ),
-                    options: availableHairstyles.map { OptionItem(from: $0) }
-                )
+            .padding(.vertical, 16)
+            
+            if isEditingName {
+                NameEditView(name: $profileConfig.profile.name, isEditing: $isEditingName)
+                    .edgesIgnoringSafeArea(.all)
             }
-            .padding(.horizontal, 16)
         }
-        .padding(.vertical, 16)
     }
 }
-
-
 
 let availableProfileBackground = [
     ProfileBackground(name: "Pale", color: "#F2D7D5"),
