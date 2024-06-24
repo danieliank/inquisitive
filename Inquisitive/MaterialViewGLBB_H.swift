@@ -9,6 +9,7 @@ import SwiftUI
 import Lottie
 
 struct MaterialViewGLBB_H: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var currentCase: Int = 0
     @State private var isClosePressed = false
     @State private var isBackPressed = false
@@ -89,6 +90,7 @@ struct MaterialViewGLBB_H: View {
             }
             
             //===Buttons===
+            
             VStack {
                 HStack {
                     Button(action:{
@@ -97,7 +99,7 @@ struct MaterialViewGLBB_H: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             isClosePressed = false
                         }
-                        
+                        self.presentationMode.wrappedValue.dismiss()
                         // back to menu (keluar)
                     }){
                         Image(isClosePressed ? "Buttons/closePressed" : "Buttons/close")
@@ -153,7 +155,7 @@ struct MaterialViewGLBB_H: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 isFinishPressed = false
                             }
-                            
+                            self.presentationMode.wrappedValue.dismiss()
                             // Navigate to map
                             
                         }) {
@@ -533,6 +535,7 @@ struct MaterialViewGLBB_H: View {
             }
             .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 332)
         }
+        .navigationBarHidden(true)
     }
     
     // Function to calculate progress as a fraction

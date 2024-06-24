@@ -137,7 +137,7 @@ struct MaterialViewGLB: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 isFinishPressed = false
                             }
-                            
+                            self.presentationMode.wrappedValue.dismiss()
                             // Navigate to map
                             
                         }) {

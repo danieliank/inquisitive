@@ -22,7 +22,6 @@ struct MapView: View {
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width)
                 
-                //Constant Velocity
                 NavigationLink(destination: MaterialViewGLB()) {
                     VStack {
                         Image("Map/train")
@@ -71,7 +70,7 @@ struct MapView: View {
                 .offset(x:-UIScreen.main.bounds.width/2.85, y:UIScreen.main.bounds.height/8)
                 
                 // Constant Acceleration 1
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLBB_H()) {
                     VStack {
                         Image("Map/car")
                         HStack{
@@ -85,7 +84,7 @@ struct MapView: View {
                 .padding(.trailing, UIScreen.main.bounds.width/4)
                 
                     //GLBB Horizontal playground button
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLBB_H()) {
                     VStack {
                         ZStack {
                             Image("Map/playgroundButton")
@@ -100,7 +99,7 @@ struct MapView: View {
                 .offset(x:0, y:-UIScreen.main.bounds.height*1.2/10)
                 
                     //GLBB Horizontal exercise button
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLBB_H()) {
                     VStack {
                         ZStack {
                             Image("Map/exerciseButton")
@@ -115,7 +114,7 @@ struct MapView: View {
                 .offset(x:UIScreen.main.bounds.width/12, y:-UIScreen.main.bounds.height*1.6/10)
                 
                 // Constant Acceleration 2
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLBB_V()) {
                     VStack {
                         Image("Map/coconut")
                         HStack{
@@ -129,7 +128,7 @@ struct MapView: View {
                 .padding(.leading, UIScreen.main.bounds.width/2)
                 
                     //GLBB Vertical playground button
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLBB_V()) {
                     VStack {
                         ZStack {
                             Image("Map/playgroundButton")
@@ -144,7 +143,7 @@ struct MapView: View {
                 .offset(x:UIScreen.main.bounds.width*9/25, y:-UIScreen.main.bounds.height/18)
                 
                     //GLBB Vertical exercise button
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLBB_V()) {
                     VStack {
                         ZStack {
                             Image("Map/exerciseButton")
