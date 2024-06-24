@@ -48,9 +48,9 @@ struct OptionItem: Identifiable {
         self.color = color
     }
 
-    init(from skinTone: SkinTone) {
-        self.name = skinTone.name
-        self.color = skinTone.color
+    init(from profileBackground: ProfileBackground) {
+        self.name = profileBackground.name
+        self.color = profileBackground.color
     }
     
     init(from faceShape: FaceShape) {

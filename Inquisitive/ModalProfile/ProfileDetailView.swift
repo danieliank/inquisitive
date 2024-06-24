@@ -16,11 +16,11 @@ struct ProfileDetailView: View {
             VStack(alignment: .center) {
                 ZStack {
                     Circle()
-                        .fill(Color(hex: profileConfig.selectedSkinTone?.color ?? "#FFFFFF"))
+                        .fill(Color(hex: profileConfig.selectedProfileBackground?.color ?? "#FFFFFF"))
                         .frame(width: 360, height: 360)
                         .shadow(radius: 10, x: 2, y: 4)
 
-                    VStack {
+                    ZStack {
                         if let faceShape = profileConfig.selectedFaceShape {
                             Image(faceShape.imageName)
                                 .resizable()
@@ -69,12 +69,12 @@ struct ProfileDetailView: View {
 
             VStack(alignment: .leading) {
                 ProfileDetailItem(
-                    title: "Skin Tone",
+                    title: "Profile Background",
                     selectedOption: Binding(
-                        get: { profileConfig.selectedSkinTone?.name ?? "" },
-                        set: { name in profileConfig.selectedSkinTone = availableSkinTones.first { $0.name == name } }
+                        get: { profileConfig.selectedProfileBackground?.name ?? "" },
+                        set: { name in profileConfig.selectedProfileBackground = availableProfileBackground.first { $0.name == name } }
                     ),
-                    options: availableSkinTones.map { OptionItem(from: $0) }
+                    options: availableProfileBackground.map { OptionItem(from: $0) }
                 )
                 ProfileDetailItem(
                     title: "Face Shape",
@@ -109,10 +109,10 @@ struct ProfileDetailView: View {
 
 
 
-let availableSkinTones = [
-    SkinTone(name: "Pale", color: "#F2D7D5"),
-    SkinTone(name: "Tan", color: "#D2B48C"),
-    SkinTone(name: "Dark", color: "#8B4513")
+let availableProfileBackground = [
+    ProfileBackground(name: "Pale", color: "#F2D7D5"),
+    ProfileBackground(name: "Tan", color: "#D2B48C"),
+    ProfileBackground(name: "Dark", color: "#8B4513")
 ]
 
 let availableFaceShapes = [

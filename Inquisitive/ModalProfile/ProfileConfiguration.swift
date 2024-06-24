@@ -11,18 +11,18 @@ import Combine
 @MainActor
 class ProfileConfiguration: ObservableObject, Identifiable {
     @Published var profile: Profile
-    @Published var selectedSkinTone: SkinTone?
+    @Published var selectedProfileBackground: ProfileBackground?
     @Published var selectedFaceShape: FaceShape?
     @Published var selectedExpression: Expression?
     @Published var selectedHairstyle: Hairstyle?
 
     init(profile: Profile = Profile(),
-         selectedSkinTone: SkinTone? = nil,
+         selectedProfileBackground: ProfileBackground? = nil,
          selectedFaceShape: FaceShape? = nil,
          selectedExpression: Expression? = nil,
          selectedHairstyle: Hairstyle? = nil) {
         self.profile = profile
-        self.selectedSkinTone = selectedSkinTone
+        self.selectedProfileBackground = selectedProfileBackground
         self.selectedFaceShape = selectedFaceShape
         self.selectedExpression = selectedExpression
         self.selectedHairstyle = selectedHairstyle
