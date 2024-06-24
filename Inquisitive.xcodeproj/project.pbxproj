@@ -20,6 +20,10 @@
 		6A2069C32C22A2930081FBCF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069C22C22A2930081FBCF /* Base */; };
 		6A2069C52C22A2940081FBCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069C42C22A2940081FBCF /* Assets.xcassets */; };
 		6A2069C82C22A2940081FBCF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069C72C22A2940081FBCF /* Base */; };
+		6A9954E32C2920B900B7C865 /* CoconutGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A9954E02C2920B900B7C865 /* CoconutGameScene.sks */; };
+		6A9954E42C2920B900B7C865 /* CoconutGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9954E12C2920B900B7C865 /* CoconutGameViewController.swift */; };
+		6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9954E22C2920B900B7C865 /* CoconutGameScene.swift */; };
+		6A9954E72C29232900B7C865 /* CoconutGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9954E62C29232900B7C865 /* CoconutGameView.swift */; };
 		BFB25BDE2C23CCF60066D6BE /* MaterialViewGLBB_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */; };
 		BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDF2C23CD350066D6BE /* ColorExt.swift */; };
 		BFB25BE32C2442CF0066D6BE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BFB25BE22C2442CF0066D6BE /* Lottie */; };
@@ -35,7 +39,6 @@
 		BFB25BF82C249AF80066D6BE /* NameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BF72C249AF80066D6BE /* NameEditView.swift */; };
 		BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEA842C22F06700C1F888 /* LottieView.swift */; };
 		BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */; };
-		BFFCEA892C22F0BB00C1F888 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = BFFCEA882C22F0BB00C1F888 /* test.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,10 @@
 		6A2069C22C22A2930081FBCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A2069C42C22A2940081FBCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A2069C72C22A2940081FBCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6A9954E02C2920B900B7C865 /* CoconutGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoconutGameScene.sks; sourceTree = "<group>"; };
+		6A9954E12C2920B900B7C865 /* CoconutGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoconutGameViewController.swift; sourceTree = "<group>"; };
+		6A9954E22C2920B900B7C865 /* CoconutGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoconutGameScene.swift; sourceTree = "<group>"; };
+		6A9954E62C29232900B7C865 /* CoconutGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoconutGameView.swift; sourceTree = "<group>"; };
 		BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLBB_H.swift; sourceTree = "<group>"; };
 		BFB25BDF2C23CD350066D6BE /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		BFB25BE42C24439C0066D6BE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -68,7 +75,6 @@
 		BFB25BF72C249AF80066D6BE /* NameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditView.swift; sourceTree = "<group>"; };
 		BFFCEA842C22F06700C1F888 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLB.swift; sourceTree = "<group>"; };
-		BFFCEA882C22F0BB00C1F888 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = ../../../../Downloads/test.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				3D8283392C245A860097626F /* Info.plist */,
-				BFFCEA882C22F0BB00C1F888 /* test.json */,
 				3D82833E2C24776D0097626F /* KERETA.json */,
 				3D8283442C252B3E0097626F /* KERETABERPINDAH.json */,
 				3D8283402C247B250097626F /* MOBIL.json */,
@@ -112,6 +117,7 @@
 				BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */,
 				3D8283462C2872C60097626F /* MapView.swift */,
 				3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */,
+				6A9954C52C29207D00B7C865 /* CoconutPlayground */,
 				BFB25BE42C24439C0066D6BE /* ProfileView.swift */,
 				BFB25BF42C2458F70066D6BE /* ModalProfile */,
 				BFB25BDF2C23CD350066D6BE /* ColorExt.swift */,
@@ -125,6 +131,17 @@
 				6A2069C62C22A2940081FBCF /* LaunchScreen.storyboard */,
 			);
 			path = Inquisitive;
+			sourceTree = "<group>";
+		};
+		6A9954C52C29207D00B7C865 /* CoconutPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				6A9954E02C2920B900B7C865 /* CoconutGameScene.sks */,
+				6A9954E62C29232900B7C865 /* CoconutGameView.swift */,
+				6A9954E22C2920B900B7C865 /* CoconutGameScene.swift */,
+				6A9954E12C2920B900B7C865 /* CoconutGameViewController.swift */,
+			);
+			path = CoconutPlayground;
 			sourceTree = "<group>";
 		};
 		BFB25BF42C2458F70066D6BE /* ModalProfile */ = {
@@ -213,8 +230,8 @@
 				6A2069BC2C22A2930081FBCF /* Actions.sks in Resources */,
 				6A2069C82C22A2940081FBCF /* Base in Resources */,
 				3D8283452C252B3E0097626F /* KERETABERPINDAH.json in Resources */,
+				6A9954E32C2920B900B7C865 /* CoconutGameScene.sks in Resources */,
 				3D8283412C247B250097626F /* MOBIL.json in Resources */,
-				BFFCEA892C22F0BB00C1F888 /* test.json in Resources */,
 				3D82833F2C24776D0097626F /* KERETA.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A9954E42C2920B900B7C865 /* CoconutGameViewController.swift in Sources */,
 				BFB25BF62C24987F0066D6BE /* Profile.swift in Sources */,
 				BFB25BEF2C24546A0066D6BE /* ProfileConfiguration.swift in Sources */,
 				BFB25BE92C2454410066D6BE /* FaceShape.swift in Sources */,
@@ -237,6 +255,8 @@
 				3D8283362C2407920097626F /* MaterialViewGLBB_V.swift in Sources */,
 				6A2069BE2C22A2930081FBCF /* GameScene.swift in Sources */,
 				BFB25BE72C2454360066D6BE /* SkinTone.swift in Sources */,
+				6A9954E72C29232900B7C865 /* CoconutGameView.swift in Sources */,
+				6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */,
 				6A2069C02C22A2930081FBCF /* GameViewController.swift in Sources */,
 				6A2069B82C22A2930081FBCF /* AppDelegate.swift in Sources */,
 				BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */,
