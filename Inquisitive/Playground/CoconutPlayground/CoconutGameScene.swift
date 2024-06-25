@@ -20,6 +20,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private var coconutTrees: [SKSpriteNode] = []
     
     private var coconut: SKSpriteNode?
+    private var coconutBubble: SKSpriteNode?
+    private var coconutBubbleLabel: SKLabelNode? // Reference to the label inside the bubble
     
     // Constants
     private let fontSize: CGFloat = 24
@@ -31,6 +33,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         setupLabels()
         setupNodes()
         setupCoconut()
+        setupCoconutBubble()
         self.isPaused = false
         
         // Move the coconut to the bottom of the screen
@@ -50,6 +53,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         moveAndResetNodes(nodes: coconutTrees, speed: CGFloat(2.0 * velocity) * CGFloat(deltaTime))
         updateCoconutAnimationSpeedIfNeeded()
         velocity += Float(deltaTime * 9.8)
+        updateCoconutBubblePosition()
     }
     
     // MARK: - Setup Methods
@@ -129,7 +133,6 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
     private func createCopy(of node: SKSpriteNode, at position: CGPoint, zPosition: CGFloat) -> SKSpriteNode {
         let newNode = node.copy() as! SKSpriteNode
         newNode.position = position
@@ -146,6 +149,34 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
 //        coconut?.physicsBody?.categoryBitMask = 1
 //        coconut?.physicsBody?.contactTestBitMask = 2
 //        coconut?.physicsBody?.collisionBitMask = 2
+    }
+    
+    private func setupCoconutBubble() {
+        guard let coconut = coconut else { return }
+        
+        // Create the coconut bubble sprite node
+        let coconutBubble = SKSpriteNode(imageNamed: "CoconutBubble")
+        coconutBubble.position = CGPoint(x: coconut.position.x + coconut.size.width + 40, y: coconut.position.y)
+        coconutBubble.zPosition = 50
+        addChild(coconutBubble)
+        self.coconutBubble = coconutBubble
+        
+        // Create and configure the label node
+        let textLabel = SKLabelNode(fontNamed: "Arial")
+        textLabel.fontSize = 16
+        textLabel.fontColor = .black
+        textLabel.text = String(format: "%.2f", distance)
+        textLabel.position = CGPoint(x: 0, y: 0)
+        coconutBubble.addChild(textLabel)
+        self.coconutBubbleLabel = textLabel
+    }
+    
+    private func updateCoconutBubblePosition() {
+        guard let coconut = coconut, let coconutBubble = coconutBubble else { return }
+        coconutBubble.position = CGPoint(x: coconut.position.x + coconut.size.width + 40, y: coconut.position.y)
+        
+        // Update the text inside the coconut bubble
+        coconutBubbleLabel?.text = String(format: "%.2f", distance)
     }
     
     // MARK: - Game State Methods
@@ -224,4 +255,3 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
-
