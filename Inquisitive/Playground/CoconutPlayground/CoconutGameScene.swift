@@ -4,7 +4,7 @@ import GameplayKit
 class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     // Properties
-    private var height: Int = 20
+    private var height: Int = 12
     private var time: TimeInterval = 0
     private var lastUpdateTime: TimeInterval = 0
     private var velocity: Float = 0
@@ -34,9 +34,10 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         
         // Move the coconut to the bottom of the screen
         guard let coconut = coconut else { return }
-        let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -400), duration: 1.0)
+        let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -400), duration: countTime(height: Double(height)))
         coconut.run(moveAction) {
             self.animateCoconut()
+            self.isPaused = true
         }
     }
     
@@ -47,7 +48,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         moveAndResetBackgrounds(nodes: backgrounds, speed: CGFloat(2.0 * velocity) * CGFloat(deltaTime))
         moveAndResetNodes(nodes: coconutTrees, speed: CGFloat(2.0 * velocity) * CGFloat(deltaTime))
         updateCoconutAnimationSpeedIfNeeded()
-        velocity += Float(deltaTime * 40)
+        velocity += Float(deltaTime * 9.8)
     }
     
     // MARK: - Setup Methods
@@ -102,18 +103,15 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                 if let backgroundBeach = self.childNode(withName: "BackgroundBeach") as? SKSpriteNode {
                     
                     coconutTrees.append(newCoconutTree)
-                                    
+                    
                     for i in 8...height {
-                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 637, y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
+                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 299.525, y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
                         coconutTrees.append(newStretchTree)
                     }
-                    
                     let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(height + 1))), zPosition: 0)
-                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 16, height: newBackgroundBeach.size.height))
+                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 100 - 100, height: newBackgroundBeach.size.height))
                     newBackgroundBeach.physicsBody?.isDynamic = false
                     coconutTrees.append(newBackgroundBeach)
-                    
-                    
                     let collisionLine = SKSpriteNode(color: .red, size: CGSize(width: newBackgroundBeach.size.width, height: 1))
                     let newCollisionLine = createCopy(of: collisionLine, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(Float(height) + 4.7))), zPosition: 10)
                     newCollisionLine.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newCollisionLine.size.width, height: newCollisionLine.size.height * 150))
@@ -128,7 +126,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-
+    
     
     private func createCopy(of node: SKSpriteNode, at position: CGPoint, zPosition: CGFloat) -> SKSpriteNode {
         let newNode = node.copy() as! SKSpriteNode
@@ -160,7 +158,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         lastUpdateTime = currentTime
         return deltaTime
     }
-        
+    
     private func updateGameState(deltaTime: TimeInterval) {
         time += deltaTime
         distance += Float(deltaTime) * velocity
@@ -199,6 +197,9 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
             adjustCoconutAnimationSpeed()
         }
     }
+    private func countTime(height: Double) -> Double{
+        return sqrt((265 + 42*( height - 8))/4.9)
+    }
     
     private func adjustCoconutAnimationSpeed() {
         guard let coconut = coconut, coconut.action(forKey: "coconutRotation") != nil else {
@@ -206,7 +207,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
         coconut.removeAction(forKey: "coconutRotation")
         
-        let newDuration = 5.0 / Double(velocity) // Adjust the duration based on velocity
+        let newDuration = 5000.0 / Double(velocity) // Adjust the duration based on velocity
         let rotateAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: newDuration)
         let repeatAction = SKAction.repeatForever(rotateAction)
         coconut.run(repeatAction, withKey: "coconutRotation")

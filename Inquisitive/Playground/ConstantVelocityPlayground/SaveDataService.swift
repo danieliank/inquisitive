@@ -17,6 +17,9 @@ class SaveDataService {
     }
 }
 
+//SaveDataService.writeData(key: "ConstantVelocity_Material", value: true)
+//SaveDataService.loadData(key: "ConstantVelocity_Material") -> return bool
+
 /*
 Note on progress saving -> key is string, value is boolean
  
