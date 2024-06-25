@@ -1,5 +1,5 @@
 //
-//  SkinTone.swift
+//  ProfileBackground.swift
 //  Inquisitive
 //
 //  Created by Vincent Saranang on 20/06/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-class SkinTone: ObservableObject, Identifiable {
+class ProfileBackground: ObservableObject, Identifiable {
     @Published var id = UUID()
     @Published var name: String
     @Published var color: String?

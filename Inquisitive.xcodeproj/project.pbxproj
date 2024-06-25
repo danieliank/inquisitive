@@ -30,7 +30,7 @@
 		BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDF2C23CD350066D6BE /* ColorExt.swift */; };
 		BFB25BE32C2442CF0066D6BE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BFB25BE22C2442CF0066D6BE /* Lottie */; };
 		BFB25BE52C24439C0066D6BE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BE42C24439C0066D6BE /* ProfileView.swift */; };
-		BFB25BE72C2454360066D6BE /* SkinTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BE62C2454360066D6BE /* SkinTone.swift */; };
+		BFB25BE72C2454360066D6BE /* ProfileBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BE62C2454360066D6BE /* ProfileBackground.swift */; };
 		BFB25BE92C2454410066D6BE /* FaceShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BE82C2454410066D6BE /* FaceShape.swift */; };
 		BFB25BEB2C24544C0066D6BE /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BEA2C24544C0066D6BE /* Expression.swift */; };
 		BFB25BED2C2454560066D6BE /* Hairstyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BEC2C2454560066D6BE /* Hairstyle.swift */; };
@@ -68,7 +68,7 @@
 		BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLBB_H.swift; sourceTree = "<group>"; };
 		BFB25BDF2C23CD350066D6BE /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		BFB25BE42C24439C0066D6BE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		BFB25BE62C2454360066D6BE /* SkinTone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTone.swift; sourceTree = "<group>"; };
+		BFB25BE62C2454360066D6BE /* ProfileBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBackground.swift; sourceTree = "<group>"; };
 		BFB25BE82C2454410066D6BE /* FaceShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceShape.swift; sourceTree = "<group>"; };
 		BFB25BEA2C24544C0066D6BE /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		BFB25BEC2C2454560066D6BE /* Hairstyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hairstyle.swift; sourceTree = "<group>"; };
@@ -116,12 +116,12 @@
 				3D82833E2C24776D0097626F /* KERETA.json */,
 				3D8283442C252B3E0097626F /* KERETABERPINDAH.json */,
 				3D8283402C247B250097626F /* MOBIL.json */,
+				3D8283462C2872C60097626F /* MapView.swift */,
 				BFFCEA842C22F06700C1F888 /* LottieView.swift */,
 				BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */,
-				6AF4A8832C292D67006D2000 /* Playground */,
 				BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */,
-				3D8283462C2872C60097626F /* MapView.swift */,
 				3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */,
+				6AF4A8832C292D67006D2000 /* Playground */,
 				BFB25BE42C24439C0066D6BE /* ProfileView.swift */,
 				BFB25BF42C2458F70066D6BE /* ModalProfile */,
 				BFB25BDF2C23CD350066D6BE /* ColorExt.swift */,
@@ -169,7 +169,7 @@
 		BFB25BF42C2458F70066D6BE /* ModalProfile */ = {
 			isa = PBXGroup;
 			children = (
-				BFB25BE62C2454360066D6BE /* SkinTone.swift */,
+				BFB25BE62C2454360066D6BE /* ProfileBackground.swift */,
 				BFB25BE82C2454410066D6BE /* FaceShape.swift */,
 				BFB25BEA2C24544C0066D6BE /* Expression.swift */,
 				BFB25BEC2C2454560066D6BE /* Hairstyle.swift */,
@@ -278,7 +278,7 @@
 				3D8283362C2407920097626F /* MaterialViewGLBB_V.swift in Sources */,
 				6A2069BE2C22A2930081FBCF /* GameScene.swift in Sources */,
 				6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */,
-				BFB25BE72C2454360066D6BE /* SkinTone.swift in Sources */,
+				BFB25BE72C2454360066D6BE /* ProfileBackground.swift in Sources */,
 				6A9954E72C29232900B7C865 /* SpriteKitView.swift in Sources */,
 				6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */,
 				6A2069C02C22A2930081FBCF /* GameViewController.swift in Sources */,

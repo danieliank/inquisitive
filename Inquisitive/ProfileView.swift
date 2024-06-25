@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ProfileView: View {
     @State private var selectedPage: Int = 0
