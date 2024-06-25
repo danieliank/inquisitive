@@ -18,7 +18,7 @@ struct MaterialViewGLBB_H: View {
     
     var body: some View {
         ZStack {
-            // TODO: for every view in the zstack below, have a separate functions that return the view. give each function a contextual name that help you identify the view and the data that it holds
+            // TODO: Increase readability: for all the view inside the vstack that involved a various of stacks, consider to create a function that represent each (function of UI) view. Create an identifiable function name and let the function recieve parameters (a data or vm that holds the information the view needs to decide its behavior). Let the padding and all view positioning value to be a configurable variable consistently maintained as a single source.
             //===Animasi & images view===
             if currentCase == 0 {
                 Image("MateriGLBB_H/jalanLampuMateri")

@@ -60,6 +60,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupLabels() {
+        // TODO: Consider to let the padding, zposition, and frequently used view positioning value to be a configurable variable consistently maintained as a single source.
         timeLabel = createLabel(text: "Time: 0.00", position: CGPoint(x: self.frame.midX - 100, y: self.frame.midY + 200))
         velocityLabel = createLabel(text: "Velocity: 0.00", position: CGPoint(x: self.frame.midX - 100, y: self.frame.midY + 160))
         distanceLabel = createLabel(text: "Distance: 0.00", position: CGPoint(x: self.frame.midX - 100, y: self.frame.midY + 120))
@@ -82,6 +83,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupBackgroundNodes() {
+        // TODO: Consider to let the padding, zposition, and frequently used view positioning value to be a configurable variable consistently maintained as a single source.
         if let background = self.childNode(withName: "BackgroundSky") as? SKSpriteNode {
             let newBackground = createCopy(of: background, at: CGPoint(x: background.position.x, y: background.position.y), zPosition: -30)
             backgrounds.append(newBackground)
@@ -114,7 +116,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                     //Create, configure and add new background beach
                     let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(height + 1))), zPosition: 0)
                     newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 16, height: newBackgroundBeach.size.height)) 
-                    //TODO: as this SKPhysicsBody is often called, you can have a more clean readable code if the size-scaling configuration easily set as configurable parameter
+                    //TODO: as this SKPhysicsBody is often called, pull this out to be a function will increase the readability of the code. Although it is optional in this case, but consider to let the padding, zposition, and frequently used view positioning value to be a configurable variable consistently maintained as a single source.
                     newBackgroundBeach.physicsBody?.isDynamic = false
                     coconutTrees.append(newBackgroundBeach)
                     
@@ -122,7 +124,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                     let collisionLine = SKSpriteNode(color: .red, size: CGSize(width: newBackgroundBeach.size.width, height: 1))
                     let newCollisionLine = createCopy(of: collisionLine, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(Float(height) + 4.7))), zPosition: 10)
                     newCollisionLine.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newCollisionLine.size.width, height: newCollisionLine.size.height * 150)) 
-                    //TODO: as this SKPhysicsBody is often called, you can have a more clean readable code if the size-scaling configuration easily set as configurable parameter
+                    //TODO: as this SKPhysicsBody is often called, pull this out to be a function will increase the readability of the code. Although it is optional in this case, but consider to let the padding, zposition, and frequently used view positioning value to be a configurable variable consistently maintained as a single source.
                     newCollisionLine.physicsBody?.isDynamic = false
                     newCollisionLine.physicsBody?.categoryBitMask = 2
                     newCollisionLine.physicsBody?.contactTestBitMask = 1
