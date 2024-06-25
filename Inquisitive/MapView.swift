@@ -184,8 +184,8 @@ struct MapView: View {
 //                }
 //                .padding(.top, UIScreen.main.bounds.height*5/10)
 //                .padding(.leading, UIScreen.main.bounds.width*23/40)
-//                
-//                
+//
+//
 //                    //GLBB Parabolic playground button
 //                NavigationLink(destination: MaterialViewGLB(dat: dat)){
 //                    VStack {
@@ -200,7 +200,7 @@ struct MapView: View {
 //                    }
 //                }
 //                .offset(x:UIScreen.main.bounds.width/7.5, y:UIScreen.main.bounds.height*8/20)
-//                
+//
 //                    //GLBB Parabolic exercise button
 //                NavigationLink(destination: MaterialViewGLB(dat: dat)){
 //                    VStack {
@@ -219,9 +219,9 @@ struct MapView: View {
                 // Just ship
                 NavigationLink(destination: MaterialViewGLB(dat: dat)){
                     Image("Map/ship")
-                        .padding(.top, UIScreen.main.bounds.height*4.3/10)
-                        .padding(.leading, UIScreen.main.bounds.width*23/40)
                 }
+                .padding(.top, UIScreen.main.bounds.height*4.3/10)
+                .padding(.leading, UIScreen.main.bounds.width*23/40)
                 
                 // Monster
                 if dat.Kinematics_Challenge{

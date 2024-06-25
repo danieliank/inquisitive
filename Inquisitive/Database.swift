@@ -20,11 +20,11 @@ import Combine
 //"ConstantAccelerationVertical_Material"
 //"ConstantAccelerationVertical_Playground"
 //"ConstantAccelerationVertical_Excercise"
-// 
+//
 //"Parabolic_Material"
 //"Parabolic_Playground"
 //"Parabolic_Excercise"
-// 
+//
 //"Kinematics_Challenge"
                                                     
 class Database: ObservableObject {
