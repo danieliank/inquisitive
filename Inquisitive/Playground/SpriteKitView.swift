@@ -31,6 +31,6 @@ struct SpriteKitView: UIViewRepresentable {
 
 
 #Preview {
-    SpriteKitView(sceneName: "CoconutGameScene", sceneClass: CoconutGameScene(size: CGSize(width: 1024, height: 768)))
-                .frame(width: 1024, height: 768)
+    SpriteKitView(sceneName: "CoconutGameScene", sceneClass: CoconutGameScene(size: CGSize(width: 1400, height: 1100)))
+                .frame(width: 1400, height: 1100)
 }

@@ -105,7 +105,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                     coconutTrees.append(newCoconutTree)
                     
                     for i in 8...height {
-                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 637, y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
+                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 637 - CGFloat(i * 10), y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
                         coconutTrees.append(newStretchTree)
                     }
                     let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(height + 1))), zPosition: 0)
