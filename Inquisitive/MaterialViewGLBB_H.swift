@@ -10,6 +10,7 @@ import Lottie
 
 struct MaterialViewGLBB_H: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var dat: Database
     @State private var currentCase: Int = 0
     @State private var isClosePressed = false
     @State private var isBackPressed = false
@@ -155,8 +156,11 @@ struct MaterialViewGLBB_H: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 isFinishPressed = false
                             }
+                            // Modify map bool data
+                            dat.ConstantAccelerationHorizontal_Exercise = true
+                            dat.ConstantAccelerationHorizontal_Playground = true
+                            
                             self.presentationMode.wrappedValue.dismiss()
-                            // Navigate to map
                             
                         }) {
                             Image(isFinishPressed ? "Buttons/finishPressed" : "Buttons/finish")
@@ -546,5 +550,5 @@ struct MaterialViewGLBB_H: View {
 }
 
 #Preview {
-    MaterialViewGLBB_H()
+    MaterialViewGLBB_H(dat:Database())
 }

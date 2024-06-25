@@ -39,6 +39,7 @@
 		BFB25BF32C2454840066D6BE /* ProfileDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BF22C2454840066D6BE /* ProfileDetailItem.swift */; };
 		BFB25BF62C24987F0066D6BE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BF52C24987F0066D6BE /* Profile.swift */; };
 		BFB25BF82C249AF80066D6BE /* NameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BF72C249AF80066D6BE /* NameEditView.swift */; };
+		BFEC06152C2A67DD00A9532E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC06142C2A67DD00A9532E /* Database.swift */; };
 		BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEA842C22F06700C1F888 /* LottieView.swift */; };
 		BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		BFB25BF22C2454840066D6BE /* ProfileDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailItem.swift; sourceTree = "<group>"; };
 		BFB25BF52C24987F0066D6BE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BFB25BF72C249AF80066D6BE /* NameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditView.swift; sourceTree = "<group>"; };
+		BFEC06142C2A67DD00A9532E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		BFFCEA842C22F06700C1F888 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */,
 				6AF4A8832C292D67006D2000 /* Playground */,
 				BFB25BE42C24439C0066D6BE /* ProfileView.swift */,
+				BFEC06142C2A67DD00A9532E /* Database.swift */,
 				BFB25BF42C2458F70066D6BE /* ModalProfile */,
 				BFB25BDF2C23CD350066D6BE /* ColorExt.swift */,
 				6A2069B72C22A2930081FBCF /* AppDelegate.swift */,
@@ -286,6 +289,7 @@
 				BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */,
 				BFB25BDE2C23CCF60066D6BE /* MaterialViewGLBB_H.swift in Sources */,
 				3D8283472C2872C60097626F /* MapView.swift in Sources */,
+				BFEC06152C2A67DD00A9532E /* Database.swift in Sources */,
 				BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */,
 				BFB25BED2C2454560066D6BE /* Hairstyle.swift in Sources */,
 				BFB25BEB2C24544C0066D6BE /* Expression.swift in Sources */,

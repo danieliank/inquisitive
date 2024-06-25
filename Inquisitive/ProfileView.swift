@@ -114,8 +114,9 @@ struct BadgeView: View {
     var body: some View {
         VStack {
             Text("Badges")
-                .font(.largeTitle)
+                .font(.system(size: 48).bold())
                 .foregroundColor(Color(hex:"374362"))
+                .padding(.top, 32)
             Spacer()
             // Add badge view content
         }
@@ -127,8 +128,9 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Text("Settings")
-                .font(.largeTitle)
+                .font(.system(size: 48).bold())
                 .foregroundColor(Color(hex:"374362"))
+                .padding(.top, 32)
             Spacer()
             // Add settings view content
         }

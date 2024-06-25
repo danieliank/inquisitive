@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MapView: View {
-    @State private var isProfilePressed = false
-    //buat ilangin animasi di NavigationLink
+    @StateObject private var dat = Database()
     init(){
         UINavigationBar.setAnimationsEnabled(false)
     }
@@ -23,7 +22,7 @@ struct MapView: View {
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width)
                 
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLB(dat: dat)){
                     VStack {
                         Image("Map/train")
                             .resizable()
@@ -41,11 +40,13 @@ struct MapView: View {
                 .padding(.trailing, UIScreen.main.bounds.width*12.2/10)
                 
                 //GLB playground button
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLB(dat: dat)){
                     VStack {
                         ZStack {
-                            Image("Map/playgroundButton")
-                            Image("Map/lock")
+                            Image(dat.playgroundGLBButtonClicked ? "Map/playgroundButtonDone" : "Map/playgroundButton")
+                            if !dat.ConstantVelocity_Playground {
+                                Image("Map/lock")
+                            }
                         }
                         Text("Playground")
                             .font(.system(size: 16).bold())
@@ -56,11 +57,13 @@ struct MapView: View {
                 .offset(x:-UIScreen.main.bounds.width/3.2, y:UIScreen.main.bounds.height*2.3/10)
                 
                 //GLB exercise button
-                NavigationLink(destination: MaterialViewGLB()) {
+                NavigationLink(destination: MaterialViewGLB(dat: dat)){
                     VStack {
                         ZStack {
-                            Image("Map/exerciseButton")
-                            Image("Map/lock")
+                            Image(dat.exerciseGLBButtonClicked ? "Map/exerciseButtonDone" : "Map/exerciseButton")
+                            if !dat.ConstantVelocity_Playground {
+                                Image("Map/lock")
+                            }
                         }
                         Text("Exercise")
                             .font(.system(size: 16).bold())
@@ -71,7 +74,7 @@ struct MapView: View {
                 .offset(x:-UIScreen.main.bounds.width/2.85, y:UIScreen.main.bounds.height/8)
                 
                 // Constant Acceleration 1
-                NavigationLink(destination: MaterialViewGLBB_H()) {
+                NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
                     VStack {
                         Image("Map/car")
                         HStack{
@@ -85,11 +88,13 @@ struct MapView: View {
                 .padding(.trailing, UIScreen.main.bounds.width/4)
                 
                     //GLBB Horizontal playground button
-                NavigationLink(destination: MaterialViewGLBB_H()) {
+                NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
                     VStack {
                         ZStack {
-                            Image("Map/playgroundButton")
-                            Image("Map/lock")
+                            Image(dat.playgroundGLBB_HButtonClicked ? "Map/playgroundButtonDone" : "Map/playgroundButton")
+                            if !dat.ConstantAccelerationHorizontal_Playground{
+                                Image("Map/lock")
+                            }
                         }
                         Text("Playground")
                             .font(.system(size: 16).bold())
@@ -100,11 +105,13 @@ struct MapView: View {
                 .offset(x:0, y:-UIScreen.main.bounds.height*1.2/10)
                 
                     //GLBB Horizontal exercise button
-                NavigationLink(destination: MaterialViewGLBB_H()) {
+                NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
                     VStack {
                         ZStack {
-                            Image("Map/exerciseButton")
-                            Image("Map/lock")
+                            Image(dat.exerciseGLBB_HButtonClicked ? "Map/exerciseButtonDone" : "Map/exerciseButton")
+                            if !dat.ConstantAccelerationHorizontal_Exercise{
+                                Image("Map/lock")
+                            }
                         }
                         Text("Exercise")
                             .font(.system(size: 16).bold())
@@ -115,7 +122,7 @@ struct MapView: View {
                 .offset(x:UIScreen.main.bounds.width/12, y:-UIScreen.main.bounds.height*1.6/10)
                 
                 // Constant Acceleration 2
-                NavigationLink(destination: MaterialViewGLBB_V()) {
+                NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
                     VStack {
                         Image("Map/coconut")
                         HStack{
@@ -129,11 +136,13 @@ struct MapView: View {
                 .padding(.leading, UIScreen.main.bounds.width/2)
                 
                     //GLBB Vertical playground button
-                NavigationLink(destination: MaterialViewGLBB_V()) {
+                NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
                     VStack {
                         ZStack {
-                            Image("Map/playgroundButton")
-                            Image("Map/lock")
+                            Image(dat.playgroundGLBB_VButtonClicked ? "Map/playgroundButtonDone" : "Map/playgroundButton")
+                            if !dat.ConstantAccelerationVertical_Playground{
+                                Image("Map/lock")
+                            }
                         }
                         Text("Playground")
                             .font(.system(size: 16).bold())
@@ -144,11 +153,13 @@ struct MapView: View {
                 .offset(x:UIScreen.main.bounds.width*9/25, y:-UIScreen.main.bounds.height/18)
                 
                     //GLBB Vertical exercise button
-                NavigationLink(destination: MaterialViewGLBB_V()) {
+                NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
                     VStack {
                         ZStack {
-                            Image("Map/exerciseButton")
-                            Image("Map/lock")
+                            Image(dat.exerciseGLBB_VButtonClicked ? "Map/exerciseButtonDone" : "Map/exerciseButton")
+                            if !dat.ConstantAccelerationVertical_Exercise{
+                                Image("Map/lock")
+                            }
                         }
                         Text("Exercise")
                             .font(.system(size: 16).bold())
@@ -158,64 +169,73 @@ struct MapView: View {
                 }
                 .offset(x:UIScreen.main.bounds.width*11/25, y:-UIScreen.main.bounds.height/8)
                 
-                // Parabolics
-                NavigationLink(destination: MaterialViewGLB()) {
-                    VStack {
-                        Image("Map/ship")
-                        HStack{
-                            Text("Parabolics")
-                                .font(.system(size: 24).bold())
-                                .foregroundColor(Color(hex: "F4FAFB"))
-                                .padding(16)
-                                .padding(.leading, 144)
-                        }
-                    }
-                }
-                .padding(.top, UIScreen.main.bounds.height*5/10)
-                .padding(.leading, UIScreen.main.bounds.width*23/40)
+//                // Parabolics
+//                NavigationLink(destination: MaterialViewGLB(dat: dat)){
+//                    VStack {
+//                        Image("Map/ship")
+//                        HStack{
+//                            Text("Parabolics")
+//                                .font(.system(size: 24).bold())
+//                                .foregroundColor(Color(hex: "F4FAFB"))
+//                                .padding(16)
+//                                .padding(.leading, 144)
+//                        }
+//                    }
+//                }
+//                .padding(.top, UIScreen.main.bounds.height*5/10)
+//                .padding(.leading, UIScreen.main.bounds.width*23/40)
+//                
+//                
+//                    //GLBB Parabolic playground button
+//                NavigationLink(destination: MaterialViewGLB(dat: dat)){
+//                    VStack {
+//                        ZStack {
+//                            Image("Map/playgroundButton")
+//                            Image("Map/lock")
+//                        }
+//                        Text("Playground")
+//                            .font(.system(size: 16).bold())
+//                            .foregroundColor(Color(hex: "F4FAFB"))
+//                            .padding(.top, -12)
+//                    }
+//                }
+//                .offset(x:UIScreen.main.bounds.width/7.5, y:UIScreen.main.bounds.height*8/20)
+//                
+//                    //GLBB Parabolic exercise button
+//                NavigationLink(destination: MaterialViewGLB(dat: dat)){
+//                    VStack {
+//                        ZStack {
+//                            Image("Map/exerciseButton")
+//                            Image("Map/lock")
+//                        }
+//                        Text("Exercise")
+//                            .font(.system(size: 16).bold())
+//                            .foregroundColor(Color(hex: "F4FAFB"))
+//                            .padding(.top, -12)
+//                    }
+//                }
+//                .offset(x:UIScreen.main.bounds.width/22, y:UIScreen.main.bounds.height*3.1/10)
                 
-                
-                    //GLBB Parabolic playground button
-                NavigationLink(destination: MaterialViewGLB()) {
-                    VStack {
-                        ZStack {
-                            Image("Map/playgroundButton")
-                            Image("Map/lock")
-                        }
-                        Text("Playground")
-                            .font(.system(size: 16).bold())
-                            .foregroundColor(Color(hex: "F4FAFB"))
-                            .padding(.top, -12)
-                    }
+                // Just ship
+                NavigationLink(destination: MaterialViewGLB(dat: dat)){
+                    Image("Map/ship")
+                        .padding(.top, UIScreen.main.bounds.height*4.3/10)
+                        .padding(.leading, UIScreen.main.bounds.width*23/40)
                 }
-                .offset(x:UIScreen.main.bounds.width/7.5, y:UIScreen.main.bounds.height*8/20)
-                
-                    //GLBB Parabolic exercise button
-                NavigationLink(destination: MaterialViewGLB()) {
-                    VStack {
-                        ZStack {
-                            Image("Map/exerciseButton")
-                            Image("Map/lock")
-                        }
-                        Text("Exercise")
-                            .font(.system(size: 16).bold())
-                            .foregroundColor(Color(hex: "F4FAFB"))
-                            .padding(.top, -12)
-                    }
-                }
-                .offset(x:UIScreen.main.bounds.width/22, y:UIScreen.main.bounds.height*3.1/10)
                 
                 // Monster
-                NavigationLink(destination: MaterialViewGLB()) {
-                    ZStack {
-                        Image("Map/seaMonster")
-                        Image("Map/monsterWarning")
-                            .padding(.trailing, 240)
-                            .padding(.top, 40)
+                if dat.Kinematics_Challenge{
+                    NavigationLink(destination: MaterialViewGLB(dat: dat)){
+                        ZStack {
+                            Image("Map/seaMonster")
+                            Image("Map/monsterWarning")
+                                .padding(.trailing, 240)
+                                .padding(.top, 40)
+                        }
                     }
+                    .padding(.top, UIScreen.main.bounds.height*2/10)
+                    .padding(.trailing, UIScreen.main.bounds.width/18)
                 }
-                .padding(.top, UIScreen.main.bounds.height*2/10)
-                .padding(.trailing, UIScreen.main.bounds.width/18)
                 
                 //Tree .bottomTrailing
                 Image("Map/coconutTree")
@@ -225,7 +245,7 @@ struct MapView: View {
                 VStack{
                     HStack{
                         Button(action:{
-                            isProfilePressed.toggle()
+                            dat.isProfilePressed.toggle()
                         }){
                             RoundedRectangle(cornerRadius: 40)
                                 .frame(width: 120, height: 120)
@@ -243,7 +263,7 @@ struct MapView: View {
                     }
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                if isProfilePressed == true{
+                if dat.isProfilePressed == true{
                     ProfileView()
                 }
             }

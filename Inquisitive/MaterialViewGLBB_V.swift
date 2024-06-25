@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MaterialViewGLBB_V: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var dat: Database
     @State private var currentCase: Int = 0
     @State private var isClosePressed = false
     @State private var isBackPressed = false
@@ -129,8 +130,10 @@ struct MaterialViewGLBB_V: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 isFinishPressed = false
                             }
+                            // Modify map bool data
+                            dat.ConstantAccelerationVertical_Exercise = true
+                            dat.ConstantAccelerationVertical_Playground = true
                             self.presentationMode.wrappedValue.dismiss()
-                            // Navigate to map
                             
                         }) {
                             Image(isFinishPressed ? "Buttons/finishPressed" : "Buttons/finish")
@@ -415,5 +418,5 @@ struct MaterialViewGLBB_V: View {
 }
 
 #Preview {
-    MaterialViewGLBB_V()
+    MaterialViewGLBB_V(dat:Database())
 }
