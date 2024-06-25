@@ -105,11 +105,11 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                     coconutTrees.append(newCoconutTree)
                     
                     for i in 8...height {
-                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 637 - CGFloat(i * 10), y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
+                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 299.525, y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
                         coconutTrees.append(newStretchTree)
                     }
                     let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(height + 1))), zPosition: 0)
-                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 16, height: newBackgroundBeach.size.height))
+                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 100 - 100, height: newBackgroundBeach.size.height))
                     newBackgroundBeach.physicsBody?.isDynamic = false
                     coconutTrees.append(newBackgroundBeach)
                     let collisionLine = SKSpriteNode(color: .red, size: CGSize(width: newBackgroundBeach.size.width, height: 1))
