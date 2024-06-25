@@ -97,6 +97,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     private func setupCoconutTreeNodes() {
         if let coconutTree = self.childNode(withName: "CoconutTree") as? SKSpriteNode {
+            //Create, configure and add new coconut tree
             let newCoconutTree = createCopy(of: coconutTree, at: CGPoint(x: coconutTree.position.x, y: coconutTree.position.y), zPosition: -20)
             
             if let stretchTree = self.childNode(withName: "TreeStretch") as? SKSpriteNode {
@@ -104,17 +105,24 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                     
                     coconutTrees.append(newCoconutTree)
                     
+                    // Create, configure and add stretched trees
                     for i in 8...height {
                         let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 637, y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
                         coconutTrees.append(newStretchTree)
                     }
+                    
+                    //Create, configure and add new background beach
                     let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(height + 1))), zPosition: 0)
-                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 16, height: newBackgroundBeach.size.height))
+                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 16, height: newBackgroundBeach.size.height)) 
+                    //TODO: as this SKPhysicsBody is often called, you can have a more clean readable code if the size-scaling configuration easily set as configurable parameter
                     newBackgroundBeach.physicsBody?.isDynamic = false
                     coconutTrees.append(newBackgroundBeach)
+                    
+                    //Create, configure & add Collision Line
                     let collisionLine = SKSpriteNode(color: .red, size: CGSize(width: newBackgroundBeach.size.width, height: 1))
                     let newCollisionLine = createCopy(of: collisionLine, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(Float(height) + 4.7))), zPosition: 10)
-                    newCollisionLine.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newCollisionLine.size.width, height: newCollisionLine.size.height * 150))
+                    newCollisionLine.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newCollisionLine.size.width, height: newCollisionLine.size.height * 150)) 
+                    //TODO: as this SKPhysicsBody is often called, you can have a more clean readable code if the size-scaling configuration easily set as configurable parameter
                     newCollisionLine.physicsBody?.isDynamic = false
                     newCollisionLine.physicsBody?.categoryBitMask = 2
                     newCollisionLine.physicsBody?.contactTestBitMask = 1

@@ -18,6 +18,7 @@ struct MaterialViewGLBB_H: View {
     
     var body: some View {
         ZStack {
+            // TODO: for every view in the zstack below, have a separate functions that return the view. give each function a contextual name that help you identify the view and the data that it holds
             //===Animasi & images view===
             if currentCase == 0 {
                 Image("MateriGLBB_H/jalanLampuMateri")
