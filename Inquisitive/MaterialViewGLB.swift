@@ -19,6 +19,7 @@ struct MaterialViewGLB: View {
     
     var body: some View {
         ZStack {
+            // TODO: Increase readability: for all the view inside the vstack that involved a various of stacks, consider to create a function that represent each (function of UI) view. Create an identifiable function name and let the function recieve parameters (a data or vm that holds the information the view needs to decide its behavior). Let the padding and all view positioning value to be a configurable variable consistently maintained as a single source.
             //===Animasi & images view===
             Image("MateriGLB/REL")
                 .frame(width: UIScreen.main.bounds.width)

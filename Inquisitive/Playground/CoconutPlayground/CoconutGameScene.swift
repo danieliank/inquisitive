@@ -4,12 +4,15 @@ import GameplayKit
 class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     // Properties
-    private var height: Int = 12
+    private var height: Int = 0
     private var time: TimeInterval = 0
     private var lastUpdateTime: TimeInterval = 0
     private var velocity: Float = 0
     private var previousVelocity: Float = 1
     private var distance: Float = 0
+    private var distanceInput: Float = 500
+    
+    private var remainingDistance: Float = 0 // New variable to store distanceInput - distance
     
     private var timeLabel: SKLabelNode!
     private var velocityLabel: SKLabelNode!
@@ -19,6 +22,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private var coconutTrees: [SKSpriteNode] = []
     
     private var coconut: SKSpriteNode?
+    private var coconutBubble: SKSpriteNode?
+    private var coconutBubbleLabel: SKLabelNode? // Reference to the label inside the bubble
     
     // Constants
     private let fontSize: CGFloat = 24
@@ -30,11 +35,12 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         setupLabels()
         setupNodes()
         setupCoconut()
+        setupCoconutBubble()
         self.isPaused = false
         
         // Move the coconut to the bottom of the screen
         guard let coconut = coconut else { return }
-        let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -400), duration: countTime(height: Double(height)))
+        let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -300), duration: countTime(height: Double(height)))
         coconut.run(moveAction) {
             self.animateCoconut()
             self.isPaused = true
@@ -49,6 +55,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         moveAndResetNodes(nodes: coconutTrees, speed: CGFloat(2.0 * velocity) * CGFloat(deltaTime))
         updateCoconutAnimationSpeedIfNeeded()
         velocity += Float(deltaTime * 9.8)
+        updateCoconutBubblePosition()
     }
     
     // MARK: - Setup Methods
@@ -57,6 +64,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         time = 0
         distance = 0
         lastUpdateTime = 0
+        remainingDistance = distanceInput
     }
     
     private func setupLabels() {
@@ -77,6 +85,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupNodes() {
+        height = Int(((distanceInput - 400) / 100 + 8))
         setupBackgroundNodes()
         setupCoconutTreeNodes()
     }
@@ -105,28 +114,19 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
                     coconutTrees.append(newCoconutTree)
                     
                     for i in 8...height {
-                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: 299.525, y: (coconutTree.position.y * CGFloat(i))), zPosition: -20)
+                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: stretchTree.position.x, y: stretchTree.position.y - stretchTree.size.height * CGFloat(i-8)), zPosition: -20)
                         coconutTrees.append(newStretchTree)
                     }
-                    let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(height + 1))), zPosition: 0)
+                    let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: coconutTree.position.y - stretchTree.size.height * CGFloat(height-7)+200), zPosition: 0)
                     newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 100 - 100, height: newBackgroundBeach.size.height))
                     newBackgroundBeach.physicsBody?.isDynamic = false
                     coconutTrees.append(newBackgroundBeach)
-                    let collisionLine = SKSpriteNode(color: .red, size: CGSize(width: newBackgroundBeach.size.width, height: 1))
-                    let newCollisionLine = createCopy(of: collisionLine, at: CGPoint(x: 0, y: (coconutTree.position.y * CGFloat(Float(height) + 4.7))), zPosition: 10)
-                    newCollisionLine.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newCollisionLine.size.width, height: newCollisionLine.size.height * 150))
-                    newCollisionLine.physicsBody?.isDynamic = false
-                    newCollisionLine.physicsBody?.categoryBitMask = 2
-                    newCollisionLine.physicsBody?.contactTestBitMask = 1
-                    newCollisionLine.physicsBody?.collisionBitMask = 1
-                    coconutTrees.append(newCollisionLine)
                     
                     coconutTree.removeFromParent()
                 }
             }
         }
     }
-    
     
     private func createCopy(of node: SKSpriteNode, at position: CGPoint, zPosition: CGFloat) -> SKSpriteNode {
         let newNode = node.copy() as! SKSpriteNode
@@ -139,11 +139,37 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private func setupCoconut() {
         coconut = self.childNode(withName: "Coconut") as? SKSpriteNode
         coconut?.zPosition = 10
-        coconut?.physicsBody = SKPhysicsBody(circleOfRadius: coconut!.size.width)
-        coconut?.physicsBody?.affectedByGravity = false
-        coconut?.physicsBody?.categoryBitMask = 1
-        coconut?.physicsBody?.contactTestBitMask = 2
-        coconut?.physicsBody?.collisionBitMask = 2
+    }
+    
+    private func setupCoconutBubble() {
+        guard let coconut = coconut else { return }
+        
+        // Create the coconut bubble sprite node
+        let coconutBubble = SKSpriteNode(imageNamed: "CoconutBubble")
+        coconutBubble.position = CGPoint(x: coconut.position.x + coconut.size.width + 40, y: coconut.position.y)
+        coconutBubble.zPosition = 50
+        addChild(coconutBubble)
+        self.coconutBubble = coconutBubble
+        
+        // Create and configure the label node
+        let textLabel = SKLabelNode(fontNamed: "Arial")
+        textLabel.fontSize = 24
+        textLabel.fontColor = .black
+        textLabel.text = String(format: "%.2f", remainingDistance)
+        textLabel.position = CGPoint(x: 0, y: 0)
+        coconutBubble.addChild(textLabel)
+        self.coconutBubbleLabel = textLabel
+    }
+    
+    private func updateCoconutBubblePosition() {
+        guard let coconut = coconut, let coconutBubble = coconutBubble else { return }
+        coconutBubble.position = CGPoint(x: coconut.position.x + coconut.size.width + 40, y: coconut.position.y)
+        
+        if remainingDistance <= 1 {
+            coconutBubbleLabel?.text = "0"
+        } else {
+            coconutBubbleLabel?.text = String(format: "%.2f", remainingDistance)
+        }
     }
     
     // MARK: - Game State Methods
@@ -162,6 +188,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private func updateGameState(deltaTime: TimeInterval) {
         time += deltaTime
         distance += Float(deltaTime) * velocity
+        remainingDistance = distanceInput - distance // Update remainingDistance
     }
     
     private func updateLabels() {
@@ -197,8 +224,9 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
             adjustCoconutAnimationSpeed()
         }
     }
+    
     private func countTime(height: Double) -> Double{
-        return sqrt((265 + 42*( height - 8))/4.9)
+        return sqrt((400+(height-8)*100)/4.9)
     }
     
     private func adjustCoconutAnimationSpeed() {
