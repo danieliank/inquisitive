@@ -48,7 +48,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Add gesture recognizer to detect tap on startButton
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startButtonTapped))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -92,8 +92,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         height = Int(((distanceInput - 400) / 100 + 8))
         setupBackgroundNodes()
         setupCoconutTreeNodes()
-        setupCoconutStretchTree(Distance: distanceInput)
-        setupBeachBackground(Distance: distanceInput)
+        setupCoconutStretchTree(distance: distanceInput)
+        setupBeachBackground(distance: distanceInput)
     }
     
     private func setupBackgroundNodes() {
@@ -118,7 +118,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func setupCoconutStretchTree(Distance: Float){
+    private func setupCoconutStretchTree(distance: Float){
         height = Int(((distanceInput - 400) / 100 + 8))
         if let stretchTree = self.childNode(withName: "TreeStretch") as? SKSpriteNode {
             for i in 8...height {
@@ -128,7 +128,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func setupBeachBackground(Distance: Float){
+    private func setupBeachBackground(distance: Float){
         height = Int(((distanceInput - 400) / 100 + 8))
         if let backgroundBeach = self.childNode(withName: "BackgroundBeach") as? SKSpriteNode {
             let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y:-83 - 200 * CGFloat(height-7)+200), zPosition: 0)
@@ -230,7 +230,16 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Button Toggle
     
-    @objc private func startButtonTapped() {
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: self.view)
+        let skLocation = convertPoint(fromView: location)
+        
+        if let startButton = startButton, startButton.contains(skLocation) {
+            toggleButtons()
+        }
+    }
+    
+    private func toggleButtons() {
         guard let startButton = startButton, let restartButton = restartButton else { return }
         
         // Swap zPosition values
@@ -241,4 +250,3 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         self.isPaused = !self.isPaused
     }
 }
-
