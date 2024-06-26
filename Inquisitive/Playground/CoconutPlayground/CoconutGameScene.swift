@@ -8,11 +8,9 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private var time: TimeInterval = 0
     private var lastUpdateTime: TimeInterval = 0
     private var velocity: Float = 0
-    private var previousVelocity: Float = 1
     private var distance: Float = 0
     private var distanceInput: Float = 1000
-    
-    private var remainingDistance: Float = 0 // New variable to store distanceInput - distance
+    private var remainingDistance: Float = 0
     
     private var timeLabel: SKLabelNode!
     private var velocityLabel: SKLabelNode!
@@ -23,7 +21,10 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     private var coconut: SKSpriteNode?
     private var coconutBubble: SKSpriteNode?
-    private var coconutBubbleLabel: SKLabelNode? // Reference to the label inside the bubble
+    private var coconutBubbleLabel: SKLabelNode?
+    
+    private var startButton: SKSpriteNode?
+    private var restartButton: SKSpriteNode?
     
     // Constants
     private let fontSize: CGFloat = 24
@@ -36,15 +37,19 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         setupNodes()
         setupCoconut()
         setupCoconutBubble()
-        self.isPaused = false
+        setupButton()
+        self.isPaused = true
         
         // Move the coconut to the bottom of the screen
         guard let coconut = coconut else { return }
         let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -300), duration: countTime(height: Double(height)))
         coconut.run(moveAction) {
-            self.animateCoconut()
             self.isPaused = true
         }
+        
+        // Add gesture recognizer to detect tap on startButton
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startButtonTapped))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -53,7 +58,6 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         updateLabels()
         moveAndResetBackgrounds(nodes: backgrounds, speed: CGFloat(2.0 * velocity) * CGFloat(deltaTime))
         moveAndResetNodes(nodes: coconutTrees, speed: CGFloat(2.0 * velocity) * CGFloat(deltaTime))
-        updateCoconutAnimationSpeedIfNeeded()
         velocity += Float(deltaTime * 9.8)
         updateCoconutBubblePosition()
     }
@@ -118,14 +122,10 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         height = Int(((distanceInput - 400) / 100 + 8))
         if let stretchTree = self.childNode(withName: "TreeStretch") as? SKSpriteNode {
             for i in 8...height {
-                print(stretchTree.size.height)
                 let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: stretchTree.position.x, y: stretchTree.position.y - stretchTree.size.height * CGFloat(i-8)), zPosition: -20)
                 coconutTrees.append(newStretchTree)
             }
-            
-            
         }
-        
     }
     
     private func setupBeachBackground(Distance: Float){
@@ -133,9 +133,14 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         if let backgroundBeach = self.childNode(withName: "BackgroundBeach") as? SKSpriteNode {
             let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y:-83 - 200 * CGFloat(height-7)+200), zPosition: 0)
             coconutTrees.append(newBackgroundBeach)
-            
-            
         }
+    }
+    
+    private func setupButton() {
+        startButton = self.childNode(withName: "StartButton") as? SKSpriteNode
+        startButton?.zPosition = 30
+        restartButton = self.childNode(withName: "RestartButton") as? SKSpriteNode
+        restartButton?.zPosition = -30
     }
     
     private func createCopy(of node: SKSpriteNode, at position: CGPoint, zPosition: CGFloat) -> SKSpriteNode {
@@ -219,45 +224,21 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    // MARK: - Animation Methods
-    
-    private func animateCoconut() {
-        guard let coconut = coconut else { return }
-        let rotateAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: 5.0) // Slower rotation
-        let repeatAction = SKAction.repeatForever(rotateAction)
-        coconut.run(repeatAction, withKey: "coconutRotation")
-    }
-    
-    private func updateCoconutAnimationSpeedIfNeeded() {
-        if velocity != previousVelocity {
-            previousVelocity = velocity
-            adjustCoconutAnimationSpeed()
-        }
-    }
-    
     private func countTime(height: Double) -> Double{
         return sqrt((400+(height-8)*100)/4.9)
     }
     
-    private func adjustCoconutAnimationSpeed() {
-        guard let coconut = coconut, coconut.action(forKey: "coconutRotation") != nil else {
-            return
-        }
-        coconut.removeAction(forKey: "coconutRotation")
+    // MARK: - Button Toggle
+    
+    @objc private func startButtonTapped() {
+        guard let startButton = startButton, let restartButton = restartButton else { return }
         
-        let newDuration = 5000.0 / Double(velocity) // Adjust the duration based on velocity
-        let rotateAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: newDuration)
-        let repeatAction = SKAction.repeatForever(rotateAction)
-        coconut.run(repeatAction, withKey: "coconutRotation")
-    }
-    
-    // MARK: - Contact Delegate Method
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        if (contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 2) ||
-            (contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 1) {
-            self.isPaused = true
-        }
+        // Swap zPosition values
+        let startButtonZPosition = startButton.zPosition
+        startButton.zPosition = restartButton.zPosition
+        restartButton.zPosition = startButtonZPosition
+        
+        self.isPaused = !self.isPaused
     }
 }
 
