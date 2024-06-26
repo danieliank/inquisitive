@@ -92,6 +92,36 @@ class Database: ObservableObject {
     @Published var exerciseGLBB_HButtonClicked: Bool = false
     @Published var exerciseGLBB_VButtonClicked: Bool = false
     
+    //Badge ownership
+    @Published var isHaveBadge1: Bool = false
+    @Published var isHaveBadge2: Bool = false
+    @Published var isHaveBadge3: Bool = false
+    @Published var isHaveBadge4: Bool = false
+    @Published var isHaveBadge5: Bool = false
+    @Published var isHaveBadge6: Bool = false
+    @Published var isHaveBadge7: Bool = false
+    @Published var isHaveBadge8: Bool = false
+    @Published var isHaveBadge9: Bool = false
+    @Published var isHaveBadge10: Bool = false
+    @Published var isHaveBadge11: Bool = false
+    @Published var isHaveBadge12: Bool = false
+    
+    //Profile
+    @Published var userName: String = "Your Name"
+    @Published var selectedBackgroundColor: Color = Color(hex: "3E8A74")
+    @Published var selectedFace: String = "Map/Face1"
+    @Published var selectedHairStyle: String = "Map/none"
+    
+    @Published var isFace3Unlock: Bool = false
+    @Published var isFace4Unlock: Bool = false
+    @Published var isFace5Unlock: Bool = false
+    @Published var isFace6Unlock: Bool = false
+    
+    @Published var isHairStyle3Unlock: Bool = false
+    @Published var isHairStyle4Unlock: Bool = false
+    @Published var isHairStyle5Unlock: Bool = false
+    
+    
     init() {
         // Set default values if they don't exist
         UserDefaults.standard.register(defaults: [
@@ -117,5 +147,6 @@ class Database: ObservableObject {
         self.ConstantAccelerationVertical_Playground = UserDefaults.standard.bool(forKey: "ConstantAccelerationVertical_Playground")
         self.ConstantAccelerationVertical_Exercise = UserDefaults.standard.bool(forKey: "ConstantAccelerationVertical_Exercise")
         self.Kinematics_Challenge = UserDefaults.standard.bool(forKey: "Kinematics_Challenge")
+        
     }
 }

@@ -130,7 +130,7 @@ let availableExpressions = [
 ]
 
 let availableHairstyles = [
-    Hairstyle(name: "Short", imageName: "short_image"),
-    Hairstyle(name: "Medium", imageName: "medium_image"),
-    Hairstyle(name: "Long", imageName: "long_image")
+    Hairstyle(name: "Short", imageName: "Map/hair3"),
+    Hairstyle(name: "Medium", imageName: "Map/hair2"),
+    Hairstyle(name: "Long", imageName: "Map/hair1")
 ]

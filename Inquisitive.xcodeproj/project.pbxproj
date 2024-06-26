@@ -40,6 +40,8 @@
 		BFB25BF62C24987F0066D6BE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BF52C24987F0066D6BE /* Profile.swift */; };
 		BFB25BF82C249AF80066D6BE /* NameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BF72C249AF80066D6BE /* NameEditView.swift */; };
 		BFEC06152C2A67DD00A9532E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC06142C2A67DD00A9532E /* Database.swift */; };
+		BFEC06172C2A99B700A9532E /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC06162C2A99B700A9532E /* NewProfileView.swift */; };
+		BFEC06192C2AC1DF00A9532E /* JustProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC06182C2AC1DF00A9532E /* JustProfileView.swift */; };
 		BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEA842C22F06700C1F888 /* LottieView.swift */; };
 		BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		BFB25BF52C24987F0066D6BE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BFB25BF72C249AF80066D6BE /* NameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditView.swift; sourceTree = "<group>"; };
 		BFEC06142C2A67DD00A9532E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		BFEC06162C2A99B700A9532E /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
+		BFEC06182C2AC1DF00A9532E /* JustProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustProfileView.swift; sourceTree = "<group>"; };
 		BFFCEA842C22F06700C1F888 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +129,8 @@
 				3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */,
 				6AF4A8832C292D67006D2000 /* Playground */,
 				BFB25BE42C24439C0066D6BE /* ProfileView.swift */,
+				BFEC06162C2A99B700A9532E /* NewProfileView.swift */,
+				BFEC06182C2AC1DF00A9532E /* JustProfileView.swift */,
 				BFEC06142C2A67DD00A9532E /* Database.swift */,
 				BFB25BF42C2458F70066D6BE /* ModalProfile */,
 				BFB25BDF2C23CD350066D6BE /* ColorExt.swift */,
@@ -272,6 +278,7 @@
 				BFB25BF62C24987F0066D6BE /* Profile.swift in Sources */,
 				6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */,
 				BFB25BEF2C24546A0066D6BE /* ProfileConfiguration.swift in Sources */,
+				BFEC06172C2A99B700A9532E /* NewProfileView.swift in Sources */,
 				BFB25BE92C2454410066D6BE /* FaceShape.swift in Sources */,
 				BFB25BF12C2454760066D6BE /* ProfileDetailView.swift in Sources */,
 				BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */,
@@ -280,6 +287,7 @@
 				BFB25BF82C249AF80066D6BE /* NameEditView.swift in Sources */,
 				3D8283362C2407920097626F /* MaterialViewGLBB_V.swift in Sources */,
 				6A2069BE2C22A2930081FBCF /* GameScene.swift in Sources */,
+				BFEC06192C2AC1DF00A9532E /* JustProfileView.swift in Sources */,
 				6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */,
 				BFB25BE72C2454360066D6BE /* ProfileBackground.swift in Sources */,
 				6A9954E72C29232900B7C865 /* SpriteKitView.swift in Sources */,
