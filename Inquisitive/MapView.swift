@@ -264,7 +264,7 @@ struct MapView: View {
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 if dat.isProfilePressed == true{
-                    ProfileView()
+                    NewProfileView(dat:dat)
                 }
             }
             

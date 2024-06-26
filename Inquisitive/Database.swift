@@ -8,26 +8,6 @@
 import Foundation
 import SwiftUI
 import Combine
-
-
-// TODO: remove all un-needed comments
-//"ConstantVelocity_Material" : true / false -> if true, already completed
-//"ConstantVelocity_Playground"
-//"ConstantVelocity_Excercise"
-//
-//"ConstantAccelerationHorizontal_Material"
-//"ConstantAccelerationHorizontal_Playground"
-//"ConstantAccelerationHorizontal_Excercise"
-//
-//"ConstantAccelerationVertical_Material"
-//"ConstantAccelerationVertical_Playground"
-//"ConstantAccelerationVertical_Excercise"
-//
-//"Parabolic_Material"
-//"Parabolic_Playground"
-//"Parabolic_Excercise"
-//
-//"Kinematics_Challenge"
                                                     
 class Database: ObservableObject {
     @Published var isProfilePressed: Bool = false
