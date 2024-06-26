@@ -10,7 +10,7 @@ import SwiftUI
 struct NewProfileView: View {
     @ObservedObject var dat: Database
     @State private var isEditingName: Bool = false
-    let backgroundColors = ["3E8A74", "3E668A", "B13A26", "786C60"]
+    let backgroundColors = ["3E8A74", "3E668A", "B13A26", "F6ECAC", "786C60"]
     let faces = ["Map/Face1", "Map/Face2", "Map/Face3", "Map/Face4", "Map/Face5", "Map/Face6"]
     let hairstyles = ["Map/none", "Map/HairStyle1", "Map/HairStyle2", "Map/HairStyle3", "Map/HairStyle4", "Map/HairStyle5"]
     

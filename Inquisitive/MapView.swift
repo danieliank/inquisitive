@@ -169,53 +169,6 @@ struct MapView: View {
                 }
                 .offset(x:UIScreen.main.bounds.width*11/25, y:-UIScreen.main.bounds.height/8)
                 
-//                // Parabolics
-//                NavigationLink(destination: MaterialViewGLB(dat: dat)){
-//                    VStack {
-//                        Image("Map/ship")
-//                        HStack{
-//                            Text("Parabolics")
-//                                .font(.system(size: 24).bold())
-//                                .foregroundColor(Color(hex: "F4FAFB"))
-//                                .padding(16)
-//                                .padding(.leading, 144)
-//                        }
-//                    }
-//                }
-//                .padding(.top, UIScreen.main.bounds.height*5/10)
-//                .padding(.leading, UIScreen.main.bounds.width*23/40)
-//
-//
-//                    //GLBB Parabolic playground button
-//                NavigationLink(destination: MaterialViewGLB(dat: dat)){
-//                    VStack {
-//                        ZStack {
-//                            Image("Map/playgroundButton")
-//                            Image("Map/lock")
-//                        }
-//                        Text("Playground")
-//                            .font(.system(size: 16).bold())
-//                            .foregroundColor(Color(hex: "F4FAFB"))
-//                            .padding(.top, -12)
-//                    }
-//                }
-//                .offset(x:UIScreen.main.bounds.width/7.5, y:UIScreen.main.bounds.height*8/20)
-//
-//                    //GLBB Parabolic exercise button
-//                NavigationLink(destination: MaterialViewGLB(dat: dat)){
-//                    VStack {
-//                        ZStack {
-//                            Image("Map/exerciseButton")
-//                            Image("Map/lock")
-//                        }
-//                        Text("Exercise")
-//                            .font(.system(size: 16).bold())
-//                            .foregroundColor(Color(hex: "F4FAFB"))
-//                            .padding(.top, -12)
-//                    }
-//                }
-//                .offset(x:UIScreen.main.bounds.width/22, y:UIScreen.main.bounds.height*3.1/10)
-                
                 // Just ship
                 NavigationLink(destination: MaterialViewGLB(dat: dat)){
                     Image("Map/ship")
@@ -253,10 +206,8 @@ struct MapView: View {
                                 .shadow(radius: 24, x:2, y:4)
                                 .padding()
                                 .overlay{
-                                    Image(systemName:"person.circle")
-                                        .resizable()
-                                        .frame(width: 80,height: 80)
-                                        .foregroundColor(.black)
+                                    JustProfileView(dat: dat)
+                                        .scaleEffect(0.3)
                                 }
                         }
                         Spacer()
@@ -264,7 +215,15 @@ struct MapView: View {
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 if dat.isProfilePressed == true{
-                    NewProfileView(dat:dat)
+                    ZStack {
+                        Color.black.opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                dat.isProfilePressed = false
+                            }
+                        NewProfileView(dat:dat)
+                    }
+                    
                 }
             }
             
