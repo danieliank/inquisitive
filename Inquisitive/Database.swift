@@ -103,6 +103,11 @@ class Database: ObservableObject {
     @Published var isHairStyle4Unlock: Bool = false
     @Published var isHairStyle5Unlock: Bool = false
     
+    //Fog
+    @Published var isFog1: Bool = false
+    @Published var isFog2: Bool = false
+    @Published var isFog3: Bool = false
+    
     
     init() {
         // Set default values if they don't exist

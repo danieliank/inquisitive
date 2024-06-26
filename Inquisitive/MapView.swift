@@ -57,7 +57,7 @@ struct MapView: View {
                 .offset(x:-UIScreen.main.bounds.width/3.2, y:UIScreen.main.bounds.height*2.3/10)
                 
                 //GLB exercise button
-                NavigationLink(destination: MaterialViewGLB(dat: dat)){
+                NavigationLink(destination: ExerciseViewGLB(dat: dat)){
                     VStack {
                         ZStack {
                             Image(dat.exerciseGLBButtonClicked ? "Map/exerciseButtonDone" : "Map/exerciseButton")
@@ -105,7 +105,7 @@ struct MapView: View {
                 .offset(x:0, y:-UIScreen.main.bounds.height*1.2/10)
                 
                     //GLBB Horizontal exercise button
-                NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
+                NavigationLink(destination: ExerciseViewGLBB_H(dat:dat)){
                     VStack {
                         ZStack {
                             Image(dat.exerciseGLBB_HButtonClicked ? "Map/exerciseButtonDone" : "Map/exerciseButton")
@@ -153,7 +153,7 @@ struct MapView: View {
                 .offset(x:UIScreen.main.bounds.width*9/25, y:-UIScreen.main.bounds.height/18)
                 
                     //GLBB Vertical exercise button
-                NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
+                NavigationLink(destination: ExerciseViewGLBB_V(dat:dat)){
                     VStack {
                         ZStack {
                             Image(dat.exerciseGLBB_VButtonClicked ? "Map/exerciseButtonDone" : "Map/exerciseButton")
