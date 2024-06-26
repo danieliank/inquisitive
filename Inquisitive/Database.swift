@@ -215,37 +215,57 @@ class Database: ObservableObject {
     @Published var unlockedItemName: String? = nil
     @Published var showUnlockedItemPopup: Bool = false
     @Published var unlockedItems: Set<String> = [] // masih minus buat maintain data arraynya, nanti w liat lg
-
+    
+    func saveUnlockedItems() {
+        let unlockedItemsArray = Array(unlockedItems)
+        UserDefaults.standard.set(unlockedItemsArray, forKey: "unlockedItems")
+    }
+    
+    func loadUnlockedItems() {
+        if let savedUnlockedItems = UserDefaults.standard.array(forKey: "unlockedItems") as? [String] {
+            unlockedItems = Set(savedUnlockedItems)
+        }
+    }
+    
     func checkForNewlyUnlockedItem() {
         // Check each item and set the unlockedItemName if unlocked and not previously unlocked
         if isFace3Unlock && !unlockedItems.contains("Face3") {
             unlockedItemName = "Face3"
             showUnlockedItemPopup = true
             unlockedItems.insert("Face3")
+            saveUnlockedItems()
         } else if isFace4Unlock && !unlockedItems.contains("Face4") {
             unlockedItemName = "Face4"
             showUnlockedItemPopup = true
             unlockedItems.insert("Face4")
+            saveUnlockedItems()
         } else if isFace5Unlock && !unlockedItems.contains("Face5") {
             unlockedItemName = "Face5"
             showUnlockedItemPopup = true
             unlockedItems.insert("Face5")
+            saveUnlockedItems()
         } else if isFace6Unlock && !unlockedItems.contains("Face6") {
             unlockedItemName = "Face6"
             showUnlockedItemPopup = true
             unlockedItems.insert("Face6")
+            saveUnlockedItems()
         } else if isHairStyle3Unlock && !unlockedItems.contains("HairStyle3") {
             unlockedItemName = "HairStyle3"
             showUnlockedItemPopup = true
             unlockedItems.insert("HairStyle3")
+            saveUnlockedItems()
         } else if isHairStyle4Unlock && !unlockedItems.contains("HairStyle4") {
             unlockedItemName = "HairStyle4"
             showUnlockedItemPopup = true
             unlockedItems.insert("HairStyle4")
+            saveUnlockedItems()
         } else if isHairStyle5Unlock && !unlockedItems.contains("HairStyle5") {
             unlockedItemName = "HairStyle5"
             showUnlockedItemPopup = true
             unlockedItems.insert("HairStyle5")
+            saveUnlockedItems()
+        } else {
+            showUnlockedItemPopup = false
         }
     }
     
@@ -306,5 +326,6 @@ class Database: ObservableObject {
         self.ConstantAccelerationVertical_Exercise = UserDefaults.standard.bool(forKey: "ConstantAccelerationVertical_Exercise")
         self.Kinematics_Challenge = UserDefaults.standard.bool(forKey: "Kinematics_Challenge")
         
+        self.loadUnlockedItems()
     }
 }
