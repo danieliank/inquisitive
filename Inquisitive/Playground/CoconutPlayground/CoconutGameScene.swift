@@ -10,7 +10,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private var velocity: Float = 0
     private var previousVelocity: Float = 1
     private var distance: Float = 0
-    private var distanceInput: Float = 500
+    private var distanceInput: Float = 1000
     
     private var remainingDistance: Float = 0 // New variable to store distanceInput - distance
     
@@ -88,6 +88,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         height = Int(((distanceInput - 400) / 100 + 8))
         setupBackgroundNodes()
         setupCoconutTreeNodes()
+        setupCoconutStretchTree(Distance: distanceInput)
+        setupBeachBackground(Distance: distanceInput)
     }
     
     private func setupBackgroundNodes() {
@@ -107,24 +109,32 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private func setupCoconutTreeNodes() {
         if let coconutTree = self.childNode(withName: "CoconutTree") as? SKSpriteNode {
             let newCoconutTree = createCopy(of: coconutTree, at: CGPoint(x: coconutTree.position.x, y: coconutTree.position.y), zPosition: -20)
-            
-            if let stretchTree = self.childNode(withName: "TreeStretch") as? SKSpriteNode {
-                if let backgroundBeach = self.childNode(withName: "BackgroundBeach") as? SKSpriteNode {
-                    
-                    coconutTrees.append(newCoconutTree)
-                    
-                    for i in 8...height {
-                        let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: stretchTree.position.x, y: stretchTree.position.y - stretchTree.size.height * CGFloat(i-8)), zPosition: -20)
-                        coconutTrees.append(newStretchTree)
-                    }
-                    let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y: coconutTree.position.y - stretchTree.size.height * CGFloat(height-7)+200), zPosition: 0)
-                    newBackgroundBeach.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: newBackgroundBeach.size.width / 100 - 100, height: newBackgroundBeach.size.height))
-                    newBackgroundBeach.physicsBody?.isDynamic = false
-                    coconutTrees.append(newBackgroundBeach)
-                    
-                    coconutTree.removeFromParent()
-                }
+            coconutTrees.append(newCoconutTree)
+            coconutTree.removeFromParent()
+        }
+    }
+    
+    private func setupCoconutStretchTree(Distance: Float){
+        height = Int(((distanceInput - 400) / 100 + 8))
+        if let stretchTree = self.childNode(withName: "TreeStretch") as? SKSpriteNode {
+            for i in 8...height {
+                print(stretchTree.size.height)
+                let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: stretchTree.position.x, y: stretchTree.position.y - stretchTree.size.height * CGFloat(i-8)), zPosition: -20)
+                coconutTrees.append(newStretchTree)
             }
+            
+            
+        }
+        
+    }
+    
+    private func setupBeachBackground(Distance: Float){
+        height = Int(((distanceInput - 400) / 100 + 8))
+        if let backgroundBeach = self.childNode(withName: "BackgroundBeach") as? SKSpriteNode {
+            let newBackgroundBeach = createCopy(of: backgroundBeach, at: CGPoint(x: 0, y:-83 - 200 * CGFloat(height-7)+200), zPosition: 0)
+            coconutTrees.append(newBackgroundBeach)
+            
+            
         }
     }
     
