@@ -14,7 +14,7 @@ struct JustProfileView: View {
         ZStack {
             Rectangle()
                 // background color
-                .foregroundColor( dat.selectedBackgroundColor)
+                .foregroundColor(Color(hex:dat.selectedBackgroundColor))
                 .frame(width: 300, height: 300)
                 .overlay{
                     Image("Map/Head")

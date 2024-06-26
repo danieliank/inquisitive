@@ -114,7 +114,7 @@ struct NewProfileView: View {
                                     Circle()
                                         .foregroundColor(Color(hex: color))
                                         .onTapGesture {
-                                            dat.selectedBackgroundColor = Color(hex: color)
+                                            dat.selectedBackgroundColor = color
                                         }
                                 }
                             }

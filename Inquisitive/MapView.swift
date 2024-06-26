@@ -55,6 +55,7 @@ struct MapView: View {
                     }
                 }
                 .offset(x:-UIScreen.main.bounds.width/3.2, y:UIScreen.main.bounds.height*2.3/10)
+                .disabled(dat.ConstantVelocity_Playground ? false : true)
                 
                 //GLB exercise button
                 NavigationLink(destination: ExerciseViewGLB(dat: dat)){
@@ -72,6 +73,8 @@ struct MapView: View {
                     }
                 }
                 .offset(x:-UIScreen.main.bounds.width/2.85, y:UIScreen.main.bounds.height/8)
+                .disabled(dat.ConstantVelocity_Exercise ? false : true)
+                
                 
                 // Constant Acceleration 1
                 NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
@@ -86,6 +89,7 @@ struct MapView: View {
                 }
                 .padding(.bottom, UIScreen.main.bounds.height*5/16)
                 .padding(.trailing, UIScreen.main.bounds.width/4)
+                .disabled(dat.ConstantAccelerationHorizontal_Material ? false : true)
                 
                     //GLBB Horizontal playground button
                 NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
@@ -103,6 +107,7 @@ struct MapView: View {
                     }
                 }
                 .offset(x:0, y:-UIScreen.main.bounds.height*1.2/10)
+                .disabled(dat.ConstantAccelerationHorizontal_Playground ? false : true)
                 
                     //GLBB Horizontal exercise button
                 NavigationLink(destination: ExerciseViewGLBB_H(dat:dat)){
@@ -120,6 +125,7 @@ struct MapView: View {
                     }
                 }
                 .offset(x:UIScreen.main.bounds.width/12, y:-UIScreen.main.bounds.height*1.6/10)
+                .disabled(dat.ConstantAccelerationHorizontal_Exercise ? false : true)
                 
                 // Constant Acceleration 2
                 NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
@@ -134,6 +140,7 @@ struct MapView: View {
                 }
                 .padding(.bottom, UIScreen.main.bounds.height/4)
                 .padding(.leading, UIScreen.main.bounds.width/2)
+                .disabled(dat.ConstantAccelerationVertical_Material ? false : true)
                 
                     //GLBB Vertical playground button
                 NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
@@ -151,6 +158,7 @@ struct MapView: View {
                     }
                 }
                 .offset(x:UIScreen.main.bounds.width*9/25, y:-UIScreen.main.bounds.height/18)
+                .disabled(dat.ConstantAccelerationVertical_Playground ? false : true)
                 
                     //GLBB Vertical exercise button
                 NavigationLink(destination: ExerciseViewGLBB_V(dat:dat)){
@@ -168,13 +176,25 @@ struct MapView: View {
                     }
                 }
                 .offset(x:UIScreen.main.bounds.width*11/25, y:-UIScreen.main.bounds.height/8)
+                .disabled(dat.ConstantAccelerationVertical_Exercise ? false : true)
                 
                 // Just ship
                 NavigationLink(destination: MaterialViewGLB(dat: dat)){
-                    Image("Map/ship")
+//                    Image("Map/ship")
+                    Button(action:{
+                        withAnimation{
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                dat.Kinematics_Challenge = true
+                                //                        dat.Kinematics_Challenge = true
+                            }
+                        }
+                    }){
+                        Image("Map/ship")
+                    }
                 }
                 .padding(.top, UIScreen.main.bounds.height*4.3/10)
                 .padding(.leading, UIScreen.main.bounds.width*23/40)
+                .disabled(dat.Kinematics_Challenge ? false : true)
                 
                 // Monster
                 if dat.Kinematics_Challenge{
@@ -223,11 +243,26 @@ struct MapView: View {
                             }
                         NewProfileView(dat:dat)
                     }
-                    
+                }
+                
+                if dat.showUnlockedItemPopup {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all) // Dim background
+                        .onTapGesture {
+                            dat.unlockedItemName = nil
+                            dat.showUnlockedItemPopup = false
+                        }
+                    if let itemName = dat.unlockedItemName {
+                        GetItemView(itemName: itemName)
+                            .padding()
+                            .transition(.scale)
+                            .zIndex(2)
+                    }
                 }
             }
             
         }
+        .animation(.easeInOut, value: dat.showUnlockedItemPopup)
         .navigationViewStyle(.stack)
         .navigationBarHidden(true) // Hide the navigation bar entirely
         .navigationBarBackButtonHidden(true) // Hide the back button specifically

@@ -147,8 +147,14 @@ struct ExerciseViewGLBB_V: View {
                         Button(action: {
                             if isCorrect{
                                 //validationMessage = "go to map"
+                                
+                                // unlock new item + fog (exercise case)
+                                dat.isFog3 = true
                                 dat.isHairStyle5Unlock = true
                                 dat.isFace6Unlock = true
+                                dat.checkForNewlyUnlockedItem()
+                                
+                                dat.Kinematics_Challenge = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                             else{
@@ -194,6 +200,7 @@ struct ExerciseViewGLBB_V: View {
             
             .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 400)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

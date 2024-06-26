@@ -161,6 +161,10 @@ struct MaterialViewGLBB_H: View {
                             dat.ConstantAccelerationHorizontal_Exercise = true
                             dat.ConstantAccelerationHorizontal_Playground = true
                             
+                            // unlock new item
+                            dat.isFace4Unlock = true
+                            dat.checkForNewlyUnlockedItem()
+                            
                             self.presentationMode.wrappedValue.dismiss()
                             
                         }) {

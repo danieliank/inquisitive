@@ -32,6 +32,7 @@
 		6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */; };
 		6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4A8892C292EE3006D2000 /* SaveDataService.swift */; };
 		BF0A55372C2BB50D00DAD2DC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BF0A55362C2BB50D00DAD2DC /* Lottie */; };
+		BFA2DBB42C2BF8360096262B /* GetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DBB32C2BF8360096262B /* GetItemView.swift */; };
 		BFB25BDE2C23CCF60066D6BE /* MaterialViewGLBB_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */; };
 		BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDF2C23CD350066D6BE /* ColorExt.swift */; };
 		BFEC06152C2A67DD00A9532E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC06142C2A67DD00A9532E /* Database.swift */; };
@@ -68,6 +69,7 @@
 		6AF4A8852C292EC0006D2000 /* PlaygroundConstantVelocity.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaygroundConstantVelocity.sks; sourceTree = "<group>"; };
 		6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundConstantVelocity.swift; sourceTree = "<group>"; };
 		6AF4A8892C292EE3006D2000 /* SaveDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveDataService.swift; sourceTree = "<group>"; };
+		BFA2DBB32C2BF8360096262B /* GetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetItemView.swift; sourceTree = "<group>"; };
 		BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLBB_H.swift; sourceTree = "<group>"; };
 		BFB25BDF2C23CD350066D6BE /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		BFEC06142C2A67DD00A9532E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -117,14 +119,15 @@
 				BFFCEA842C22F06700C1F888 /* LottieView.swift */,
 				BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */,
 				3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */,
-				3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */,
-				3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */,
-				3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */,
 				BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */,
+				3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */,
 				3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */,
+				3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */,
+				3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */,
 				6AF4A8832C292D67006D2000 /* Playground */,
 				BFEC06162C2A99B700A9532E /* NewProfileView.swift */,
 				BFEC06182C2AC1DF00A9532E /* JustProfileView.swift */,
+				BFA2DBB32C2BF8360096262B /* GetItemView.swift */,
 				BFEC06142C2A67DD00A9532E /* Database.swift */,
 				BFB25BDF2C23CD350066D6BE /* ColorExt.swift */,
 				6A2069B72C22A2930081FBCF /* AppDelegate.swift */,
@@ -272,6 +275,7 @@
 				BFEC06152C2A67DD00A9532E /* Database.swift in Sources */,
 				3DF8A9E52C2BBBBB009D7BE9 /* StrokeModifier.swift in Sources */,
 				3DF8A9EB2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift in Sources */,
+				BFA2DBB42C2BF8360096262B /* GetItemView.swift in Sources */,
 				BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,8 +435,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,9 +445,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.learn.Inquisitive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -461,8 +469,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,9 +479,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.learn.Inquisitive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

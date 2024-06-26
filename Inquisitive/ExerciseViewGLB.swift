@@ -153,9 +153,13 @@ struct ExerciseViewGLB: View {
                         Button(action: {
                             if isCorrect{
                                 showMessage = false
+                                
+                                // unlock new item + fog (exercise case)
                                 dat.isFog1 = true
                                 dat.isHairStyle3Unlock = true
+                                dat.checkForNewlyUnlockedItem()
                                 
+                                dat.ConstantAccelerationHorizontal_Material = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                             //validasi jawaban

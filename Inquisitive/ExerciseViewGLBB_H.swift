@@ -145,7 +145,13 @@ struct ExerciseViewGLBB_H: View {
                         Button(action: {
                             if isCorrect{
                                 dat.isHairStyle4Unlock = true
+                                
+                                // unlock new item + fog (exercise case)
                                 dat.isFog2 = true
+                                dat.isHairStyle4Unlock = true
+                                dat.checkForNewlyUnlockedItem()
+                                
+                                dat.ConstantAccelerationVertical_Material = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                             else{
@@ -195,6 +201,7 @@ struct ExerciseViewGLBB_H: View {
             
             .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 400)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

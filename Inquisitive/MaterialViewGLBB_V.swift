@@ -133,6 +133,11 @@ struct MaterialViewGLBB_V: View {
                             // Modify map bool data
                             dat.ConstantAccelerationVertical_Exercise = true
                             dat.ConstantAccelerationVertical_Playground = true
+                            
+                            // unlock new item
+                            dat.isFace5Unlock = true
+                            dat.checkForNewlyUnlockedItem()
+                            
                             self.presentationMode.wrappedValue.dismiss()
                             
                         }) {
