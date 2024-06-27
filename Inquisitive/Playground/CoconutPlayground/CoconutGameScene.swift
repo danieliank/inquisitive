@@ -1,7 +1,7 @@
 import SpriteKit
 import GameplayKit
 
-class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
+class CoconutGameScene: SKScene, SKPhysicsContactDelegate, UITextFieldDelegate {
     
     // Properties
     private var height: Int = 0
@@ -9,7 +9,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime: TimeInterval = 0
     private var velocity: Float = 0
     private var distance: Float = 0
-    private var distanceInput: Float = 1000
+    private var distanceInput: Float = 400
     private var remainingDistance: Float = 0
     
     private var timeLabel: SKLabelNode!
@@ -25,6 +25,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     private var startButton: SKSpriteNode?
     private var restartButton: SKSpriteNode?
+    private var distanceInputTextField: UITextField!
+    private var tapGestureRecognizer: UITapGestureRecognizer!
     
     // Constants
     private let fontSize: CGFloat = 24
@@ -33,6 +35,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         resetGameState()
+        setupTextField(view: view) // Pass the view here
         setupLabels()
         setupNodes()
         setupCoconut()
@@ -40,16 +43,20 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         setupButton()
         self.isPaused = true
         
+        // Enable user interaction for the scene
+        self.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true
+        
+        // Add tap gesture recognizer
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
         // Move the coconut to the bottom of the screen
         guard let coconut = coconut else { return }
         let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -300), duration: countTime(height: Double(height)))
         coconut.run(moveAction) {
             self.isPaused = true
         }
-        
-        // Add gesture recognizer to detect tap on startButton
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        view.addGestureRecognizer(tapGesture)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -69,6 +76,18 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         distance = 0
         lastUpdateTime = 0
         remainingDistance = distanceInput
+    }
+    
+    private func setupTextField(view: SKView) {
+        distanceInputTextField = UITextField(frame: CGRect(x: 675, y: 855, width: 80, height: 80))
+        distanceInputTextField.borderStyle = .none
+        distanceInputTextField.backgroundColor = .clear
+        distanceInputTextField.keyboardType = .numberPad
+        distanceInputTextField.placeholder = "400"
+        distanceInputTextField.text = "\(Int(distanceInput))" // Set default value
+        distanceInputTextField.delegate = self
+        distanceInputTextField.font = UIFont.systemFont(ofSize: 26)
+        view.addSubview(distanceInputTextField)
     }
     
     private func setupLabels() {
@@ -92,8 +111,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
         height = Int(((distanceInput - 400) / 100 + 8))
         setupBackgroundNodes()
         setupCoconutTreeNodes()
-        setupCoconutStretchTree(distance: distanceInput)
-        setupBeachBackground(distance: distanceInput)
+        //        setupCoconutStretchTree(distance: distanceInput)
+        //        setupBeachBackground(distance: distanceInput)
     }
     
     private func setupBackgroundNodes() {
@@ -120,6 +139,8 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     
     private func setupCoconutStretchTree(distance: Float){
         height = Int(((distanceInput - 400) / 100 + 8))
+        print(distanceInput)
+        print(height)
         if let stretchTree = self.childNode(withName: "TreeStretch") as? SKSpriteNode {
             for i in 8...height {
                 let newStretchTree = createCopy(of: stretchTree, at: CGPoint(x: stretchTree.position.x, y: stretchTree.position.y - stretchTree.size.height * CGFloat(i-8)), zPosition: -20)
@@ -225,28 +246,67 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func countTime(height: Double) -> Double{
+        print(height)
         return sqrt((400+(height-8)*100)/4.9)
     }
     
     // MARK: - Button Toggle
     
-    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self.view)
-        let skLocation = convertPoint(fromView: location)
-        
-        if let startButton = startButton, startButton.contains(skLocation) {
-            toggleButtons()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        if startButton?.contains(location) == true {
+            if self.isPaused {
+                setupCoconutStretchTree(distance: distanceInput)
+                setupBeachBackground(distance: distanceInput)
+                self.isPaused = false
+                startButton?.texture = SKTexture(imageNamed: "StartButton")
+            } else {
+                self.isPaused = true
+                startButton?.texture = SKTexture(imageNamed: "RestartButton")
+                resetGameState()
+                updateLabels()
+            }
         }
     }
     
-    private func toggleButtons() {
-        guard let startButton = startButton, let restartButton = restartButton else { return }
+    @objc private func handleTap() {
+        self.view?.endEditing(true)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Allow only numbers
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
         
-        // Swap zPosition values
-        let startButtonZPosition = startButton.zPosition
-        startButton.zPosition = restartButton.zPosition
-        restartButton.zPosition = startButtonZPosition
+        // Check if the new length is within the 2-digit limit
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
-        self.isPaused = !self.isPaused
+        if allowedCharacters.isSuperset(of: characterSet) && updatedText.count <= 4 {
+            if let value = Float(updatedText), value <= 1000 {
+                distanceInput = value
+            }
+            return true
+        }
+        return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text, let value = Float(text) {
+            if value < 400 {
+                distanceInput = 400
+            } else if value > 1000 {
+                distanceInput = 1000
+            } else {
+                distanceInput = value
+            }
+            textField.text = "\(Int(distanceInput))"
+        } else {
+            // Reset to default if input is invalid
+            distanceInput = 400
+            textField.text = "\(Int(distanceInput))"
+        }
     }
 }
