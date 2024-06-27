@@ -53,9 +53,10 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate, UITextFieldDelegate {
         
         // Move the coconut to the bottom of the screen
         guard let coconut = coconut else { return }
+        height = Int(((distanceInput - 400) / 100 + 8))
         let moveAction = SKAction.move(to: CGPoint(x: coconut.position.x, y: -300), duration: countTime(height: Double(height)))
         coconut.run(moveAction) {
-            self.isPaused = true
+//            self.isPaused = true
         }
     }
     
@@ -79,7 +80,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate, UITextFieldDelegate {
     }
     
     private func setupTextField(view: SKView) {
-        distanceInputTextField = UITextField(frame: CGRect(x: 675, y: 855, width: 80, height: 80))
+        distanceInputTextField = UITextField(frame: CGRect(x: 370, y: 880, width: 80, height: 80))
         distanceInputTextField.borderStyle = .none
         distanceInputTextField.backgroundColor = .clear
         distanceInputTextField.keyboardType = .numberPad
@@ -203,6 +204,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate, UITextFieldDelegate {
         
         if remainingDistance <= 1 {
             coconutBubbleLabel?.text = "0"
+            self.isPaused = true
         } else {
             coconutBubbleLabel?.text = String(format: "%.2f", remainingDistance)
         }
@@ -246,7 +248,6 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate, UITextFieldDelegate {
     }
     
     private func countTime(height: Double) -> Double{
-        print(height)
         return sqrt((400+(height-8)*100)/4.9)
     }
     
