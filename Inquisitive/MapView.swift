@@ -261,7 +261,7 @@ struct MapView: View {
                 }
             }
             
-        }
+        }.frame(maxWidth: 1366*UIScreen.main.bounds.width, maxHeight: 1024*UIScreen.main.bounds.height)
         .animation(.easeInOut, value: dat.showUnlockedItemPopup)
         .navigationViewStyle(.stack)
         .navigationBarHidden(true) // Hide the navigation bar entirely

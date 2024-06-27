@@ -159,6 +159,7 @@ struct ExerciseViewGLB: View {
                                 dat.isHairStyle3Unlock = true
                                 dat.checkForNewlyUnlockedItem()
                                 
+                                dat.exerciseGLBButtonClicked = true
                                 dat.ConstantAccelerationHorizontal_Material = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }

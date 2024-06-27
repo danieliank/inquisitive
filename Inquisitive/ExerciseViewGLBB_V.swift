@@ -154,6 +154,7 @@ struct ExerciseViewGLBB_V: View {
                                 dat.isFace6Unlock = true
                                 dat.checkForNewlyUnlockedItem()
                                 
+                                dat.exerciseGLBB_VButtonClicked = true
                                 dat.Kinematics_Challenge = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }

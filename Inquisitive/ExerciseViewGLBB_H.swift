@@ -151,6 +151,7 @@ struct ExerciseViewGLBB_H: View {
                                 dat.isHairStyle4Unlock = true
                                 dat.checkForNewlyUnlockedItem()
                                 
+                                dat.exerciseGLBB_HButtonClicked = true
                                 dat.ConstantAccelerationVertical_Material = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }

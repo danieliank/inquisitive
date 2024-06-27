@@ -264,6 +264,11 @@ class Database: ObservableObject {
             showUnlockedItemPopup = true
             unlockedItems.insert("HairStyle5")
             saveUnlockedItems()
+        } else if isHaveBadge1 && !unlockedItems.contains("Badge1") {
+            unlockedItemName = "Badge1"
+            showUnlockedItemPopup = true
+            unlockedItems.insert("Badge1")
+            saveUnlockedItems()
         } else {
             showUnlockedItemPopup = false
         }
