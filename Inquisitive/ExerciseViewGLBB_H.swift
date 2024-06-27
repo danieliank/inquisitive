@@ -15,7 +15,7 @@ struct ExerciseViewGLBB_H: View {
     
     @State private var userAnswer: String = ""
     @State private var validationMessage: String = ""
-    let correctAnswer = 64
+    let correctAnswer = 55
     
     
     var body: some View {
@@ -89,12 +89,12 @@ struct ExerciseViewGLBB_H: View {
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("To tackle this, we begin by noting Tom's initial speed is 0 m/s. Over the first 5 seconds, his speed increases uniformly at 2 m/s². This speed is then maintained for the next 3 seconds, making the total time to become 8 seconds. Using the equation s=1/2at^2, where a is acceleration and t is time, we need to calculate the distance.")
+                        Text("To tackle this, we begin by noting Tom's initial speed is 0 m/s. Over the first 5 seconds, his speed increases uniformly at 2 m/s². Using the equation s(t)=v(0)t+1/2at^2, where v(0) is first velocity, t is time, and a is acceleration, to calculate the first 5 seconds distance [s(5)]. This speed is then maintained for the next 3 seconds, then we need to use v(t)=v(0)+at, to calculate 5 seconds velocity [v(5)]. Then we implement GLB by using from v(5) to know the distance 5 seconds until 8 seconds by using equation s=v*∆t, where the ∆t is time from s(5) to s(8). After that we need to add s(5) + s(5,8) to calculate total distance")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
                         
-                        Text("By using the equation, Tom's car covers an impressive 64 meters during these 8 seconds of constant acceleration")
+                        Text("By using the equation, Tom’s car cover an impressive 55 meters during these 8 seconds drive")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
@@ -201,7 +201,6 @@ struct ExerciseViewGLBB_H: View {
                 
                 Spacer()
             }
-            
             .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 400)
         }
         .navigationBarBackButtonHidden(true)

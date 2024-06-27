@@ -206,7 +206,6 @@ struct ExerciseViewGLB: View {
                 
                 Spacer()
             }
-            
             .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 400)
         }
         .navigationBarBackButtonHidden(true)

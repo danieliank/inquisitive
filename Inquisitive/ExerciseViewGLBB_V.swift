@@ -153,8 +153,8 @@ struct ExerciseViewGLBB_V: View {
                                 // unlock new item + fog (exercise case)
                                 dat.isFog3 = true
                                 dat.isHairStyle5Unlock = true
-                                dat.isFace6Unlock = true
                                 dat.checkForNewlyUnlockedItem()
+                                dat.isFace6Unlock = true
                                 dat.checkForNewlyUnlockedItem()
                                 
                                 dat.exerciseGLBB_VButtonClicked = true
@@ -201,7 +201,6 @@ struct ExerciseViewGLBB_V: View {
                 
                 Spacer()
             }
-            
             .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 400)
         }
         .navigationBarBackButtonHidden(true)

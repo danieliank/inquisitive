@@ -187,19 +187,9 @@ struct MapView: View {
                 .disabled(dat.ConstantAccelerationVertical_Exercise ? false : true)
                 
                 // Just ship
-                NavigationLink(destination: MaterialViewGLB(dat: dat)){
-                    //                    Image("Map/ship")
-                    Button(action:{
-                        withAnimation{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                dat.Kinematics_Challenge = true
-                                //                        dat.Kinematics_Challenge = true
-                            }
-                        }
-                    }){
-                        Image("Map/ship")
-                          
-                    }
+                NavigationLink(destination: BossTransition(dat: dat)){
+                    Image("Map/ship")
+                        .shadow(color:.white, radius: 6, x:4, y:-8)
                 }
                 .padding(.top, UIScreen.main.bounds.height*4.3/10)
                 .padding(.leading, UIScreen.main.bounds.width*23/40)
@@ -353,11 +343,11 @@ struct MapView: View {
             }
             
         }.frame(maxWidth: 1366*UIScreen.main.bounds.width, maxHeight: 1024*UIScreen.main.bounds.height)
-            .animation(.easeInOut, value: dat.showUnlockedItemPopup)
-            .navigationViewStyle(.stack)
-            .navigationBarHidden(true) // Hide the navigation bar entirely
-            .navigationBarBackButtonHidden(true) // Hide the back button specifically
-            .edgesIgnoringSafeArea(.all) // Ignore safe area to take full screen
+        .animation(.easeInOut, value: dat.showUnlockedItemPopup)
+        .navigationViewStyle(.stack)
+        .navigationBarHidden(true) // Hide the navigation bar entirely
+        .navigationBarBackButtonHidden(true) // Hide the back button specifically
+        .edgesIgnoringSafeArea(.all) // Ignore safe area to take full screen
         
     }
     

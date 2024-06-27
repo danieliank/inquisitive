@@ -16,15 +16,12 @@ struct FinalBossView: View {
     
     @State private var userAnswer: String = ""
     @State private var validationMessage: String = ""
-    let correctAnswer = 4
+    let correctAnswer = 10
     
     var body: some View {
         ZStack{
-            
             Image(isCorrect ? "Boss/BOSSDONE" : "Boss/FINALBOSS")
                 .animation(.easeOut(duration: 1.5))
-               
-            
             //===close button===
             if !isCorrect{
                 VStack{
@@ -83,26 +80,26 @@ struct FinalBossView: View {
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("To solve this daring challenge, we employ the trusty second equation of motion. This equation describes how distance, initial speed, acceleration, and time are interconnected. Here’s how it unfolds: s=v(t)*1/2a*t^2.")
+                        Text("To solve the problem, we use the equivalence s(A)=s(B), where s(A) represents the monster and s(B)the ship. This compares the monster’s constant velocity to the ship’s constant acceleration, equating them as: **v(A).t = V(B)t + 1/2 at² - (s-c)**")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("In this thrilling scenario, Blackbeard's ship begins its journey at v=10 m/s, aims to cover s=300 meters, and has precisely t=10 seconds to achieve this heroic feat.")
+                        Text("Here, **v(A)** is the monster's initial speed, **v(B)** the ship's initial speed, **a** the acceleration, **s** the distance between them, and **c** the accuracy criterion (0<c≤10). Solving for a yields: **a=(2(v(A)⋅t−v(B)⋅t−(s−c)) / t²**")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
                         
-                        Text("From there, Captain Blackbeard's ship must accelerate at a brave 4m/s2")
+                        Text("In this scenario, Blackbeard’s ship will cover 0.6 km in 10 seconds, and must maintain acceleration speed between **10 m/s²** to avoid cannonball impact.")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 20)
                     }
                     else{
-                        Text("Captain Blackbeard is sailing the high seas in search of a fearsome sea monster. He spots the monster 300 meters away and wants to reach it as quickly as possible. His ship can start from 10 meters per second (m/s) and accelerate uniformly.")
+                        Text("Captain Blackbeard's pirate ship, sailing through dangerous waters, encounters a formidable sea monster moving at a constant speed of 10 m/s. The pirate ship, which was initially traveling at a speed of 10 m/s, was 0.51 kilometers from the sea monster. To prepare a strategic attack, Captain Blackbeard needed about 10 seconds before the cannon was fired with a guaranteed hit distance of at least 10 meters.")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("To reach the sea monster in 10 seconds, what constant acceleration does Blackbeard need his ship to have?")
+                        Text("To ensure the cannonballs hit the sea monster precisely and without risk of canonball impact, Captain Blackbeard needed to adjust his ship's acceleration. What acceleration range (in m/s²) must Captain Blackbeard's ship achieve to cover the distance safely in 10 seconds?")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                     }
@@ -126,7 +123,7 @@ struct FinalBossView: View {
                             .frame(width: 150)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .font(.system(size: 64))
-                        Text("m/s")
+                        Text("m/s²")
                             .font(.system(size: 64))
                             .foregroundColor(Color(hex: "374362"))
                         Spacer()
