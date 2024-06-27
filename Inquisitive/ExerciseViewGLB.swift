@@ -127,7 +127,7 @@ struct ExerciseViewGLB: View {
                 if !isCorrect{
                     HStack{
                         Spacer()
-                        Text("S =")
+                        Text("s =")
                             .font(.system(size: 64).bold())
                             .foregroundColor(Color(hex: "36B7D6"))
                         TextField("", text: $userAnswer)
@@ -151,14 +151,18 @@ struct ExerciseViewGLB: View {
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     .overlay{
                         Button(action: {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            
                             if isCorrect{
                                 showMessage = false
                                 
                                 // unlock new item + fog (exercise case)
                                 dat.isFog1 = true
                                 dat.isHairStyle3Unlock = true
-                                dat.checkForNewlyUnlockedItem()
                                 
+                             
+                                dat.checkForNewlyUnlockedItem()
+//                                
                                 dat.exerciseGLBButtonClicked = true
                                 dat.ConstantAccelerationHorizontal_Material = true
                                 self.presentationMode.wrappedValue.dismiss()

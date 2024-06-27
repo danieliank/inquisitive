@@ -66,13 +66,45 @@ class Database: ObservableObject {
         }
     }
     
-    @Published var playgroundGLBButtonClicked: Bool = false
-    @Published var playgroundGLBB_HButtonClicked: Bool = false
-    @Published var playgroundGLBB_VButtonClicked: Bool = false
+    // Button indicator
+    @Published var playgroundGLBButtonClicked: Bool = UserDefaults.standard.bool(forKey: "playgroundGLBButtonClicked"){
+        didSet {
+            UserDefaults.standard.set(playgroundGLBButtonClicked, forKey: "playgroundGLBButtonClicked")
+        }
+    }
+    @Published var playgroundGLBB_HButtonClicked: Bool = UserDefaults.standard.bool(forKey: "playgroundGLBB_HButtonClicked"){
+        didSet {
+            UserDefaults.standard.set(playgroundGLBB_HButtonClicked, forKey: "playgroundGLBB_HButtonClicked")
+        }
+    }
+    @Published var playgroundGLBB_VButtonClicked: Bool = UserDefaults.standard.bool(forKey: "playgroundGLBB_VButtonClicked"){
+        didSet {
+            UserDefaults.standard.set(playgroundGLBB_VButtonClicked, forKey: "playgroundGLBB_VButtonClicked")
+        }
+    }
+    @Published var exerciseGLBButtonClicked: Bool = UserDefaults.standard.bool(forKey: "exerciseGLBButtonClicked"){
+        didSet {
+            UserDefaults.standard.set(exerciseGLBButtonClicked, forKey: "exerciseGLBButtonClicked")
+        }
+    }
+    @Published var exerciseGLBB_HButtonClicked: Bool = UserDefaults.standard.bool(forKey: "exerciseGLBB_HButtonClicked"){
+        didSet {
+            UserDefaults.standard.set(exerciseGLBB_HButtonClicked, forKey: "exerciseGLBB_HButtonClicked")
+        }
+    }
+    @Published var exerciseGLBB_VButtonClicked: Bool = UserDefaults.standard.bool(forKey: "exerciseGLBB_VButtonClicked"){
+        didSet {
+            UserDefaults.standard.set(exerciseGLBB_VButtonClicked, forKey: "exerciseGLBB_VButtonClicked")
+        }
+    }
     
-    @Published var exerciseGLBButtonClicked: Bool = false
-    @Published var exerciseGLBB_HButtonClicked: Bool = false
-    @Published var exerciseGLBB_VButtonClicked: Bool = false
+//    @Published var playgroundGLBButtonClicked: Bool = false
+//    @Published var playgroundGLBB_HButtonClicked: Bool = false
+//    @Published var playgroundGLBB_VButtonClicked: Bool = false
+    
+//    @Published var exerciseGLBButtonClicked: Bool = false
+//    @Published var exerciseGLBB_HButtonClicked: Bool = false
+//    @Published var exerciseGLBB_VButtonClicked: Bool = false
     
     //Badge ownership
     @Published var isHaveBadge1: Bool {
@@ -273,7 +305,6 @@ class Database: ObservableObject {
             showUnlockedItemPopup = false
         }
     }
-    
     init() {
         self.isHaveBadge1 = UserDefaults.standard.bool(forKey: "isHaveBadge1")
         self.isHaveBadge2 = UserDefaults.standard.bool(forKey: "isHaveBadge2")
@@ -317,7 +348,14 @@ class Database: ObservableObject {
             
             "isFog1": false,
             "isFog2": false,
-            "isFog3": false
+            "isFog3": false,
+            
+            "playgroundGLBButtonClicked": false,
+            "playgroundGLBB_HButtonClicked": false,
+            "playgroundGLBB_VButtonClicked": false,
+            "exerciseGLBButtonClicked": false,
+            "exerciseGLBB_HButtonClicked": false,
+            "exerciseGLBB_VButtonClicked": false
         ])
         
         self.ConstantVelocity_Material = UserDefaults.standard.bool(forKey: "ConstantVelocity_Material")

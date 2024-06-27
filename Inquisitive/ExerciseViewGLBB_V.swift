@@ -26,8 +26,8 @@ struct ExerciseViewGLBB_V: View {
                 Spacer()
                 
                 Image("MateriGLBB_V/sandCoconutMateri")
-                    .resizable()
-                    .scaledToFit()
+                  //  .resizable()
+                    .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width)
                     
                   
@@ -121,7 +121,7 @@ struct ExerciseViewGLBB_V: View {
                 if !isCorrect{
                     HStack{
                         Spacer()
-                        Text("V =")
+                        Text("v =")
                             .font(.system(size: 64).bold())
                             .foregroundColor(Color(hex: "36B7D6"))
                         TextField("", text: $userAnswer)
@@ -145,6 +145,8 @@ struct ExerciseViewGLBB_V: View {
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     .overlay{
                         Button(action: {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            
                             if isCorrect{
                                 //validationMessage = "go to map"
                                 
@@ -152,6 +154,7 @@ struct ExerciseViewGLBB_V: View {
                                 dat.isFog3 = true
                                 dat.isHairStyle5Unlock = true
                                 dat.isFace6Unlock = true
+                                dat.checkForNewlyUnlockedItem()
                                 dat.checkForNewlyUnlockedItem()
                                 
                                 dat.exerciseGLBB_VButtonClicked = true

@@ -1,12 +1,13 @@
 //
-//  ExerciseViewGLBB_H.swift
+//  FinalBossView.swift
 //  Inquisitive
 //
-//  Created by Felicia Himawan on 26/06/24.
+//  Created by Felicia Himawan on 27/06/24.
 //
+
 import SwiftUI
 
-struct ExerciseViewGLBB_H: View {
+struct FinalBossView: View {
     @ObservedObject var dat: Database
     @State private var isClosePressed = false
     @State private var isCorrect = false
@@ -15,21 +16,14 @@ struct ExerciseViewGLBB_H: View {
     
     @State private var userAnswer: String = ""
     @State private var validationMessage: String = ""
-    let correctAnswer = 64
-    
+    let correctAnswer = 4
     
     var body: some View {
         ZStack{
-            //===image mobil===
-            VStack{
-                Spacer()
-                
-                Image("MateriGLBB_H/mobilMateri2")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width)
-                    .padding(.bottom, UIScreen.main.bounds.height * 0.2/10)
-            }
+            
+            Image(isCorrect ? "Boss/BOSSDONE" : "Boss/FINALBOSS")
+                .animation(.easeOut(duration: 1.5))
+               
             
             //===close button===
             if !isCorrect{
@@ -56,18 +50,18 @@ struct ExerciseViewGLBB_H: View {
                 }
             }
             
-            //===Text Exercise===
+            //===Text final boss===
             VStack{
                 HStack {
                     if isCorrect{
-                        Text("You are correct!")
+                        Text("Congrats, you defeated the final boss!")
                             .font(.system(size: 48).bold())
                             .foregroundColor(Color(hex: "388E74"))
                             .stroke(color: Color(hex: "F1FFF9"), width: 5)
                             .shadow(color: Color(hex: "BAE1D0"), radius: 3)
                     }
                     else{
-                        Text("Exercise!")
+                        Text("Final Boss!")
                             .font(.system(size: 48).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .stroke(color: Color(hex: "EBEDF0"), width: 5)
@@ -85,55 +79,59 @@ struct ExerciseViewGLBB_H: View {
                 //===The Question===
                 VStack{
                     if isCorrect{
-                        Text("Let's break down the exercise together!")
+                        Text("Let's break it down together!")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("To tackle this, we begin by noting Tom's initial speed is 0 m/s. Over the first 5 seconds, his speed increases uniformly at 2 m/s². This speed is then maintained for the next 3 seconds, making the total time to become 8 seconds. Using the equation s=1/2at^2, where a is acceleration and t is time, we need to calculate the distance.")
+                        Text("To solve this daring challenge, we employ the trusty second equation of motion. This equation describes how distance, initial speed, acceleration, and time are interconnected. Here’s how it unfolds: s=v(t)*1/2a*t^2.")
+                            .font(.system(size: 32))
+                            .foregroundColor(Color(hex: "374362"))
+                            .padding(.bottom, 5)
+                        Text("In this thrilling scenario, Blackbeard's ship begins its journey at v=10 m/s, aims to cover s=300 meters, and has precisely t=10 seconds to achieve this heroic feat.")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
                         
-                        Text("By using the equation, Tom's car covers an impressive 64 meters during these 8 seconds of constant acceleration")
+                        Text("From there, Captain Blackbeard's ship must accelerate at a brave 4m/s2")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
-                            .padding(.bottom, 5)
+                            .padding(.bottom, 20)
                     }
                     else{
-                        Text("Tom loves driving his car on the open road. One day, he starts driving his car from rest (0 m/s) and accelerates at a constant rate of 2 (m/s²) for 5 seconds. Over the next 3 seconds, he continues to drive with this constant acceleration and wonders how far has he traveled already.")
+                        Text("Captain Blackbeard is sailing the high seas in search of a fearsome sea monster. He spots the monster 300 meters away and wants to reach it as quickly as possible. His ship can start from 10 meters per second (m/s) and accelerate uniformly.")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
-                            .padding(.bottom, 10)
-                        Text("Help Tom figure out the distance his car travelled!")
+                            .padding(.bottom, 5)
+                        Text("To reach the sea monster in 10 seconds, what constant acceleration does Blackbeard need his ship to have?")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                     }
                     
                 }
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 20)
+                .padding(.top, 200)
                 
-                
+               
                 
                 //===textfield===
                 if !isCorrect{
                     HStack{
                         Spacer()
-                        Text("s =")
+                        Text("a =")
                             .font(.system(size: 64).bold())
-                            .foregroundColor(Color(hex: "36B7D6"))
+                            .foregroundColor(Color(hex: "044EA2"))
                         TextField("", text: $userAnswer)
                             .keyboardType(.numberPad)
                             .disableAutocorrection(true)
                             .frame(width: 150)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .font(.system(size: 64))
-                        Text("m")
+                        Text("m/s")
                             .font(.system(size: 64))
                             .foregroundColor(Color(hex: "374362"))
                         Spacer()
                     }
-                    .padding(.bottom, 30)
+                    .padding(.top, 30)
                 }
                 
                 //==submit button===
@@ -146,41 +144,34 @@ struct ExerciseViewGLBB_H: View {
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             
                             if isCorrect{
-                                dat.isHairStyle4Unlock = true
+                                showMessage = false
                                 
-                                // unlock new item + fog (exercise case)
-                                dat.isFog2 = true
-                                dat.isHairStyle4Unlock = true
+                             
+                                //dat.isHairStyle3Unlock = true
+                                dat.isHaveBadge1 = true
                                 dat.checkForNewlyUnlockedItem()
                                 
-                                dat.exerciseGLBB_HButtonClicked = true
-                                dat.ConstantAccelerationVertical_Material = true
                                 self.presentationMode.wrappedValue.dismiss()
                             }
-                            else{
-                                //validasi jawaban
-                                if let userAnswerNumber = Int(userAnswer) {
-                                    if userAnswerNumber == correctAnswer {
-                                        validationMessage = ""
-                                        //showMessage = false
-                                        isCorrect = true
-                                    }
-                                    else if userAnswerNumber != correctAnswer {
-                                        validationMessage = "Incorrect, try again!"
-                                    }
+                            //validasi jawaban
+                            if let userAnswerNumber = Int(userAnswer) {
+                                if userAnswerNumber == correctAnswer {
+                                    isCorrect = true
+                                    validationMessage = ""
                                     
                                 }
                                 else {
-                                    validationMessage = "Invalid input, please enter a number"
+                                    validationMessage = "Incorrect, try again!"
                                 }
-                                showMessage = true
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    showMessage = false
-                                }
-                                
+                            }
+                            else {
+                                validationMessage = "Invalid input, please enter a number"
                             }
                             
-                           
+                            showMessage = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                showMessage = false
+                            }
                             
                             
                         }) {
@@ -190,6 +181,7 @@ struct ExerciseViewGLBB_H: View {
                         }
                     }
                     .padding(.bottom, 4)
+                    
                 
                 if showMessage{
                     Text(validationMessage)
@@ -198,16 +190,17 @@ struct ExerciseViewGLBB_H: View {
                         .transition(.opacity)
                 }
                 
-                
                 Spacer()
+               
             }
+            .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height)
             
-            .frame(width: UIScreen.main.bounds.width - 332, height: UIScreen.main.bounds.height - 400)
+            
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    ExerciseViewGLBB_H(dat: Database())
+    FinalBossView(dat: Database())
 }

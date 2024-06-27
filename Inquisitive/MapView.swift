@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct MapView: View {
+    @State private var moveLeft1 = false
+    @State private var moveLeft2 = false
+    @State private var moveLeft3 = false
+    @State private var isVisible = true
+  
     @StateObject private var dat = Database()
     init(){
         UINavigationBar.setAnimationsEnabled(false)
@@ -26,7 +31,8 @@ struct MapView: View {
                     VStack {
                         Image("Map/train")
                             .resizable()
-                        .frame(width: 788, height: 170)
+                            .frame(width: 788, height: 170)
+                            .shadow(color:.white, radius: 12)
                         HStack{
                             Spacer()
                             Text("Constant Velocity")
@@ -80,6 +86,7 @@ struct MapView: View {
                 NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
                     VStack {
                         Image("Map/car")
+                            .shadow(color:.white, radius: 12)
                         HStack{
                             Text("Constant\nAcceleration 1")
                                 .font(.system(size: 24).bold())
@@ -91,7 +98,7 @@ struct MapView: View {
                 .padding(.trailing, UIScreen.main.bounds.width/4)
                 .disabled(dat.ConstantAccelerationHorizontal_Material ? false : true)
                 
-                    //GLBB Horizontal playground button
+                //GLBB Horizontal playground button
                 NavigationLink(destination: MaterialViewGLBB_H(dat:dat)){
                     VStack {
                         ZStack {
@@ -109,7 +116,7 @@ struct MapView: View {
                 .offset(x:0, y:-UIScreen.main.bounds.height*1.2/10)
                 .disabled(dat.ConstantAccelerationHorizontal_Playground ? false : true)
                 
-                    //GLBB Horizontal exercise button
+                //GLBB Horizontal exercise button
                 NavigationLink(destination: ExerciseViewGLBB_H(dat:dat)){
                     VStack {
                         ZStack {
@@ -131,6 +138,7 @@ struct MapView: View {
                 NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
                     VStack {
                         Image("Map/coconut")
+                            .shadow(color: Color(hex: "D46B29"), radius: 12)
                         HStack{
                             Text("Constant\nAccelaration 2")
                                 .font(.system(size: 24).bold())
@@ -142,7 +150,7 @@ struct MapView: View {
                 .padding(.leading, UIScreen.main.bounds.width/2)
                 .disabled(dat.ConstantAccelerationVertical_Material ? false : true)
                 
-                    //GLBB Vertical playground button
+                //GLBB Vertical playground button
                 NavigationLink(destination: MaterialViewGLBB_V(dat:dat)){
                     VStack {
                         ZStack {
@@ -160,7 +168,7 @@ struct MapView: View {
                 .offset(x:UIScreen.main.bounds.width*9/25, y:-UIScreen.main.bounds.height/18)
                 .disabled(dat.ConstantAccelerationVertical_Playground ? false : true)
                 
-                    //GLBB Vertical exercise button
+                //GLBB Vertical exercise button
                 NavigationLink(destination: ExerciseViewGLBB_V(dat:dat)){
                     VStack {
                         ZStack {
@@ -180,7 +188,7 @@ struct MapView: View {
                 
                 // Just ship
                 NavigationLink(destination: MaterialViewGLB(dat: dat)){
-//                    Image("Map/ship")
+                    //                    Image("Map/ship")
                     Button(action:{
                         withAnimation{
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -190,6 +198,7 @@ struct MapView: View {
                         }
                     }){
                         Image("Map/ship")
+                          
                     }
                 }
                 .padding(.top, UIScreen.main.bounds.height*4.3/10)
@@ -198,9 +207,10 @@ struct MapView: View {
                 
                 // Monster
                 if dat.Kinematics_Challenge{
-                    NavigationLink(destination: MaterialViewGLB(dat: dat)){
+                    NavigationLink(destination: BossTransition(dat: dat)){
                         ZStack {
                             Image("Map/seaMonster")
+                                .shadow(color: .white, radius: 12)
                             Image("Map/monsterWarning")
                                 .padding(.trailing, 240)
                                 .padding(.top, 40)
@@ -234,6 +244,86 @@ struct MapView: View {
                     }
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                
+                //===AWAN 1===
+                if !dat.isFog1 {
+                    ZStack{
+                        Image("Map/Cloud")
+                            .offset(x: moveLeft1 ? -30 : 0)
+                            .animation(
+                                Animation.linear(duration: 4)
+                                    .repeatForever(autoreverses: true),
+                                value: moveLeft1
+                            )
+                            .onAppear {
+                                moveLeft1.toggle()
+                            }
+                        
+                        Image("Map/lockAwan")
+                        
+                    }
+                    .offset(x:-UIScreen.main.bounds.width/16, y:-UIScreen.main.bounds.height/6)
+//                   .opacity(isVisible ? 1 : 0) // Control the opacity
+                    .animation(.easeOut(duration: 1), value: isVisible) // Apply the fade-out animation
+                    .onAppear {
+                        isVisible = true
+                        if dat.isFog1{
+                            // Delay the start of the fade-out animation
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+                                isVisible = false // Start fade out after delay
+                            }
+                        }
+                    }
+                }
+                
+                
+                
+                //===AWAN 2===
+                if !dat.isFog2{
+                    ZStack{
+                        Image("Map/Cloud")
+                            .offset(x: moveLeft2 ? -20 : 0)
+                            .animation(
+                                Animation.linear(duration: 4)
+                                    .repeatForever(autoreverses: true),
+                                value: moveLeft2
+                            )
+                            .onAppear {
+                                moveLeft2.toggle()
+                            }
+                        
+                        Image("Map/lockAwan")
+                        
+                    }
+                    .offset(x:UIScreen.main.bounds.width*9/23, y:-UIScreen.main.bounds.height/9)
+                }
+               
+                
+                //===AWAN 3===
+                if !dat.isFog3{
+                    ZStack{
+                        Image("Map/Cloud")
+                            .resizable()
+                            .scaleEffect(0.5)
+                            .offset(x: moveLeft3 ? -30 : 0)
+                            .animation(
+                                Animation.linear(duration: 4)
+                                    .repeatForever(autoreverses: true),
+                                value: moveLeft3
+                            )
+                            .onAppear {
+                                moveLeft3.toggle()
+                            }
+                        
+                        Image("Map/lockAwan")
+
+                    }
+                    .offset(x:UIScreen.main.bounds.width*7/25, y:UIScreen.main.bounds.height/4)
+                }
+               
+                
+                
                 if dat.isProfilePressed == true{
                     ZStack {
                         Color.black.opacity(0.4)
@@ -251,6 +341,7 @@ struct MapView: View {
                         .onTapGesture {
                             dat.unlockedItemName = nil
                             dat.showUnlockedItemPopup = false
+                           
                         }
                     if let itemName = dat.unlockedItemName {
                         GetItemView(itemName: itemName)
@@ -262,11 +353,11 @@ struct MapView: View {
             }
             
         }.frame(maxWidth: 1366*UIScreen.main.bounds.width, maxHeight: 1024*UIScreen.main.bounds.height)
-        .animation(.easeInOut, value: dat.showUnlockedItemPopup)
-        .navigationViewStyle(.stack)
-        .navigationBarHidden(true) // Hide the navigation bar entirely
-        .navigationBarBackButtonHidden(true) // Hide the back button specifically
-        .edgesIgnoringSafeArea(.all) // Ignore safe area to take full screen
+            .animation(.easeInOut, value: dat.showUnlockedItemPopup)
+            .navigationViewStyle(.stack)
+            .navigationBarHidden(true) // Hide the navigation bar entirely
+            .navigationBarBackButtonHidden(true) // Hide the back button specifically
+            .edgesIgnoringSafeArea(.all) // Ignore safe area to take full screen
         
     }
     

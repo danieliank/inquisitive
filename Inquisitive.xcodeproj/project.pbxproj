@@ -12,6 +12,8 @@
 		3D8283412C247B250097626F /* MOBIL.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D8283402C247B250097626F /* MOBIL.json */; };
 		3D8283452C252B3E0097626F /* KERETABERPINDAH.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D8283442C252B3E0097626F /* KERETABERPINDAH.json */; };
 		3D8283472C2872C60097626F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8283462C2872C60097626F /* MapView.swift */; };
+		3DB7973C2C2D83BB00E4B043 /* BossTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7973B2C2D83BB00E4B043 /* BossTransition.swift */; };
+		3DB7973E2C2D848200E4B043 /* FinalBossView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7973D2C2D848200E4B043 /* FinalBossView.swift */; };
 		3DF8A9E12C2BBB54009D7BE9 /* ExerciseViewGLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */; };
 		3DF8A9E52C2BBBBB009D7BE9 /* StrokeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */; };
 		3DF8A9E72C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */; };
@@ -49,6 +51,8 @@
 		3D8283402C247B250097626F /* MOBIL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MOBIL.json; sourceTree = "<group>"; };
 		3D8283442C252B3E0097626F /* KERETABERPINDAH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KERETABERPINDAH.json; sourceTree = "<group>"; };
 		3D8283462C2872C60097626F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3DB7973B2C2D83BB00E4B043 /* BossTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossTransition.swift; sourceTree = "<group>"; };
+		3DB7973D2C2D848200E4B043 /* FinalBossView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalBossView.swift; sourceTree = "<group>"; };
 		3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLB.swift; sourceTree = "<group>"; };
 		3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeModifier.swift; sourceTree = "<group>"; };
 		3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLBB_H.swift; sourceTree = "<group>"; };
@@ -115,8 +119,10 @@
 				3D8283442C252B3E0097626F /* KERETABERPINDAH.json */,
 				3D8283402C247B250097626F /* MOBIL.json */,
 				3DF8A9E82C2BBE89009D7BE9 /* kapal.json */,
-				3D8283462C2872C60097626F /* MapView.swift */,
 				BFFCEA842C22F06700C1F888 /* LottieView.swift */,
+				3D8283462C2872C60097626F /* MapView.swift */,
+				3DB7973B2C2D83BB00E4B043 /* BossTransition.swift */,
+				3DB7973D2C2D848200E4B043 /* FinalBossView.swift */,
 				BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */,
 				3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */,
 				BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */,
@@ -259,10 +265,12 @@
 				6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */,
 				BFEC06172C2A99B700A9532E /* NewProfileView.swift in Sources */,
 				BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */,
+				3DB7973E2C2D848200E4B043 /* FinalBossView.swift in Sources */,
 				3D8283362C2407920097626F /* MaterialViewGLBB_V.swift in Sources */,
 				6A2069BE2C22A2930081FBCF /* GameScene.swift in Sources */,
 				3DF8A9E72C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift in Sources */,
 				BFEC06192C2AC1DF00A9532E /* JustProfileView.swift in Sources */,
+				3DB7973C2C2D83BB00E4B043 /* BossTransition.swift in Sources */,
 				6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */,
 				6A9954E72C29232900B7C865 /* SpriteKitView.swift in Sources */,
 				6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */,
@@ -428,7 +436,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 84CY6V3X8V;
+				DEVELOPMENT_TEAM = 3L9D9QLCDG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inquisitive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -462,7 +470,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 84CY6V3X8V;
+				DEVELOPMENT_TEAM = 3L9D9QLCDG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inquisitive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
