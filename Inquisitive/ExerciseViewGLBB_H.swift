@@ -89,7 +89,7 @@ struct ExerciseViewGLBB_H: View {
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("To tackle this, we begin by noting Tom's initial speed is 0 m/s. Over the first 5 seconds, his speed increases uniformly at 2 m/s². Using the equation s(t)=v(0)t+1/2at^2, where v(0) is first velocity, t is time, and a is acceleration, to calculate the first 5 seconds distance [s(5)]. This speed is then maintained for the next 3 seconds, then we need to use v(t)=v(0)+at, to calculate 5 seconds velocity [v(5)]. Then we implement GLB by using from v(5) to know the distance 5 seconds until 8 seconds by using equation s=v*∆t, where the ∆t is time from s(5) to s(8). After that we need to add s(5) + s(5,8) to calculate total distance")
+                        Text("To tackle this, we begin by noting Tom's initial speed is 0 m/s. Over the first 5 seconds, his speed increases uniformly at 2 m/s². Using the equation s(t)=v(0)t+½at², where v(0) is first velocity, t is time, and a is acceleration, to calculate the first 5 seconds distance [s(5)]. This speed is then maintained for the next 3 seconds, then we need to use v(t)=v(0)+at, to calculate 5 seconds velocity [v(5)]. Then we implement GLB by using from v(5) to know the distance 5 seconds until 8 seconds by using equation s=v*∆t, where the ∆t is time from s(5) to s(8). After that we need to add s(5) + s(5,8) to calculate total distance")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)

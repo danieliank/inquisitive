@@ -80,7 +80,7 @@ struct FinalBossView: View {
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("To solve the problem, we use the equivalence s(A)=s(B), where s(A) represents the monster and s(B)the ship. This compares the monster’s constant velocity to the ship’s constant acceleration, equating them as: **v(A).t = V(B)t + 1/2 at² - (s-c)**")
+                        Text("To solve the problem, we use the equivalence s(A)=s(B), where s(A) represents the monster and s(B)the ship. This compares the monster’s constant velocity to the ship’s constant acceleration, equating them as: **v(A).t = v(B)t + ½ at² - (s-c)**")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)

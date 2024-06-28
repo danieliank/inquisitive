@@ -91,7 +91,7 @@ struct ExerciseViewGLBB_V: View {
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
-                        Text("In this scenario, the coconut starts its fall from rest, meaning its initial velocity is 0 m/s and the acceleration due to gravity we use is 10 m/s^2. To find the coconut's final velocity just before hitting the ground, we utilize the equation for constant acceleration in vertical motion which is v(t)=v(0)+g*t")
+                        Text("In this scenario, the coconut starts its fall from rest, meaning its initial velocity is 0 m/s and the acceleration due to gravity we use is 10 m/s². To find the coconut's final velocity just before hitting the ground, we utilize the equation for constant acceleration in vertical motion which is v(t)=v(0)+g*t")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 5)
@@ -102,7 +102,7 @@ struct ExerciseViewGLBB_V: View {
                             .padding(.bottom, 5)
                     }
                     else{
-                        Text("Imagine a ripe coconut hanging at the top of a towering palm tree, basking in the warm tropical breeze. Suddenly, it detaches from its stem and begins its free fall towards the sandy ground below. The coconut takes 5 seconds to descend to the ground. Assume constant acceleration due to gravity and let's round off the value (g = 10 m/s^2).")
+                        Text("Imagine a ripe coconut hanging at the top of a towering palm tree, basking in the warm tropical breeze. Suddenly, it detaches from its stem and begins its free fall towards the sandy ground below. The coconut takes 5 seconds to descend to the ground. Assume constant acceleration due to gravity and let's round off the value (g = 10 m/s²).")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "374362"))
                             .padding(.bottom, 10)

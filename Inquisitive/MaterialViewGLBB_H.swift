@@ -297,16 +297,16 @@ struct MaterialViewGLBB_H: View {
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
                         +
-                        Text("1/2")
+                        Text("½")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex:"36B7D6"))
                             .underline(true, color:Color(hex:"36B7D6"))
                         +
-                        Text(" at^2")
+                        Text(" at²")
                             .font(.system(size: 32).bold())
                             .foregroundColor(Color(hex:"444D69"))
                         +
-                        Text(" accounts for the additional distance traveled as a result of constant acceleration **( a )** over time **( t )**. Acceleration causes the car's velocity to change continuously, and **at^2** specifically measures how much the velocity increases over time squared.")
+                        Text(" accounts for the additional distance traveled as a result of constant acceleration **( a )** over time **( t )**. Acceleration causes the car's velocity to change continuously, and **at²** specifically measures how much the velocity increases over time squared.")
                             .font(.system(size: 32))
                             .foregroundColor(Color(hex: "444D69"))
                     case 9:
@@ -408,7 +408,7 @@ struct MaterialViewGLBB_H: View {
                                         // Jump to case 7 (V(0)*t)
                                         currentCase = 7
                                     }) {
-                                        Text("V(0)*t")
+                                        Text("v(0)*t")
                                             .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"FABD20"))
                                     }
@@ -428,7 +428,7 @@ struct MaterialViewGLBB_H: View {
                                         // Jump to case 8 (1/2 a*t^2)
                                         currentCase = 8
                                     }) {
-                                        Text("1/2 a*t^2")
+                                        Text("½ a*t²")
                                             .font(.system(size: 64).bold())
                                             .foregroundColor(Color(hex:"36B7D6"))
                                     }
@@ -485,7 +485,7 @@ struct MaterialViewGLBB_H: View {
                             
                             // v(0)*t button
                             if currentCase == 7{
-                                Text("V(0)*t")
+                                Text("v(0)*t")
                                     .font(.system(size: 48).bold())
                                     .foregroundColor(Color(hex: "BA1A1A"))
                                     .padding(.horizontal, 10)
@@ -500,7 +500,7 @@ struct MaterialViewGLBB_H: View {
                                             // Jump to case 7
                                             currentCase = 7
                                         }) {
-                                            Text("V(0)*t")
+                                            Text("v(0)*t")
                                                 .font(.system(size: 48).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
@@ -515,7 +515,7 @@ struct MaterialViewGLBB_H: View {
                             
                             // 1/2 a*t^2 button
                             if currentCase == 8{
-                                Text("1/2 a*t^2")
+                                Text("½ a*t²")
                                     .font(.system(size: 48).bold())
                                     .foregroundColor(Color(hex: "BA1A1A"))
                                     .padding(.horizontal, 10)
@@ -530,7 +530,7 @@ struct MaterialViewGLBB_H: View {
                                             // Jump to case 8
                                             currentCase = 8
                                         }) {
-                                            Text("1/2 a*t^2")
+                                            Text("½ a*t²")
                                                 .font(.system(size: 48).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                         }
