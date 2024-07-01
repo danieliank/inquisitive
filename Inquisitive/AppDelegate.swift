@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             // Create the SwiftUI view that provides the window contents.
-        let contentView = SpriteKitView(sceneName: "CoconutGameScene", sceneClass: CoconutGameScene(size: CGSize(width: 1400, height: 1100))).frame(width: 1400, height: 1100)
+//        let contentView = SpriteKitView(sceneName: "CoconutGameScene", sceneClass: CoconutGameScene(size: CGSize(width: 1400, height: 1100))).frame(width: 1400, height: 1100)
         // TODO: remove all un-needed comments
-//            let contentView = MapView()
+            let contentView = MapView()
 
             // Use a UIHostingController as window root view controller.
             let window = UIWindow(frame: UIScreen.main.bounds)

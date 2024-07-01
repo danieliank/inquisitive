@@ -142,6 +142,10 @@ struct MaterialViewGLB: View {
                             dat.ConstantVelocity_Exercise = true
                             dat.ConstantVelocity_Playground = true
                             
+                            // unlock new item
+                            dat.isFace3Unlock = true
+                            dat.checkForNewlyUnlockedItem()
+                            
                             self.presentationMode.wrappedValue.dismiss()
                             
                         }) {

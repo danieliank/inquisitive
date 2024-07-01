@@ -12,6 +12,13 @@
 		3D8283412C247B250097626F /* MOBIL.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D8283402C247B250097626F /* MOBIL.json */; };
 		3D8283452C252B3E0097626F /* KERETABERPINDAH.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D8283442C252B3E0097626F /* KERETABERPINDAH.json */; };
 		3D8283472C2872C60097626F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8283462C2872C60097626F /* MapView.swift */; };
+		3DB7973C2C2D83BB00E4B043 /* BossTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7973B2C2D83BB00E4B043 /* BossTransition.swift */; };
+		3DB7973E2C2D848200E4B043 /* FinalBossView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7973D2C2D848200E4B043 /* FinalBossView.swift */; };
+		3DF8A9E12C2BBB54009D7BE9 /* ExerciseViewGLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */; };
+		3DF8A9E52C2BBBBB009D7BE9 /* StrokeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */; };
+		3DF8A9E72C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */; };
+		3DF8A9E92C2BBE89009D7BE9 /* kapal.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E82C2BBE89009D7BE9 /* kapal.json */; };
+		3DF8A9EB2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */; };
 		6A2069B82C22A2930081FBCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2069B72C22A2930081FBCF /* AppDelegate.swift */; };
 		6A2069BA2C22A2930081FBCF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069B92C22A2930081FBCF /* GameScene.sks */; };
 		6A2069BC2C22A2930081FBCF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069BB2C22A2930081FBCF /* Actions.sks */; };
@@ -27,6 +34,7 @@
 		6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */; };
 		6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4A8892C292EE3006D2000 /* SaveDataService.swift */; };
 		BF0A55372C2BB50D00DAD2DC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BF0A55362C2BB50D00DAD2DC /* Lottie */; };
+		BFA2DBB42C2BF8360096262B /* GetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DBB32C2BF8360096262B /* GetItemView.swift */; };
 		BFB25BDE2C23CCF60066D6BE /* MaterialViewGLBB_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */; };
 		BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB25BDF2C23CD350066D6BE /* ColorExt.swift */; };
 		BFEC06152C2A67DD00A9532E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC06142C2A67DD00A9532E /* Database.swift */; };
@@ -43,6 +51,13 @@
 		3D8283402C247B250097626F /* MOBIL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MOBIL.json; sourceTree = "<group>"; };
 		3D8283442C252B3E0097626F /* KERETABERPINDAH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KERETABERPINDAH.json; sourceTree = "<group>"; };
 		3D8283462C2872C60097626F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3DB7973B2C2D83BB00E4B043 /* BossTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossTransition.swift; sourceTree = "<group>"; };
+		3DB7973D2C2D848200E4B043 /* FinalBossView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalBossView.swift; sourceTree = "<group>"; };
+		3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLB.swift; sourceTree = "<group>"; };
+		3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeModifier.swift; sourceTree = "<group>"; };
+		3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLBB_H.swift; sourceTree = "<group>"; };
+		3DF8A9E82C2BBE89009D7BE9 /* kapal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kapal.json; sourceTree = "<group>"; };
+		3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLBB_V.swift; sourceTree = "<group>"; };
 		6A2069B42C22A2930081FBCF /* Inquisitive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inquisitive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2069B72C22A2930081FBCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A2069B92C22A2930081FBCF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -58,6 +73,7 @@
 		6AF4A8852C292EC0006D2000 /* PlaygroundConstantVelocity.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaygroundConstantVelocity.sks; sourceTree = "<group>"; };
 		6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundConstantVelocity.swift; sourceTree = "<group>"; };
 		6AF4A8892C292EE3006D2000 /* SaveDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveDataService.swift; sourceTree = "<group>"; };
+		BFA2DBB32C2BF8360096262B /* GetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetItemView.swift; sourceTree = "<group>"; };
 		BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLBB_H.swift; sourceTree = "<group>"; };
 		BFB25BDF2C23CD350066D6BE /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		BFEC06142C2A67DD00A9532E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -102,14 +118,22 @@
 				3D82833E2C24776D0097626F /* KERETA.json */,
 				3D8283442C252B3E0097626F /* KERETABERPINDAH.json */,
 				3D8283402C247B250097626F /* MOBIL.json */,
-				3D8283462C2872C60097626F /* MapView.swift */,
+				3DF8A9E82C2BBE89009D7BE9 /* kapal.json */,
 				BFFCEA842C22F06700C1F888 /* LottieView.swift */,
+				3D8283462C2872C60097626F /* MapView.swift */,
 				BFFCEA862C22F09300C1F888 /* MaterialViewGLB.swift */,
+				3DF8A9E02C2BBB54009D7BE9 /* ExerciseViewGLB.swift */,
 				BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */,
+				3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */,
 				3D8283352C2407920097626F /* MaterialViewGLBB_V.swift */,
+				3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */,
+				3DB7973B2C2D83BB00E4B043 /* BossTransition.swift */,
+				3DB7973D2C2D848200E4B043 /* FinalBossView.swift */,
+				3DF8A9E42C2BBBBB009D7BE9 /* StrokeModifier.swift */,
 				6AF4A8832C292D67006D2000 /* Playground */,
 				BFEC06162C2A99B700A9532E /* NewProfileView.swift */,
 				BFEC06182C2AC1DF00A9532E /* JustProfileView.swift */,
+				BFA2DBB32C2BF8360096262B /* GetItemView.swift */,
 				BFEC06142C2A67DD00A9532E /* Database.swift */,
 				BFB25BDF2C23CD350066D6BE /* ColorExt.swift */,
 				6A2069B72C22A2930081FBCF /* AppDelegate.swift */,
@@ -217,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF8A9E92C2BBE89009D7BE9 /* kapal.json in Resources */,
 				6A2069BA2C22A2930081FBCF /* GameScene.sks in Resources */,
 				6A2069C32C22A2930081FBCF /* Base in Resources */,
 				6A2069C52C22A2940081FBCF /* Assets.xcassets in Resources */,
@@ -240,9 +265,12 @@
 				6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */,
 				BFEC06172C2A99B700A9532E /* NewProfileView.swift in Sources */,
 				BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */,
+				3DB7973E2C2D848200E4B043 /* FinalBossView.swift in Sources */,
 				3D8283362C2407920097626F /* MaterialViewGLBB_V.swift in Sources */,
 				6A2069BE2C22A2930081FBCF /* GameScene.swift in Sources */,
+				3DF8A9E72C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift in Sources */,
 				BFEC06192C2AC1DF00A9532E /* JustProfileView.swift in Sources */,
+				3DB7973C2C2D83BB00E4B043 /* BossTransition.swift in Sources */,
 				6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */,
 				6A9954E72C29232900B7C865 /* SpriteKitView.swift in Sources */,
 				6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */,
@@ -251,7 +279,11 @@
 				BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */,
 				BFB25BDE2C23CCF60066D6BE /* MaterialViewGLBB_H.swift in Sources */,
 				3D8283472C2872C60097626F /* MapView.swift in Sources */,
+				3DF8A9E12C2BBB54009D7BE9 /* ExerciseViewGLB.swift in Sources */,
 				BFEC06152C2A67DD00A9532E /* Database.swift in Sources */,
+				3DF8A9E52C2BBBBB009D7BE9 /* StrokeModifier.swift in Sources */,
+				3DF8A9EB2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift in Sources */,
+				BFA2DBB42C2BF8360096262B /* GetItemView.swift in Sources */,
 				BFB25BE02C23CD350066D6BE /* ColorExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,15 +436,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 84CY6V3X8V;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inquisitive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -421,9 +453,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.learn.Inquisitive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -434,15 +470,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 84CY6V3X8V;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inquisitive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,9 +487,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.learn.Inquisitive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

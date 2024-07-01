@@ -15,19 +15,11 @@ struct LottieView: UIViewRepresentable {
     var name: String
     var loopMode: LottieLoopMode = .playOnce
     var animationView = LottieAnimationView()
+    var completion: (() -> Void)?
 
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
 
         let view = UIView(frame: .zero)
-
-       // animationView.animation = LottieAnimation.named(name)
-        
-//        if let animation = LottieAnimation.named(name) {
-//                   animationView.animation = animation
-//                   print("Animation \(name) loaded successfully.")
-//               } else {
-//                   print("Failed to load animation \(name).")
-//               }
         
         if let path = Bundle.main.path(forResource: name, ofType: "json") {
                     print("Found animation file at path: \(path)")
@@ -52,7 +44,11 @@ struct LottieView: UIViewRepresentable {
 
         animationView.loopMode = loopMode
 
-        animationView.play()
+        animationView.play { (finished) in
+                    if finished {
+                        completion?() // Trigger the completion callback when animation finishes
+                    }
+                }
 
         animationView.translatesAutoresizingMaskIntoConstraints = false
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct NewProfileView: View {
     @ObservedObject var dat: Database
     @State private var isEditingName: Bool = false
-    let backgroundColors = ["3E8A74", "3E668A", "B13A26", "786C60"]
+    let backgroundColors = ["3E8A74", "3E668A", "B13A26", "F6ECAC", "786C60"]
     let faces = ["Map/Face1", "Map/Face2", "Map/Face3", "Map/Face4", "Map/Face5", "Map/Face6"]
     let hairstyles = ["Map/none", "Map/HairStyle1", "Map/HairStyle2", "Map/HairStyle3", "Map/HairStyle4", "Map/HairStyle5"]
     
@@ -65,15 +65,15 @@ struct NewProfileView: View {
                         ZStack {
                             Image("Map/Shelf2")
                             HStack(spacing:12){
-                                Image(dat.isHaveBadge1 ?"Map/Badge7":"Map/Badge1Lock")
+                                Image(dat.isHaveBadge7 ?"Map/Badge1":"Map/Badge1Lock")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5, x:2, y:3)
-                                Image(dat.isHaveBadge2 ?"Map/Badge8":"Map/Badge2Lock")
+                                Image(dat.isHaveBadge8 ?"Map/Badge2":"Map/Badge2Lock")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5, x:2, y:3)
-                                Image(dat.isHaveBadge3 ?"Map/Badge9":"Map/Badge3Lock")
+                                Image(dat.isHaveBadge9 ?"Map/Badge3":"Map/Badge3Lock")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5, x:2, y:3)
@@ -84,15 +84,15 @@ struct NewProfileView: View {
                         ZStack {
                             Image("Map/Shelf3")
                             HStack(spacing:12){
-                                Image(dat.isHaveBadge4 ?"Map/Badge10":"Map/Badge4Lock")
+                                Image(dat.isHaveBadge10 ?"Map/Badge4":"Map/Badge4Lock")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5, x:2, y:3)
-                                Image(dat.isHaveBadge5 ?"Map/Badge11":"Map/Badge5Lock")
+                                Image(dat.isHaveBadge11 ?"Map/Badge5":"Map/Badge5Lock")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5, x:2, y:3)
-                                Image(dat.isHaveBadge6 ?"Map/Badge12":"Map/Badge6Lock")
+                                Image(dat.isHaveBadge12 ?"Map/Badge6":"Map/Badge6Lock")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5, x:2, y:3)
@@ -114,7 +114,7 @@ struct NewProfileView: View {
                                     Circle()
                                         .foregroundColor(Color(hex: color))
                                         .onTapGesture {
-                                            dat.selectedBackgroundColor = Color(hex: color)
+                                            dat.selectedBackgroundColor = color
                                         }
                                 }
                             }

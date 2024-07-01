@@ -133,6 +133,11 @@ struct MaterialViewGLBB_V: View {
                             // Modify map bool data
                             dat.ConstantAccelerationVertical_Exercise = true
                             dat.ConstantAccelerationVertical_Playground = true
+                            
+                            // unlock new item
+                            dat.isFace5Unlock = true
+                            dat.checkForNewlyUnlockedItem()
+                            
                             self.presentationMode.wrappedValue.dismiss()
                             
                         }) {
@@ -183,7 +188,7 @@ struct MaterialViewGLBB_V: View {
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                                 .padding(.horizontal, 5)
-                            Text(" 9.8 m/s^2")
+                            Text(" 9.8 m/s²")
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                                 .padding(.horizontal, 5)
@@ -264,14 +269,14 @@ struct MaterialViewGLBB_V: View {
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                                 .padding(.horizontal, 5)
-                            Text("V(0)*t")
+                            Text("v(0)*t")
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex:"FABD20"))
                             Text("+")
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                                 .padding(.horizontal, 5)
-                            Text("1/2 g*t^2")
+                            Text("½ g*t²")
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex:"36B7D6"))
                         }
@@ -350,7 +355,7 @@ struct MaterialViewGLBB_V: View {
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex: "444D69"))
                                 .padding(.horizontal, 5)
-                            Text("V(0)*t")
+                            Text("v(0)*t")
                                 .font(.system(size: 64).bold())
                                 .foregroundColor(Color(hex:"444D69"))
                                 .padding(.horizontal, 5)
@@ -367,7 +372,7 @@ struct MaterialViewGLBB_V: View {
                                         Button(action: {
                                             currentCase = 4
                                         }) {
-                                            Text("1/2")
+                                            Text("½")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"444D69"))
                                             +
@@ -375,7 +380,7 @@ struct MaterialViewGLBB_V: View {
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                             +
-                                            Text("*t^2")
+                                            Text("*t²")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"444D69"))
                                         }
@@ -384,7 +389,7 @@ struct MaterialViewGLBB_V: View {
                                         Button(action: {
                                             currentCase = 3
                                         }) {
-                                            Text("1/2")
+                                            Text("½")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"444D69"))
                                             +
@@ -392,7 +397,7 @@ struct MaterialViewGLBB_V: View {
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"36B7D6"))
                                             +
-                                            Text("*t^2")
+                                            Text("*t²")
                                                 .font(.system(size: 64).bold())
                                                 .foregroundColor(Color(hex:"444D69"))
                                         }
