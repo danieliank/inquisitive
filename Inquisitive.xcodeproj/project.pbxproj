@@ -19,6 +19,7 @@
 		3DF8A9E72C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */; };
 		3DF8A9E92C2BBE89009D7BE9 /* kapal.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DF8A9E82C2BBE89009D7BE9 /* kapal.json */; };
 		3DF8A9EB2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */; };
+		6A04A0042C32F424005EB231 /* SpriteKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A04A0032C32F424005EB231 /* SpriteKitView.swift */; };
 		6A2069B82C22A2930081FBCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2069B72C22A2930081FBCF /* AppDelegate.swift */; };
 		6A2069BA2C22A2930081FBCF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069B92C22A2930081FBCF /* GameScene.sks */; };
 		6A2069BC2C22A2930081FBCF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069BB2C22A2930081FBCF /* Actions.sks */; };
@@ -27,11 +28,12 @@
 		6A2069C32C22A2930081FBCF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069C22C22A2930081FBCF /* Base */; };
 		6A2069C52C22A2940081FBCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069C42C22A2940081FBCF /* Assets.xcassets */; };
 		6A2069C82C22A2940081FBCF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6A2069C72C22A2940081FBCF /* Base */; };
+		6A25713A2C32E93B009019D3 /* PlaygroundConstantVelocity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2571382C32E93B009019D3 /* PlaygroundConstantVelocity.swift */; };
+		6A25713B2C32E93B009019D3 /* PlaygroundConstantVelocity.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A2571392C32E93B009019D3 /* PlaygroundConstantVelocity.sks */; };
+		6A2571402C32EA1A009019D3 /* PlaygroundHorizontalConstantAcceleration.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A25713E2C32EA19009019D3 /* PlaygroundHorizontalConstantAcceleration.sks */; };
+		6A2571412C32EA1A009019D3 /* PlaygroundHorizontalConstantAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A25713F2C32EA19009019D3 /* PlaygroundHorizontalConstantAcceleration.swift */; };
 		6A9954E32C2920B900B7C865 /* CoconutGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A9954E02C2920B900B7C865 /* CoconutGameScene.sks */; };
 		6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9954E22C2920B900B7C865 /* CoconutGameScene.swift */; };
-		6A9954E72C29232900B7C865 /* SpriteKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9954E62C29232900B7C865 /* SpriteKitView.swift */; };
-		6AF4A8872C292EC0006D2000 /* PlaygroundConstantVelocity.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4A8852C292EC0006D2000 /* PlaygroundConstantVelocity.sks */; };
-		6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */; };
 		6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF4A8892C292EE3006D2000 /* SaveDataService.swift */; };
 		BF0A55372C2BB50D00DAD2DC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BF0A55362C2BB50D00DAD2DC /* Lottie */; };
 		BFA2DBB42C2BF8360096262B /* GetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DBB32C2BF8360096262B /* GetItemView.swift */; };
@@ -58,6 +60,7 @@
 		3DF8A9E62C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLBB_H.swift; sourceTree = "<group>"; };
 		3DF8A9E82C2BBE89009D7BE9 /* kapal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kapal.json; sourceTree = "<group>"; };
 		3DF8A9EA2C2BCD41009D7BE9 /* ExerciseViewGLBB_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewGLBB_V.swift; sourceTree = "<group>"; };
+		6A04A0032C32F424005EB231 /* SpriteKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteKitView.swift; sourceTree = "<group>"; };
 		6A2069B42C22A2930081FBCF /* Inquisitive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inquisitive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2069B72C22A2930081FBCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A2069B92C22A2930081FBCF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,11 +70,12 @@
 		6A2069C22C22A2930081FBCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A2069C42C22A2940081FBCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A2069C72C22A2940081FBCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6A2571382C32E93B009019D3 /* PlaygroundConstantVelocity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundConstantVelocity.swift; sourceTree = "<group>"; };
+		6A2571392C32E93B009019D3 /* PlaygroundConstantVelocity.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaygroundConstantVelocity.sks; sourceTree = "<group>"; };
+		6A25713E2C32EA19009019D3 /* PlaygroundHorizontalConstantAcceleration.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaygroundHorizontalConstantAcceleration.sks; sourceTree = "<group>"; };
+		6A25713F2C32EA19009019D3 /* PlaygroundHorizontalConstantAcceleration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundHorizontalConstantAcceleration.swift; sourceTree = "<group>"; };
 		6A9954E02C2920B900B7C865 /* CoconutGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoconutGameScene.sks; sourceTree = "<group>"; };
 		6A9954E22C2920B900B7C865 /* CoconutGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoconutGameScene.swift; sourceTree = "<group>"; };
-		6A9954E62C29232900B7C865 /* SpriteKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitView.swift; sourceTree = "<group>"; };
-		6AF4A8852C292EC0006D2000 /* PlaygroundConstantVelocity.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaygroundConstantVelocity.sks; sourceTree = "<group>"; };
-		6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundConstantVelocity.swift; sourceTree = "<group>"; };
 		6AF4A8892C292EE3006D2000 /* SaveDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveDataService.swift; sourceTree = "<group>"; };
 		BFA2DBB32C2BF8360096262B /* GetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetItemView.swift; sourceTree = "<group>"; };
 		BFB25BDD2C23CCF60066D6BE /* MaterialViewGLBB_H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewGLBB_H.swift; sourceTree = "<group>"; };
@@ -148,6 +152,15 @@
 			path = Inquisitive;
 			sourceTree = "<group>";
 		};
+		6A2571422C32EA20009019D3 /* PlaygroundHorizontalConstantAcceleration */ = {
+			isa = PBXGroup;
+			children = (
+				6A25713E2C32EA19009019D3 /* PlaygroundHorizontalConstantAcceleration.sks */,
+				6A25713F2C32EA19009019D3 /* PlaygroundHorizontalConstantAcceleration.swift */,
+			);
+			path = PlaygroundHorizontalConstantAcceleration;
+			sourceTree = "<group>";
+		};
 		6A9954C52C29207D00B7C865 /* CoconutPlayground */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +173,8 @@
 		6AF4A8832C292D67006D2000 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				6A9954E62C29232900B7C865 /* SpriteKitView.swift */,
+				6A04A0032C32F424005EB231 /* SpriteKitView.swift */,
+				6A2571422C32EA20009019D3 /* PlaygroundHorizontalConstantAcceleration */,
 				6AF4A8842C292E97006D2000 /* ConstantVelocityPlayground */,
 				6A9954C52C29207D00B7C865 /* CoconutPlayground */,
 			);
@@ -170,8 +184,8 @@
 		6AF4A8842C292E97006D2000 /* ConstantVelocityPlayground */ = {
 			isa = PBXGroup;
 			children = (
-				6AF4A8852C292EC0006D2000 /* PlaygroundConstantVelocity.sks */,
-				6AF4A8862C292EC0006D2000 /* PlaygroundConstantVelocity.swift */,
+				6A2571392C32E93B009019D3 /* PlaygroundConstantVelocity.sks */,
+				6A2571382C32E93B009019D3 /* PlaygroundConstantVelocity.swift */,
 				6AF4A8892C292EE3006D2000 /* SaveDataService.swift */,
 			);
 			path = ConstantVelocityPlayground;
@@ -245,12 +259,13 @@
 				6A2069BA2C22A2930081FBCF /* GameScene.sks in Resources */,
 				6A2069C32C22A2930081FBCF /* Base in Resources */,
 				6A2069C52C22A2940081FBCF /* Assets.xcassets in Resources */,
-				6AF4A8872C292EC0006D2000 /* PlaygroundConstantVelocity.sks in Resources */,
 				6A2069BC2C22A2930081FBCF /* Actions.sks in Resources */,
 				6A2069C82C22A2940081FBCF /* Base in Resources */,
 				3D8283452C252B3E0097626F /* KERETABERPINDAH.json in Resources */,
+				6A25713B2C32E93B009019D3 /* PlaygroundConstantVelocity.sks in Resources */,
 				6A9954E32C2920B900B7C865 /* CoconutGameScene.sks in Resources */,
 				3D8283412C247B250097626F /* MOBIL.json in Resources */,
+				6A2571402C32EA1A009019D3 /* PlaygroundHorizontalConstantAcceleration.sks in Resources */,
 				3D82833F2C24776D0097626F /* KERETA.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A04A0042C32F424005EB231 /* SpriteKitView.swift in Sources */,
 				6AF4A88A2C292EE3006D2000 /* SaveDataService.swift in Sources */,
 				BFEC06172C2A99B700A9532E /* NewProfileView.swift in Sources */,
 				BFFCEA872C22F09300C1F888 /* MaterialViewGLB.swift in Sources */,
@@ -271,9 +287,9 @@
 				3DF8A9E72C2BBE50009D7BE9 /* ExerciseViewGLBB_H.swift in Sources */,
 				BFEC06192C2AC1DF00A9532E /* JustProfileView.swift in Sources */,
 				3DB7973C2C2D83BB00E4B043 /* BossTransition.swift in Sources */,
-				6AF4A8882C292EC0006D2000 /* PlaygroundConstantVelocity.swift in Sources */,
-				6A9954E72C29232900B7C865 /* SpriteKitView.swift in Sources */,
 				6A9954E52C2920B900B7C865 /* CoconutGameScene.swift in Sources */,
+				6A25713A2C32E93B009019D3 /* PlaygroundConstantVelocity.swift in Sources */,
+				6A2571412C32EA1A009019D3 /* PlaygroundHorizontalConstantAcceleration.swift in Sources */,
 				6A2069C02C22A2930081FBCF /* GameViewController.swift in Sources */,
 				6A2069B82C22A2930081FBCF /* AppDelegate.swift in Sources */,
 				BFFCEA852C22F06700C1F888 /* LottieView.swift in Sources */,

@@ -1,17 +1,16 @@
 import SpriteKit
 import GameplayKit
 
-class PlaygroundConstantVelocity: SKScene {
+class PlaygroundConstantVelocity: SKScene, UITextFieldDelegate {
     
     // Properties
     private var time: TimeInterval = 0
     private var lastUpdateTime: TimeInterval = 0
-    private var velocity: Float = 20
+    private var velocity: Float = 10
     private var previousVelocity: Float = 1
     private var distance: Float = 0
     
     private var timeLabel: SKLabelNode!
-    private var velocityLabel: SKLabelNode!
     private var distanceLabel: SKLabelNode!
     
     private var backgrounds: [SKSpriteNode] = []
@@ -19,6 +18,10 @@ class PlaygroundConstantVelocity: SKScene {
     private var grounds: [SKSpriteNode] = []
     
     private var train: SKSpriteNode?
+    private var playButton: SKSpriteNode?
+    
+    private var velocityTextField: UITextField!
+    private var tapGestureRecognizer: UITapGestureRecognizer!
     
     // Constants
     private let fontSize: CGFloat = 24
@@ -31,8 +34,18 @@ class PlaygroundConstantVelocity: SKScene {
         setupLabels()
         setupNodes()
         setupTrain()
-        self.isPaused = false
+        setupButtons()
+        setupTextField(view: view) // Pass the view here
+        self.isPaused = true
         animateTrain()
+        
+        // Enable user interaction for the scene
+        self.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true
+        
+        // Add tap gesture recognizer
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -40,8 +53,8 @@ class PlaygroundConstantVelocity: SKScene {
         updateGameState(deltaTime: deltaTime)
         updateLabels()
         moveAndResetNodes(nodes: backgrounds, speed: CGFloat(1.87500 * velocity) * CGFloat(deltaTime))
-        moveAndResetNodes(nodes: rails, speed: CGFloat(30 * velocity) * CGFloat(deltaTime))
-        moveAndResetNodes(nodes: grounds, speed: CGFloat(37.5 * velocity) * CGFloat(deltaTime))
+        moveAndResetNodes(nodes: rails, speed: CGFloat(90 * velocity) * CGFloat(deltaTime))
+        moveAndResetNodes(nodes: grounds, speed: CGFloat(87.5 * velocity) * CGFloat(deltaTime))
         updateTrainAnimationSpeedIfNeeded()
     }
     
@@ -54,9 +67,8 @@ class PlaygroundConstantVelocity: SKScene {
     }
     
     private func setupLabels() {
-        timeLabel = createLabel(text: "Time: 0.00", position: CGPoint(x: self.frame.midX - 100, y: self.frame.midY + 200))
-        velocityLabel = createLabel(text: "Velocity: 30.00", position: CGPoint(x: self.frame.midX - 100, y: self.frame.midY + 160))
-        distanceLabel = createLabel(text: "Distance: 0.00", position: CGPoint(x: self.frame.midX - 100, y: self.frame.midY + 120))
+        timeLabel = createLabel(text: "Time: 0.00", position: CGPoint(x: 554, y: 417))
+        distanceLabel = createLabel(text: "Distance: 0.00", position: CGPoint(x: 554, y: 377))
     }
     
     private func createLabel(text: String, position: CGPoint) -> SKLabelNode {
@@ -119,6 +131,23 @@ class PlaygroundConstantVelocity: SKScene {
         train?.zPosition = 0
     }
     
+    private func setupButtons() {
+        playButton = self.childNode(withName: "PlayButton") as? SKSpriteNode
+        playButton?.texture = SKTexture(imageNamed: "User Interface/playPlayground")
+    }
+    
+    private func setupTextField(view: SKView) {
+        velocityTextField = UITextField(frame: CGRect(x: 675, y: 855, width: 50, height: 80))
+        velocityTextField.borderStyle = .none
+        velocityTextField.backgroundColor = .clear
+        velocityTextField.keyboardType = .numberPad
+        velocityTextField.placeholder = "0"
+        velocityTextField.text = "\(Int(velocity))" // Set default value
+        velocityTextField.delegate = self
+        velocityTextField.font = UIFont.systemFont(ofSize: 26)
+        view.addSubview(velocityTextField)
+    }
+    
     // MARK: - Game State Methods
     
     private func calculateDeltaTime(currentTime: TimeInterval) -> TimeInterval {
@@ -138,9 +167,8 @@ class PlaygroundConstantVelocity: SKScene {
     }
     
     private func updateLabels() {
-        timeLabel.text = String(format: "Time: %.2f", time)
-        velocityLabel.text = String(format: "Velocity: %.2f", velocity)
-        distanceLabel.text = String(format: "Distance: %.2f", distance)
+        timeLabel.text = String(format: "Time: %.2f s", time)
+        distanceLabel.text = String(format: "Distance: %.2f m", distance)
     }
     
     private func moveAndResetNodes(nodes: [SKSpriteNode], speed: CGFloat) {
@@ -160,7 +188,7 @@ class PlaygroundConstantVelocity: SKScene {
             let textureName = String(format: "Scene_Constant Velocity/Train/KERETA_%05d", i)
             textures.append(SKTexture(imageNamed: textureName))
         }
-        let animation = SKAction.animate(with: textures, timePerFrame: 0.1)
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.0227)
         let repeatAnimation = SKAction.repeatForever(animation)
         train?.run(repeatAnimation, withKey: "trainAnimation")
     }
@@ -173,20 +201,66 @@ class PlaygroundConstantVelocity: SKScene {
     }
     
     private func adjustTrainAnimationSpeed() {
-        guard let train = train, train.action(forKey: "trainAnimation") != nil else {
-            return
+        train?.speed = CGFloat(velocity)
+    }
+    
+    // MARK: - Touch Handling
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        if playButton?.contains(location) == true {
+            if self.isPaused {
+                self.isPaused = false
+                playButton?.texture = SKTexture(imageNamed: "User Interface/stopPlayground")
+            } else {
+                self.isPaused = true
+                playButton?.texture = SKTexture(imageNamed: "User Interface/playPlayground")
+                resetGameState()
+                updateLabels()
+            }
         }
-        train.removeAction(forKey: "trainAnimation")
+    }
+    
+    @objc private func handleTap() {
+        self.view?.endEditing(true)
+    }
+    
+    // MARK: - UITextFieldDelegate Methods
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Allow only numbers
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
         
-        var textures: [SKTexture] = []
-        for i in 0..<45 {
-            let textureName = String(format: "Scene_Constant Velocity/Train/KERETA_%05d", i)
-            textures.append(SKTexture(imageNamed: textureName))
+        // Check if the new length is within the 2-digit limit
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        if allowedCharacters.isSuperset(of: characterSet) && updatedText.count <= 2 {
+            if let value = Float(updatedText), value <= 20 {
+                velocity = value
+            }
+            return true
         }
-        
-        let newTimePerFrame = 0.1 / velocity
-        let animation = SKAction.animate(with: textures, timePerFrame: Double(newTimePerFrame))
-        let repeatAnimation = SKAction.repeatForever(animation)
-        train.run(repeatAnimation, withKey: "trainAnimation")
+        return false
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text, let value = Float(text) {
+            if value < 0 {
+                velocity = 0
+            } else if value > 20 {
+                velocity = 20
+            } else {
+                velocity = value
+            }
+            textField.text = "\(Int(velocity))"
+        } else {
+            // Reset to default if input is invalid
+            velocity = 10
+            textField.text = "\(Int(velocity))"
+        }
     }
 }

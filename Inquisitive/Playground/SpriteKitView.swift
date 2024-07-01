@@ -1,20 +1,13 @@
-//
-//  CoconutGameView.swift
-//  Inquisitive
-//
-//  Created by Daniel Ian on 24/06/24.
-//
-
 import SwiftUI
 import SpriteKit
 
 struct SpriteKitView: UIViewRepresentable {
     var sceneName: String
-    var sceneClass: SKScene
-
+    var sceneClass: SKScene.Type
+    
     func makeUIView(context: Context) -> SKView {
         let view = SKView()
-        if let scene = SKScene(fileNamed: sceneName) {
+        if let scene = sceneClass.init(fileNamed: sceneName) {
             scene.scaleMode = .aspectFill
             view.presentScene(scene)
         }
@@ -23,14 +16,43 @@ struct SpriteKitView: UIViewRepresentable {
         view.showsNodeCount = false
         return view
     }
-
+    
     func updateUIView(_ uiView: SKView, context: Context) {
         // Update the view if needed
     }
 }
 
+struct PlaygroundView: View {
+    @Binding var isPresented: Bool
+    var sceneName: String
+    var sceneClass: SKScene.Type
+    
+    var body: some View {
+        ZStack {
+            SpriteKitView(sceneName: sceneName, sceneClass: sceneClass.self)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                HStack {
+                    Button(action: {
+                        isPresented = false
+                    }) {
+                        Image("User Interface/exit")
+                            .scaleEffect(0.5)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    .position(x: 50, y: 30)
+                    Spacer()
+                }
+                Spacer()
+            }
+        }
+//        .navigationBarBackButtonHidden()
+    }
+}
 
 #Preview {
-    SpriteKitView(sceneName: "CoconutGameScene", sceneClass: CoconutGameScene(size: CGSize(width: 1400, height: 1100)))
-                .frame(width: 1400, height: 1100)
+    PlaygroundView(isPresented: .constant(true), sceneName: "PlaygroundHorizontalConstantAcceleration", sceneClass: PlaygroundHorizontalConstantAcceleration.self)
 }
+
