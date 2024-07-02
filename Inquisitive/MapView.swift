@@ -42,7 +42,10 @@ struct MapView: View {
                 .navigationBarHidden(true)
                 
                 // GLB Playground button
-                NavigationLink(destination: PlaygroundView(isPresented: $isPlaygroundViewPresented, sceneName: "PlaygroundHorizontalConstantAcceleration", sceneClass: PlaygroundHorizontalConstantAcceleration.self)) {
+                NavigationLink(destination: PlaygroundView(isPresented: $isPlaygroundViewPresented, sceneName: "PlaygroundConstantVelocity", sceneClass: PlaygroundConstantVelocity.self,
+                                                           onClose: {
+                    dat.playgroundGLBButtonClicked = true
+                })) {
                     VStack {
                         ZStack {
                             Image(dat.playgroundGLBButtonClicked ? "Map/playgroundButtonDone" : "Map/playgroundButton")
@@ -98,7 +101,10 @@ struct MapView: View {
                 .navigationBarHidden(true)
                 
                 // GLBB Horizontal Playground button
-                NavigationLink(destination: PlaygroundView(isPresented: $isPlaygroundViewPresented, sceneName: "PlaygroundHorizontalConstantAcceleration", sceneClass: PlaygroundHorizontalConstantAcceleration.self)) {
+                NavigationLink(destination: PlaygroundView(isPresented: $isPlaygroundViewPresented, sceneName: "PlaygroundHorizontalConstantAcceleration", sceneClass: PlaygroundHorizontalConstantAcceleration.self,
+                                                           onClose: {
+                    dat.playgroundGLBB_HButtonClicked = true
+                })) {
                     VStack {
                         ZStack {
                             Image(dat.playgroundGLBB_HButtonClicked ? "Map/playgroundButtonDone" : "Map/playgroundButton")
@@ -154,7 +160,9 @@ struct MapView: View {
                 .navigationBarHidden(true)
                 
                 // GLBB Vertical Playground button
-                NavigationLink(destination: PlaygroundView(isPresented: $isPlaygroundViewPresented, sceneName: "CoconutGameScene", sceneClass: CoconutGameScene.self)) {
+                NavigationLink(destination: PlaygroundView(isPresented: $isPlaygroundViewPresented, sceneName: "CoconutGameScene", sceneClass: CoconutGameScene.self, onClose: {
+                    dat.playgroundGLBB_VButtonClicked = true
+                })) {
                     VStack {
                         ZStack {
                             Image(dat.playgroundGLBB_VButtonClicked ? "Map/playgroundButtonDone" : "Map/playgroundButton")
@@ -222,33 +230,26 @@ struct MapView: View {
                 Image("Map/coconutTree")
                     .offset(x: 4 + UIScreen.main.bounds.width / 2.5, y: 12 + UIScreen.main.bounds.height / 4)
                 
-                // Profile button
-                VStack {
-                    HStack {
-                        Button(action: {
+                //Profile
+                VStack{
+                    HStack{
+                        Button(action:{
                             dat.isProfilePressed.toggle()
-                        }) {
+                        }){
                             RoundedRectangle(cornerRadius: 40)
                                 .frame(width: 120, height: 120)
                                 .foregroundColor(Color(hex: "E1E8EF").opacity(0.8))
-                                .shadow(radius: 24, x: 2, y: 2)
-                                .overlay {
-                                    VStack {
-                                        Image(systemName: "person.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(Color(hex: "FFAC5F"))
-                                        Text("Profile")
-                                            .font(.system(size: 20).bold())
-                                            .foregroundColor(Color(hex: "FFAC5F"))
-                                    }
+                                .shadow(radius: 24, x:2, y:4)
+                                .padding()
+                                .overlay{
+                                    JustProfileView(dat: dat)
+                                        .scaleEffect(0.3)
                                 }
                         }
                         Spacer()
                     }
                     Spacer()
-                }
-                .padding(.leading, 20)
-                .padding(.top, 10)
+                }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 
                 // Fog images and animations
                 if !dat.isFog1 {
@@ -318,6 +319,7 @@ struct MapView: View {
                     }
                     .offset(x:UIScreen.main.bounds.width*7/25, y:UIScreen.main.bounds.height/4)
                 }
+                
                 
                 // Profile view overlay
                 if dat.isProfilePressed == true {

@@ -80,7 +80,7 @@ class CoconutGameScene: SKScene, SKPhysicsContactDelegate, UITextFieldDelegate {
     }
     
     private func setupTextField(view: SKView) {
-        distanceInputTextField = UITextField(frame: CGRect(x: 370, y: 880, width: 80, height: 80))
+        distanceInputTextField = UITextField(frame: CGRect(x: 370, y: 825, width: 80, height: 80))
         distanceInputTextField.borderStyle = .none
         distanceInputTextField.backgroundColor = .clear
         distanceInputTextField.keyboardType = .numberPad

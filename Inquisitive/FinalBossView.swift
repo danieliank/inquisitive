@@ -183,7 +183,8 @@ struct FinalBossView: View {
                 if showMessage{
                     Text(validationMessage)
                         .font(.system(size: 24).bold())
-                        .foregroundColor(validationMessage == "Correct" ? .green : .red)
+                        .foregroundColor(validationMessage == "Correct" ? .green : Color(hex: "B13A26"))
+                        .shadow(color: .white, radius: 4)
                         .transition(.opacity)
                 }
                 

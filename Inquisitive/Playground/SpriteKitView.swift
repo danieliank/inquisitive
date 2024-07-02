@@ -26,6 +26,8 @@ struct PlaygroundView: View {
     @Binding var isPresented: Bool
     var sceneName: String
     var sceneClass: SKScene.Type
+    @Environment(\.presentationMode) var presentationMode
+    var onClose: (() -> Void)?
     
     var body: some View {
         ZStack {
@@ -36,11 +38,13 @@ struct PlaygroundView: View {
                 HStack {
                     Button(action: {
                         isPresented = false
+                        onClose?()
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        Image("User Interface/exit")
-                            .scaleEffect(0.5)
-                            .foregroundColor(.white)
-                            .padding()
+                        Image("Buttons/close")
+                            .resizable()
+                            .frame(width: 64, height: 64)
+                            .padding([.top, .leading], 50)
                     }
                     .position(x: 50, y: 30)
                     Spacer()
@@ -48,7 +52,7 @@ struct PlaygroundView: View {
                 Spacer()
             }
         }
-//        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden()
     }
 }
 
